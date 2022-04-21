@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 export const FollioContext = createContext()
 
-export const AppProvider = ({ children }) => {
+export const FollioProvider = ({ children }) => {
     return <FollioContext.Provider value={{
 
     }}>
