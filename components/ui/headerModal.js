@@ -6,19 +6,16 @@ const styles = {
 const HeaderModal = () => {
     return <div className={styles.modalContent}>
         <p className={styles.modalLink}>
-            Share QR code
+            👨‍💻 Share QR code
         </p>
         <p className={styles.modalLink}>
-            Copy link
+            📝 Copy link
         </p>
         <p className={styles.modalLink}>
-            Share link
+            🌍 Share link
         </p>
         <p className={styles.modalLink}>
-            View site
-        </p>
-        <p className={styles.modalLink}>
-            Logout
+            👀 View your site
         </p>
     </div>
 }
