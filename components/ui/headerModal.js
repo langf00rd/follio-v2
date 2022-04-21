@@ -1,5 +1,5 @@
 const styles = {
-    modalContent: `border border-mid p-3 rounded-md shadow-md bg-white w-max fixed right-5 sm:right-10 top-12`,
+    modalContent: `modal-content border border-mid p-3 rounded-md shadow-md bg-white w-max fixed right-5 sm:right-10 top-12`,
     modalLink: `opacity-80 mb-2 cursor-pointer hover:opacity-100 hover:text-brand user-select-none`,
 }
 

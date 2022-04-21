@@ -22,3 +22,35 @@ a {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
 }
+
+.modal-content {
+  animation: modalContent .2s linear;
+}
+
+@keyframes modalContent {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.side-menu {
+  animation: sideMenu .2s linear;
+}
+
+@keyframes sideMenu {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
