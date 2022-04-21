@@ -1,9 +1,7 @@
-import Header from "../components/ui/header"
+import Edit from "./account/edit"
 
 const Landing = () => {
-    return <div>
-        <Header />
-    </div>
+    return <Edit />
 }
 
 export default Landing

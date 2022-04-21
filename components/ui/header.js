@@ -8,10 +8,11 @@ import chevronUp from "../../assets/svg/chevronUp.svg"
 import menu from "../../assets/svg/menu.svg"
 import close from "../../assets/svg/close.svg"
 import SideMenu from "./sideMenu"
+import Button from "./button"
 
 const styles = {
-    header: `bg-white border-b border-b-mid`,
-    headerWrapper: `flex items-center p-3 justify-between px-5 sm:px-20 mx-auto`,
+    header: `bg-white border-b border-b-mid fixed top-0 left-0 w-screen`,
+    headerWrapper: `flex items-center p-3 justify-between px-5 lg:px-20 mx-auto`,
     link: `m-2 opacity-80 cursor-pointer hover:text-brand`,
     nav: `flex items-center hidden lg:flex`,
     chevron: `w-4 ml-1 opacity-50`,
@@ -50,11 +51,17 @@ const Header = () => {
                     <p className={styles.link}>Upgrade</p>
                 </Link>
             </nav>
-            <div onClick={toggleModal} className="flex items-center">
-                <Avatar />
-                {!showModal ?
-                    <img src={chevronDown.src} className={styles.chevron} />
-                    : <img src={chevronUp.src} className={styles.chevron} />}
+            <div className="flex items-center">
+                <div className="hidden lg:block"><Button label="Upgrade" full={false} /></div>
+
+                <div onClick={toggleModal} className="flex items-center">
+                    <div className="lg:ml-5">
+                        <Avatar />
+                    </div>
+                    {!showModal ?
+                        <img src={chevronDown.src} className={styles.chevron} />
+                        : <img src={chevronUp.src} className={styles.chevron} />}
+                </div>
             </div>
         </div>
 
