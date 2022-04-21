@@ -1,7 +1,7 @@
 import Button from "./button"
 
 const styles = {
-    menuLink: `opacity-80 mb-3 cursor-pointer hover:opacity-100 hover:text-brand user-select-none`,
+    menuLink: `opacity-80 mb-5 cursor-pointer hover:opacity-100 hover:text-brand user-select-none`,
     sideMenu: `p-5 side-menu shadow-md bg-white fixed border-b border-b-mid w-screen top-18 left-0 z-50`,
 }
 

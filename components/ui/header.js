@@ -52,7 +52,9 @@ const Header = () => {
                 </Link>
             </nav>
             <div className="flex items-center">
-                <div className="hidden lg:block"><Button label="Upgrade" full={false} /></div>
+                <div className="hidden lg:block">
+                    <Button label="Save &amp; publish" full={false} />
+                </div>
 
                 <div onClick={toggleModal} className="flex items-center">
                     <div className="lg:ml-5">
@@ -67,7 +69,7 @@ const Header = () => {
 
         {showModal ? <HeaderModal /> : null}
         {showSideMenu ? <SideMenu /> : null}
-    </div>
+    </div >
 }
 
 export default Header
