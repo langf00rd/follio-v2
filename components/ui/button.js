@@ -1,6 +1,6 @@
 const styles = {
-    button: `bg-brand hover:scale-90 transition text-white p-2 px-3 rounded-md`,
-    buttonFull: `bg-brand hover:scale-90 transition text-white p-2 px-3 rounded-md w-full`,
+    button: `bg-brand border border-b-[#de9d3d] hover:scale-90 transition text-white p-[6px] px-3 rounded-md`,
+    buttonFull: `bg-brand border border-b-[#de9d3d] hover:scale-90 transition text-white p-[6px] px-3 rounded-md w-full`,
 }
 
 const Button = ({ full = true, label, action }) => {

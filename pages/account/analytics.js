@@ -8,7 +8,7 @@ const Analytics = () => {
         <div className={layoutStyles.main}>
             <div className={layoutStyles.previewMainWrapper}>
                 <PageControlLinks />
-                <div className="w-full max-w-2xl">
+                <div className="w-full max-w-xl">
                     <p className={layoutStyles.textLg}>Analytics</p>
                 </div>
                 <div className={layoutStyles.preview}></div>

@@ -7,10 +7,73 @@ export const FollioContext = createContext()
 export const FollioProvider = ({ children }) => {
     const { data: session } = useSession()
     const router = useRouter()
+    const [isAuthenticated, setIsAuthenticated] = useState(session ? true : false)
+    const [showQrCode, setShowQrCode] = useState(false)
+
+    /** Global variables */
+    const [views, setViews] = useState(0)
+    const [viewCount, setViewCount] = useState(0)
+    const [showPreview, setShowPreview] = useState(true)
+    const [showLogin, setShowLogin] = useState(true)
+    const [showLoader, setShowLoader] = useState(false)
+    const [showSettingsModal, setShowSettingsModal] = useState(false)
+    const [showProjectModal, setShowProjectModal] = useState(false)
+    const [coverPhotoPreview, setCoverPhotoPreview] = useState("")
+    const [profilePhotoPreview, setProfilePhotoPreview] = useState("")
 
     /** User data fields */
+    const [fullname, setFullname] = useState("")
+    const [email, setEmail] = useState("")
+    const [tagline, setTagline] = useState("")
+    const [username, setUsername] = useState("")
+    const [work, setWork] = useState("")
+    const [about, setAbout] = useState("")
+    const [themeColor, setThemeColor] = useState("#ffffff")
+    const [accentColor, setAccentColor] = useState("#fea82f")
+    const [showGithubStats, setShowGithubStats] = useState(false)
+    const [skills, setSkills] = useState([])
+    const [workplaces, setWorkplaces] = useState([])
+    const [coverPhoto, setCoverPhoto] = useState('')
     const [profilePhoto, setProfilePhoto] = useState("")
+    const [isPremiumAccount, setIsPremiumAccount] = useState(false)
+    const [projects, setProjects] = useState([])
+    const [socials, setSocials] = useState({})
+    const [theme, setTheme] = useState(1)
+    const [cv, setCv] = useState("")
+    const [isNewUser, setIsNewUser] = useState(false)
 
+    /** Copy string to clipboard */
+    const copyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_APP_URL}/${username}`)
+            alert("✅ Link copied")
+        }
+        catch (e) {
+            console.log(e.message)
+        }
+    }
+
+    /** Share link */
+    const shareLink = async () => {
+        try {
+            await navigator.share({
+                title: `Follio | ${fullname}`,
+                text: 'Check out my Folio',
+                url: `${process.env.NEXT_PUBLIC_APP_URL}/${username}`,
+            })
+        }
+        catch (e) {
+            console.log(e.message)
+        }
+    }
+
+    /** Logout */
+    const logout = () => {
+        sessionStorage.removeItem("data")
+        signOut()
+    }
+
+    /** Begin user authentication */
     const authenticateUser = async () => {
         try {
             if (!await checkAuthStatus()) {
@@ -50,6 +113,26 @@ export const FollioProvider = ({ children }) => {
         return (name.split(/\s+/).join("")).toLocaleLowerCase()
     }
 
+    /** Upload file to cloudinary */
+    const uploadFile = async (_file) => {
+        try {
+            const data = new FormData()
+            data.append("file", _file)
+            data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET)
+            data.append("cloud_name", process.env.NEXT_PUBLIC_CLOUD_NAME)
+            const res = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}`, {
+                method: "POST",
+                body: data
+            })
+            const resData = await res.json()
+            return resData.url
+        }
+        catch (e) {
+            console.error('upload error', e.message)
+            return null
+        }
+    }
+
     /** Create Account */
     const createAccount = async () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/add-user`, {
@@ -80,7 +163,6 @@ export const FollioProvider = ({ children }) => {
 
             /** When account is not in DB, create new account */
             if (!data.status) {
-                console.error("no user data in DB", data)
                 await createAccount()
                 return
             }
@@ -95,31 +177,35 @@ export const FollioProvider = ({ children }) => {
     const prefill = (_source) => {
         sessionStorage.setItem("data", JSON.stringify(_source))
         console.log(JSON.stringify(_source))
-        // setFullname(_source.fullname)
-        // setCv(_source.cv)
-        // setEmail(_source.email)
-        // setUsername(_source.username)
-        // setTagline(_source.tagline)
-        // setWork(_source.work)
-        // setViews(_source.views)
-        // setAbout(_source.about)
+        setFullname(_source.fullname)
+        setCv(_source.cv)
+        setEmail(_source.email)
+        setUsername(_source.username)
+        setTagline(_source.tagline)
+        setWork(_source.work)
+        setViews(_source.views)
+        setAbout(_source.about)
         setProfilePhoto(_source.profilePhoto)
-        // setCoverPhoto(_source.coverPhoto)
-        // setShowGithubStats(_source.showGithubStats)
-        // setSkills(_source.skills)
-        // setWorkplaces(_source.workplaces)
-        // setProjects(_source.projects)
-        // setIsPremiumAccount(_source.isPremiumAccount)
-        // setWorkplaces(_source.workplaces)
-        // setSocials(_source.socials)
-        // setTheme(_source.theme)
-        // setAccentColor(_source.accentColor)
-        // setThemeColor(_source.themeColor)
+        setCoverPhoto(_source.coverPhoto)
+        setShowGithubStats(_source.showGithubStats)
+        setSkills(_source.skills)
+        setWorkplaces(_source.workplaces)
+        setProjects(_source.projects)
+        setIsPremiumAccount(_source.isPremiumAccount)
+        setWorkplaces(_source.workplaces)
+        setSocials(_source.socials)
+        setTheme(_source.theme)
+        setAccentColor(_source.accentColor)
+        setThemeColor(_source.themeColor)
     }
 
     return <FollioContext.Provider value={{
         authenticateUser,
         profilePhoto,
+        copyLink, shareLink,
+        logout, showQrCode, setShowQrCode,
+        viewCount, setViewCount,
+        skills, setSkills
     }}>
         {children}
     </FollioContext.Provider>

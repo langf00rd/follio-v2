@@ -3,6 +3,6 @@ export const layoutStyles = {
     mainWrapper: `-mt-3 py-5 lg:min-h-[93vh] flex`,
     // previewMainWrapper: `-mt-3 py-5 lg:min-h-[93vh] bg-brand`,
     previewMainWrapper: `-mt-3 py-5 lg:min-h-[93vh] flex justify-around`,
-    textLg: `text-xl lg:text-3xl font-medium`,
+    textLg: `text-xl lg:text-3xl font-medium mb-10`,
     preview: `bg-white h-[80vh] border border-mid w-full p-10 rounded-xl max-w-xl hidden lg:block`,
 }
