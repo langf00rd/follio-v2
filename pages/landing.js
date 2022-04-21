@@ -1,7 +1,7 @@
-import Edit from "./account/edit"
+import Auth from "./auth"
 
 const Landing = () => {
-    return <Edit />
+    return <Auth />
 }
 
 export default Landing

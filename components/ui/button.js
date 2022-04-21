@@ -3,9 +3,9 @@ const styles = {
     buttonFull: `bg-brand hover:scale-90 transition text-white p-2 px-3 rounded-md w-full`,
 }
 
-const Button = ({ full = true, label }) => {
-    if (full) return <button className={styles.buttonFull}>{label}</button>
-    return <button className={styles.button}>{label}</button>
+const Button = ({ full = true, label, action }) => {
+    if (full) return <button onClick={action} className={styles.buttonFull}>{label}</button>
+    return <button onClick={action} className={styles.button}>{label}</button>
 }
 
 export default Button

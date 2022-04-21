@@ -2,22 +2,21 @@ import Header from "../../components/ui/header"
 import { layoutStyles } from "../../components/styles/layout"
 import { inputStyles } from "../../components/styles/input"
 import { editLinks } from "../../components/styles/editLinks"
+import PageControlLinks from "../../components/ui/sidebar/pageLinks"
+import EditPageLinks from "../../components/ui/sidebar/editPageLinks"
 
 const Edit = () => {
     return <div>
         <Header />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.previewMainWrapper}>
-                <div className="bg-white h-max p-5 rounded-md border border-mid hidden sm:block">
-                    <p className={editLinks.link}>⚡ Introduction</p>
-                    <p className={editLinks.link}>📺 Photos &amp; videos</p>
-                    <p className={editLinks.link}>💛 Skills &amp; tools</p>
-                    <p className={editLinks.link}>🔗 Socials</p>
-                    <p className={editLinks.link}>💪 Projects &amp; works</p>
-                    <p className={editLinks.link}>🎨 Styles &amp; colors</p>
-                    <p className={editLinks.link}>💳 Shop &amp; payments</p>
+                <div className="hidden lg:block">
+                    <PageControlLinks />
+                    <div className="m-5" />
+                    <EditPageLinks />
                 </div>
-                <div className="max-w-2xl">
+
+                <div className="w-full max-w-2xl">
                     <p className={layoutStyles.textLg}>Edit your page</p>
 
                     {/* <div className="w-screen lg:w-3/5 bg-brand flex overflow-x-scroll">
