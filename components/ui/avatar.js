@@ -5,9 +5,9 @@ const styles = {
 }
 
 const Avatar = ({ size = "sm", src, action }) => {
-    if (size === "sm") return <div onClick={action} className={styles.avatarSm}></div>
-    if (size === "md") return <div onClick={action} className={styles.avatarMd}></div>
-    if (size === "lg") return <div onClick={action} className={styles.avatarLg}></div>
+    if (size === "sm") return <img src={src} onClick={action} className={styles.avatarSm} />
+    if (size === "md") return <img src={src} onClick={action} className={styles.avatarMd} />
+    if (size === "lg") return <img src={src} onClick={action} className={styles.avatarLg} />
 }
 
 export default Avatar

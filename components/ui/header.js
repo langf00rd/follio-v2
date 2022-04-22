@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Logo from "../logo"
 import Link from "next/link"
 import Avatar from "./avatar"
@@ -8,19 +8,15 @@ import chevronUp from "../../assets/svg/chevronUp.svg"
 import menu from "../../assets/svg/menu.svg"
 import close from "../../assets/svg/close.svg"
 import SideMenu from "./sideMenu"
-
-const styles = {
-    header: `bg-white border-b border-b-mid`,
-    headerWrapper: `flex items-center p-3 justify-between px-5 sm:px-20 mx-auto`,
-    link: `m-2 opacity-80 cursor-pointer hover:text-brand`,
-    nav: `flex items-center hidden lg:flex`,
-    chevron: `w-4 ml-1 opacity-50`,
-    menuBtn: `p-2 bg-mid lg:hidden rounded-md opacity-60 mr-5 cursor-pointer hover:scale-90 transition`,
-}
+import Button from "./buttons/button"
+import Nav from "./header/nav"
+import { FollioContext } from "../../context/follioContext"
+import { headerStyles } from "../styles/headerStyles"
 
 const Header = () => {
     const [showModal, setShowModal] = useState(false)
     const [showSideMenu, setShowSideMenu] = useState(false)
+    const { profilePhoto } = useContext(FollioContext)
 
     const toggleModal = () => {
         setShowModal(!showModal)
@@ -30,37 +26,33 @@ const Header = () => {
         setShowSideMenu(!showSideMenu)
     }
 
-    return <div className={styles.header}>
-        <div className={styles.headerWrapper}>
+    return <div className={headerStyles.header}>
+        <div className={headerStyles.headerWrapper}>
             <div className="flex items-center">
-                {!showSideMenu ? <img src={menu.src} onClick={toggleSideMenu} className={styles.menuBtn} />
-                    : <img src={close.src} onClick={toggleSideMenu} className={styles.menuBtn} />}
+                {!showSideMenu ? <img src={menu.src} onClick={toggleSideMenu} className={headerStyles.menuBtn} />
+                    : <img src={close.src} onClick={toggleSideMenu} className={headerStyles.menuBtn} />}
                 <Logo />
             </div>
-            <nav className={styles.nav}>
-                <Link passHref={true} href="/">
-                    <p className={styles.link}>Analytics</p>
-                </Link>
+            <Nav />
+            <div className="flex items-center">
+                <div className="hidden lg:block">
+                    <Button label="Save &amp; publish" full={false} />
+                </div>
 
-                <Link passHref={true} href="/">
-                    <p className={styles.link}>Designs</p>
-                </Link>
-
-                <Link passHref={true} href="/">
-                    <p className={styles.link}>Upgrade</p>
-                </Link>
-            </nav>
-            <div onClick={toggleModal} className="flex items-center">
-                <Avatar />
-                {!showModal ?
-                    <img src={chevronDown.src} className={styles.chevron} />
-                    : <img src={chevronUp.src} className={styles.chevron} />}
+                <div onClick={toggleModal} className="flex items-center">
+                    <div className="lg:ml-5">
+                        <Avatar src={profilePhoto} />
+                    </div>
+                    {!showModal ?
+                        <img src={chevronDown.src} className={headerStyles.chevron} />
+                        : <img src={chevronUp.src} className={headerStyles.chevron} />}
+                </div>
             </div>
         </div>
 
         {showModal ? <HeaderModal /> : null}
         {showSideMenu ? <SideMenu /> : null}
-    </div>
+    </div >
 }
 
 export default Header

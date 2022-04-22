@@ -1,9 +1,7 @@
-import Header from "../components/ui/header"
+import Auth from "./auth"
 
 const Landing = () => {
-    return <div>
-        <Header />
-    </div>
+    return <Auth />
 }
 
 export default Landing

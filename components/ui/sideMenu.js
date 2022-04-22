@@ -1,28 +1,31 @@
-import Button from "./button"
+import Link from "next/link"
+import { headerStyles } from "../styles/headerStyles"
+import Button from "./buttons/button"
+import Nav from "./header/nav"
+import PageControlLinks from "./sidebar/pageLinks"
 
 const styles = {
-    menuLink: `opacity-80 mb-3 cursor-pointer hover:opacity-100 hover:text-brand user-select-none`,
-    sideMenu: `p-5 side-menu shadow-md bg-white fixed border-b border-b-mid w-screen top-18 left-0 z-50`,
+    menuLink: `opacity-80 mb-5 cursor-pointer hover:opacity-100 hover:text-brand user-select-none`,
+    sideMenu: `p-5 side-menu bg-white fixed border-b border-b-mid w-screen top-18 left-0 z-50`,
 }
 
 const SideMenu = () => {
     return <div className={styles.sideMenu}>
-        <p className={styles.menuLink}>
-            Share QR code
-        </p>
-        <p className={styles.menuLink}>
-            Copy link
-        </p>
-        <p className={styles.menuLink}>
-            Share link
-        </p>
-        <p className={styles.menuLink}>
-            View site
-        </p>
-        <p className={styles.menuLink}>
-            Logout
-        </p>
-
+        <Link passHref={true} href="/account/analytics">
+            <p className={styles.menuLink}>
+                Analytics
+            </p>
+        </Link>
+        <Link passHref={true} href="/account/edit">
+            <p className={styles.menuLink}>
+                Edit
+            </p>
+        </Link>
+        <Link passHref={true} href="/account/themes">
+            <p className={styles.menuLink}>
+                Themes
+            </p>
+        </Link>
         <Button label="Login" />
     </div>
 }
