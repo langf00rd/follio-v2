@@ -44,7 +44,7 @@ const Tools = () => {
             })}
         </ul>
 
-        {skills.length < 1 ? <div className="opacity-50 my-10">You havent added any skills yet</div> : null}
+        {skills.length < 1 ? <div className="opacity-20 font-medium text-xl my-10 mt-0">You havent added any skills yet</div> : null}
 
         <div>
             <input list="skiils-list" name="browser" className={inputStyles.input} value={newSkill} onChange={e => setNewSkill(e.target.value)} placeholder="JavaScript" />

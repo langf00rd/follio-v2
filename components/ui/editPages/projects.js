@@ -35,11 +35,14 @@ const Projects = () => {
 
     return <div className={layoutStyles.container}>
         <p className="mb-7 font-medium">Your projects</p>
+
+        {projects.length < 1 ? <div className="opacity-20 font-medium text-xl my-10 mt-0">You havent added any projects yet</div> : null}
+
         <Button label="Add a project" action={() => setShowProjectModal(true)} />
 
         {showProjectModal ? <div className={layoutStyles.modalBody}>
             <div className={layoutStyles.modalContainer}>
-                <p className="font-extrabold text-2xl mb-10">Add a project</p>
+                <p className="font-extrabold text-2xl mb-10">Add your project</p>
                 {thumbnailFile ? <img src={URL.createObjectURL(thumbnailFile)} alt="" className="w-full h-44 rounded-md object-cover mb-5" /> : <></>}
                 <input className={inputStyles.input} placeholder="Project name*" />
                 <input className={inputStyles.input} placeholder="Project description" />
