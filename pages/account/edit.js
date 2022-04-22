@@ -1,13 +1,14 @@
-import Header from "../../components/ui/header"
 import { layoutStyles } from "../../components/styles/layout"
+import { FollioContext } from "../../context/follioContext"
+import { useContext } from "react"
+import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import EditPageLinks from "../../components/ui/sidebar/editPageLinks"
 import Introduction from "../../components/ui/editPages/introduction"
-import { FollioContext } from "../../context/follioContext"
-import { useContext } from "react"
 import Media from "../../components/ui/editPages/media"
 import Tools from "../../components/ui/editPages/tools"
 import Socials from "../../components/ui/editPages/socials"
+import EditPageTabs from "../../components/ui/editPageTabs"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -37,14 +38,7 @@ const Edit = () => {
 
                 <div className="w-full max-w-xl">
                     <p className={layoutStyles.textLg}>Edit your page</p>
-
-                    {/* <div className="w-screen lg:w-3/5 bg-brand flex overflow-x-scroll">
-                        <p>Hello</p>
-                        <p>Hello</p>
-                        <p>Hello</p>
-                        <p>Hello</p>
-                    </div> */}
-
+                    <EditPageTabs />
                     <Pages />
                 </div>
                 <div className={layoutStyles.preview}></div>
