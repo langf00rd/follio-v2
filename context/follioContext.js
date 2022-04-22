@@ -5,10 +5,9 @@ import { signIn, signOut, useSession } from "next-auth/react"
 export const FollioContext = createContext()
 
 export const FollioProvider = ({ children }) => {
-    const { data: session } = useSession()
     const router = useRouter()
+    const { data: session } = useSession()
     const [isAuthenticated, setIsAuthenticated] = useState(session ? true : false)
-    const [showQrCode, setShowQrCode] = useState(false)
 
     /** Global variables */
     const [views, setViews] = useState(0)
@@ -203,7 +202,7 @@ export const FollioProvider = ({ children }) => {
         authenticateUser,
         profilePhoto,
         copyLink, shareLink,
-        logout, showQrCode, setShowQrCode,
+        logout,
         viewCount, setViewCount,
         skills, setSkills
     }}>

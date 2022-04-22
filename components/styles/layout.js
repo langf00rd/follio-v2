@@ -1,4 +1,7 @@
 export const layoutStyles = {
+    container: `bg-white lg:shadow-sm h-max p-5 rounded-md border border-mid`,
+    modalContainer: `modal-content bg-white sm:h-max lg:w-5/12 w-screen h-screen overflow-y-scroll rounded-lg`,
+    modalBody: `flex items-center justify-center fixed inset-0 z-50 bg-dark bg-opacity-30 backdrop-blur-md`,
     main: `pt-20 w-screen px-5 lg:px-20`,
     mainWrapper: `-mt-3 py-5 lg:min-h-[93vh] flex`,
     // previewMainWrapper: `-mt-3 py-5 lg:min-h-[93vh] bg-brand`,

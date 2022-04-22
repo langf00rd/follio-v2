@@ -9,13 +9,14 @@ import linkedin from "../../../assets/svg/linkedin.svg"
 import stackoverflow from "../../../assets/svg/stackoverflow.svg"
 import twitch from "../../../assets/svg/twitch.svg"
 import youtube from "../../../assets/svg/youtube.svg"
+import { layoutStyles } from "../../styles/layout"
 
 const styles = {
     socialIcon: `mb-5 h-6 w-6 mr-2`,
 }
 
 const Socials = () => {
-    return <div className="bg-white shadow-sm h-max p-5 rounded-md border border-mid">
+    return <div className={layoutStyles.container}>
         <p className="mb-7 font-medium">Your socials</p>
         <div className="flex items-center">
             <img src={twitter.src} alt="" className={styles.socialIcon} />

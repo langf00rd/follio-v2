@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { FollioContext } from "../../../context/follioContext"
 import { inputStyles } from "../../styles/input"
+import { layoutStyles } from "../../styles/layout"
 import Button from "../button"
 
 const styles = {
@@ -32,7 +33,7 @@ const Tools = () => {
         setNewSkill("")
     }
 
-    return <div className="bg-white shadow-sm h-max p-5 rounded-md border border-mid">
+    return <div className={layoutStyles.container}>
         <p className="mb-7 font-medium">Tools &amp; skills</p>
         <ul className="flex items-center flex-wrap mb-10">
             {skills.map((skill, index) => {
@@ -75,7 +76,7 @@ const Tools = () => {
                 <option value="iOS" />
                 <option value="Cross-platform apps" />
             </datalist>
-            <Button label="Add" action={addSkill} />
+            <Button label="Add skill" action={addSkill} />
         </div>
     </div>
 }

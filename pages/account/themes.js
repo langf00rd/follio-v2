@@ -7,7 +7,7 @@ const Themes = () => {
         <Header />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.mainWrapper}>
-                <PageControlLinks />
+                <div className="hidden lg:block"><PageControlLinks /></div>
                 <div className="w-full max-w-2xl lg:ml-10">
                     <p className={layoutStyles.textLg}>Themes &amp; designs</p>
                 </div>
