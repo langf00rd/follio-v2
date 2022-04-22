@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import menu from "../assets/svg/menu.svg"
@@ -26,14 +27,14 @@ const PageHeader = () => {
                 <Link passHref={true} href="#home">
                     <p className={styles.headerLink}>About</p>
                 </Link>
-                <Link passHref={true} href="#home">
+                <Link passHref={true} href="#projects">
                     <p className={styles.headerLink}>Portfolio</p>
                 </Link>
-                <Link passHref={true} href="#home">
-                    <p className={styles.headerLink}>Collaborations</p>
+                <Link passHref={true} href="#tools">
+                    <p className={styles.headerLink}>Tools &amp; skills</p>
                 </Link>
-                <Link passHref={true} href="#home">
-                    <p className={styles.headerLink}>Contacts</p>
+                <Link passHref={true} href="#contact">
+                    <p className={styles.headerLink}>Contact</p>
                 </Link>
             </nav>
             <img src={menu.src} alt="menu button" className="lg:hidden" />
@@ -42,7 +43,7 @@ const PageHeader = () => {
 }
 
 const Hero = () => {
-    return <section className={styles.hero}>
+    return <section className={styles.hero} id="hero">
         <div className={styles.heroWrapper}>
             <div>
                 <p>Hi! I am Jonathan Iverson and</p>
@@ -57,24 +58,19 @@ const Hero = () => {
     </section>
 }
 
-const About = () => {
-    return <section className={styles.hero}>
+const About = ({ about }) => {
+    return <section className={styles.hero} id="about">
         <div className={styles.heroWrapper}>
             <div>
                 <p className={styles.textLg}>About me</p>
-                <p className="opacity-50">Self-sabotage undermines your success despite your own wishes,
-                    dreams or values.elf-sabotage undermines your success despite your own wishes,
-                    dreams or values.elf-sabotage undermines your success despite your own wishes,
-                    dreams or values.elf-sabotage undermines your success despite your own wishes,
-                    dreams or values.    It often stems from low self-esteem, negative
-                    self-talk, and related negative ...</p>
+                <p className="opacity-50">{about}</p>
             </div>
         </div>
     </section>
 }
 
 const Projects = () => {
-    return <section className={styles.hero}>
+    return <section className={styles.hero} id="projects">
         <div className={styles.heroWrapper}>
             <div>
                 <p className={styles.textLg}>My portfolio</p>
@@ -114,7 +110,7 @@ const Projects = () => {
 }
 
 const Tools = () => {
-    return <section className={styles.hero}>
+    return <section className={styles.hero} id="tools">
         <div className={styles.heroWrapper}>
             <div>
                 <p className={styles.textLg}>Tools &amp; skills</p>
@@ -140,7 +136,7 @@ const Tools = () => {
 }
 
 const FindMe = () => {
-    return <section className={styles.hero}>
+    return <section className={styles.hero} id="contact">
         <div className={styles.heroWrapper}>
             <div>
                 <p className={styles.textLg}>Connect with me</p>
@@ -152,9 +148,20 @@ const FindMe = () => {
 
 const Page = () => {
     return <div className="text-[1.2rem]">
+        <Head>
+            <title>Jonathan Iverson</title>
+            <meta name="description" content="{about}" />
+            <link rel="icon" href="convert-userr-logo-to-ico" />
+        </Head>
+
         <PageHeader />
         <Hero />
-        <About />
+        <About about="Self-sabotage undermines your success despite your own wishes,
+                    dreams or values.elf-sabotage undermines your success despite your own wishes,
+                    dreams or values.elf-sabotage undermines your success despite your own wishes,
+                    dreams or values.elf-sabotage undermines your success despite your own wishes,
+                    dreams or values.    It often stems from low self-esteem, negative
+                    self-talk, and related negative" />
         <Projects />
         <Tools />
         <FindMe />
