@@ -11,7 +11,6 @@ const Themes = () => {
                 <div className="w-full max-w-2xl lg:ml-10">
                     <p className={layoutStyles.textLg}>Themes &amp; designs</p>
                 </div>
-                {/* <div className={layoutStyles.preview}></div> */}
             </div>
         </div>
     </div>
