@@ -44,7 +44,7 @@ const Tools = () => {
             })}
         </ul>
 
-        {skills.length < 1 ? <div className="opacity-20 font-medium text-xl my-10 mt-0">You havent added any skills yet</div> : null}
+        {skills.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any skills yet</div> : null}
 
         <div>
             <input list="skiils-list" name="browser" className={inputStyles.input} value={newSkill} onChange={e => setNewSkill(e.target.value)} placeholder="JavaScript" />
@@ -53,25 +53,25 @@ const Tools = () => {
                 <option value="💅 CSS" />
                 <option value="✅ NodeJs" />
                 <option value="☘️ MongoDB" />
-                <option value="SQL" />
-                <option value="Postgres" />
-                <option value="MySQL" />
                 <option value="🧠 JavaScript" />
                 <option value="📱 React" />
                 <option value="🌋Angular" />
-                <option value="Vue" />
                 <option value="💾 AWS" />
-                <option value="⚡️ NextJs" />
-                <option value="☁ Google Cloud" />
-                <option value="🎨 UI design" />
-                <option value="UX design" />
                 <option value="🛠 UX and UX" />
                 <option value="📷 Photoshop" />
                 <option value="💨 Tailwind CSS" />
-                <option value="CSS" />
-                <option value="Chakra UI" />
+                <option value="⚡️ NextJs" />
+                <option value="☁ Google Cloud" />
+                <option value="🎨 UI design" />
                 <option value="🐳 Docker" />
                 <option value="👨‍💻 Flutter" />
+                <option value="SQL" />
+                <option value="Postgres" />
+                <option value="MySQL" />
+                <option value="Vue" />
+                <option value="UX design" />
+                <option value="CSS" />
+                <option value="Chakra UI" />
                 <option value="Android" />
                 <option value="iOS" />
                 <option value="Cross-platform apps" />

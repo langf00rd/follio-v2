@@ -38,7 +38,7 @@ const Projects = () => {
     return <div className={layoutStyles.container}>
         <p className="mb-7 font-medium">Your projects</p>
 
-        {projects.length < 1 ? <div className="opacity-20 font-medium text-xl my-10 mt-0">You havent added any projects yet</div> : null}
+        {projects.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any projects yet</div> : null}
 
         <Button label="Add a project" action={() => setShowProjectModal(true)} />
 
