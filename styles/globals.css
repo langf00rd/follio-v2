@@ -25,6 +25,11 @@ a {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
 .modal-content {
   animation: modalContent .2s linear;
 }

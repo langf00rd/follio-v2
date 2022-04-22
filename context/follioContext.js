@@ -202,9 +202,10 @@ export const FollioProvider = ({ children }) => {
         authenticateUser,
         profilePhoto,
         copyLink, shareLink,
-        logout,
+        logout, uploadFile,
         viewCount, setViewCount,
-        skills, setSkills
+        skills, setSkills,
+        projects
     }}>
         {children}
     </FollioContext.Provider>

@@ -5,11 +5,10 @@ import QRCodeModal from "../qrcodeModal"
 
 const PageControlLinks = () => {
     const { copyLink, shareLink, username, cv } = useContext(FollioContext)
-    const [showCv, setShowCv] = useState(false)
     const [showQrCode, setShowQrCode] = useState(false)
 
     return <div>
-        <div className="bg-white shadow-sm h-max p-5 rounded-md border border-mid">
+        <div className="bg-white lg:shadow-sm h-max lg:p-5 rounded-md lg:border lg:border-mid">
             <p className={editLinks.link} onClick={() => setShowQrCode(true)}>👨‍💻 Share QR code</p>
             <p className={editLinks.link} onClick={copyLink}>📝 Copy link</p>
             <p className={editLinks.link} onClick={shareLink}>🌍 Share link</p>

@@ -1,5 +1,5 @@
 export const headerStyles = {
-    header: `bg-white border-b border-b-mid fixed top-0 left-0 w-screen`,
+    header: `bg-white border-b border-b-mid fixed z-10 top-0 left-0 w-screen`,
     headerWrapper: `flex items-center p-3 justify-between px-5 lg:px-20 mx-auto`,
     link: `m-2 mx-5 opacity-80 cursor-pointer hover:text-brand`,
     active: `m-2 opacity-80 cursor-pointer text-brand`,

@@ -9,6 +9,9 @@ import Media from "../../components/ui/editPages/media"
 import Tools from "../../components/ui/editPages/tools"
 import Socials from "../../components/ui/editPages/socials"
 import EditPageTabs from "../../components/ui/editPageTabs"
+import Button from "../../components/ui/buttons/button"
+import Projects from "../../components/ui/editPages/projects"
+import BottomNav from "../../components/ui/bottomNav"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -17,7 +20,7 @@ const Pages = () => {
         case 1: return <Media />
         case 2: return <Tools />
         case 3: return <Socials />
-        case 4: return <Introduction />
+        case 4: return <Projects />
         case 5: return <Introduction />
         case 6: return <Introduction />
         case 7: return <Introduction />
@@ -40,6 +43,7 @@ const Edit = () => {
                     <p className={layoutStyles.textLg}>Edit your page</p>
                     <EditPageTabs />
                     <Pages />
+                    <BottomNav />
                 </div>
                 <div className={layoutStyles.preview}></div>
             </div>

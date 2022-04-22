@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { headerStyles } from "../styles/headerStyles"
-import Button from "./button"
+import Button from "./buttons/button"
 import Nav from "./header/nav"
 import PageControlLinks from "./sidebar/pageLinks"
 

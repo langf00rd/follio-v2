@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import { FollioContext } from "../../context/follioContext"
 import { layoutStyles } from "../styles/layout"
 import ReactSwitch from "react-switch"
-import Button from "./button"
+import Button from "./buttons/button"
 
 const QRCodeModal = ({ onCloseModal }) => {
     const { username, cv } = useContext(FollioContext)
@@ -13,13 +13,13 @@ const QRCodeModal = ({ onCloseModal }) => {
         let canvas = document.getElementsByTagName("canvas")[0]
         const link = document.createElement("a")
         link.href = canvas.toDataURL("image/png")
-        link.download = "qrcode.png"
+        link.download = `${username || "my follio code"}.png`
         link.click()
     }
 
     return <div className={layoutStyles.modalBody}>
         <div className={layoutStyles.modalContainer}>
-            <div className="p-5 flex items-center flex-col">
+            <div className="flex items-center flex-col">
                 <p className="text-5xl mt-10 sm:mt-0 cursor-pointer" onClick={onCloseModal}>&times;</p>
                 <p className="font-extrabold text-2xl">Share your QR code</p>
                 <p className="opacity-50 mb-5 text-center">Visitors can easily visit your portfolio or download your resume by scanning your QR code</p>

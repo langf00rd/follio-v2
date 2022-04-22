@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { FollioContext } from "../../../context/follioContext"
 import { inputStyles } from "../../styles/input"
 import { layoutStyles } from "../../styles/layout"
-import Button from "../button"
+import Button from "../buttons/button"
 
 const styles = {
     tool: `border border-mid flex flex-center m-2 p-1 px-2 rounded-full bg-[#F8FAFC] hover:scale-90 hover:border-b-[#00000000] transition items-center cursor-pointer hover:bg-[#ff8a82]`

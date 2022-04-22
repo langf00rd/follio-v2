@@ -12,7 +12,7 @@ import youtube from "../../../assets/svg/youtube.svg"
 import { layoutStyles } from "../../styles/layout"
 
 const styles = {
-    socialIcon: `mb-5 h-6 w-6 mr-2`,
+    socialIcon: `mb-5 h-6 w-6 mr-3`,
 }
 
 const Socials = () => {
@@ -20,71 +20,71 @@ const Socials = () => {
         <p className="mb-7 font-medium">Your socials</p>
         <div className="flex items-center">
             <img src={twitter.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={github.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={linkedin.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={behance.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={twitch.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={instagram.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={stackoverflow.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={dribbble.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={discord.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
         <div className="flex items-center">
             <img src={youtube.src} alt="" className={styles.socialIcon} />
-            <div className={inputStyles.socialInput} placeholder="https://site.com/name">
-                <label className={inputStyles.label}>https://twitter.com/username/</label>
+            <div className={inputStyles.socialInput} placeholder="site.com/name">
+                <label className={inputStyles.label}>twitter.com/username/</label>
                 <input className={inputStyles.ghostInput} type="text" placeholder="" />
             </div>
         </div>
