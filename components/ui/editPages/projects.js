@@ -2,6 +2,8 @@ import { useContext, useState } from "react"
 import { FollioContext } from "../../../context/follioContext"
 import { inputStyles } from "../../styles/input"
 import { layoutStyles } from "../../styles/layout"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from "../buttons/button"
 import GhostButton from "../buttons/ghostButton"
 
@@ -49,12 +51,23 @@ const Projects = () => {
                 <input className={inputStyles.input} placeholder="Link" />
                 <input className={inputStyles.input} accept="image/*" type="file" onChange={e => setThumbnailFile(e.target.files[0])} />
                 <div className="flex items-center">
-                    <Button label="Add project" full={false} />
+                    <Button label="Add project" action={() => {
+                        toast.info('Project added successfully! 🎉', {
+                            position: "top-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
+                    }} full={false} />
                     <div className="m-3" />
                     <GhostButton label="Cancel" action={() => setShowProjectModal(false)} full={false} />
                 </div>
             </div>
         </div> : null}
+        <ToastContainer />
     </div>
 }
 
