@@ -47,13 +47,13 @@ const Edit = () => {
                     <p className={layoutStyles.textLg}>Edit your page</p>
                     <EditPageTabs />
                     <Pages />
-                    <BottomNav />
                 </div>
 
-                {showPreview ? <div className="lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
+                {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
                     <Theme1 editMode={true} />
-                    <BottomNav />
                 </div> : null}
+
+                <BottomNav />
 
                 <div className="hidden lg:block">
                     <Theme1 editMode={true} />
