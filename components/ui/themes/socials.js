@@ -92,8 +92,8 @@ export const Socials = ({ socials, themeColor, email }) => {
         </a>
     }
 
-    return <div className="flex items-center flex-wrap">
-        <Email email={email} />
+    if (socials) return <div className="flex items-center flex-wrap">
+        {/* <Email email={email} />
         <Twitter />
         <GitHub />
         <Linkedin />
@@ -103,18 +103,20 @@ export const Socials = ({ socials, themeColor, email }) => {
         <Dribbble />
         <Twitch />
         <Discord />
-        <Instagram />
+        <Instagram /> */}
 
-        {/* {email ? <Email email={email} /> : <></>}
-        {socials.twitter ? <Twitter username={socials.twitter} /> : <></>}
-        {socials.github ? <GitHub username={socials.github} /> : <></>}
-        {socials.linkedin ? <Linkedin username={socials.linkedin} /> : <></>}
-        {socials.behance ? <Behance username={socials.behance} /> : <></>}
-        {socials.stackoverflow ? <Stackoverflow username={socials.stackoverflow} /> : <></>}
-        {socials.youtube ? <YouTube username={socials.youtube} /> : <></>}
-        {socials.dribbble ? <Dribbble username={socials.dribbble} /> : <></>}
-        {socials.twitch ? <Twitch username={socials.twitch} /> : <></>}
-        {socials.discord ? <Discord username={socials.discord} /> : <></>}
-        {socials.instagram ? <Instagram username={socials.instagram} /> : <></>} */}
+        {email ? <Email email={email} /> : null}
+        {socials.twitter ? <Twitter username={socials.twitter} /> : null}
+        {socials.github ? <GitHub username={socials.github} /> : null}
+        {socials.linkedin ? <Linkedin username={socials.linkedin} /> : null}
+        {socials.behance ? <Behance username={socials.behance} /> : null}
+        {socials.stackoverflow ? <Stackoverflow username={socials.stackoverflow} /> : null}
+        {socials.youtube ? <YouTube username={socials.youtube} /> : null}
+        {socials.dribbble ? <Dribbble username={socials.dribbble} /> : null}
+        {socials.twitch ? <Twitch username={socials.twitch} /> : null}
+        {socials.discord ? <Discord username={socials.discord} /> : null}
+        {socials.instagram ? <Instagram username={socials.instagram} /> : null}
     </div>
+
+    return null
 }

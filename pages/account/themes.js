@@ -2,6 +2,8 @@ import { layoutStyles } from "../../components/styles/layout"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import theme1 from "../../assets/themes/1.png"
+import theme2 from "../../assets/themes/2.png"
+import theme3 from "../../assets/themes/3.png"
 import ThemeCard from "../../components/ui/themeCard"
 
 const styles = {
@@ -21,11 +23,8 @@ const Themes = () => {
                         <p className="mb-3 mt-5 font-bold  opacity-50">Simple themes</p>
                         <div className={styles.themeCardContainer}>
                             <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
+                            <ThemeCard index={2} thumbnail={theme2} />
+                            <ThemeCard index={3} thumbnail={theme3} />
                         </div>
                     </div>
 
@@ -33,23 +32,8 @@ const Themes = () => {
                         <p className="mb-3 mt-5 font-bold  opacity-50">Complex website designs</p>
                         <div className={styles.themeCardContainer}>
                             <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                        </div>
-                    </div>
-
-                    <div className="mt-20">
-                        <p className="mb-3 mt-5 font-bold  opacity-50">Simple themes</p>
-                        <div className={styles.themeCardContainer}>
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={1} thumbnail={theme1} />
+                            <ThemeCard index={2} thumbnail={theme2} />
+                            <ThemeCard index={3} thumbnail={theme3} />
                         </div>
                     </div>
                 </div>
