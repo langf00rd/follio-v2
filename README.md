@@ -5,7 +5,7 @@ Setup and deploy your portfolio website in minutes, for free 😎
 # Development stack:
 ⚡ Next
 ⚛  React
-💅 Tailwwind CSS
+💅 Tailwind CSS
 🧠 JavaScript
 😎 Vercel
 ✅ Node

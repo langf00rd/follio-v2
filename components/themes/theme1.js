@@ -4,6 +4,8 @@ import Head from "next/head"
 import Link from "next/link"
 import menu from "../../assets/svg/menu.svg"
 import { FollioContext } from "../../context/follioContext"
+import { layoutStyles } from "../styles/layout"
+import ProjectCard from "../ui/projectCard"
 
 const PageHeader = ({ customStyle }) => {
     return <header className={customStyle.header}>
@@ -62,12 +64,7 @@ const Projects = ({ customStyle, projects = [] }) => {
                 <p className={customStyle.textLg}>My portfolio</p>
                 <ul className={customStyle.grid}>
                     {projects.map((project, i) => {
-                        return <li key={i} className={customStyle.projectCard}>
-                            <img className="rounded-md w-full" src={project.thumbnail} alt="" />
-                            <p className="font-bold my-3">{project.name}</p>
-                            {project.description ? <p>{project.description}</p> : null}
-                            {project.link ? <a href={project.link} target="_blank" rel="noreferrer" className="text-brand border-b-2 border-b-brand mt-5 block w-max">View site &rarr;</a> : null}
-                        </li>
+                        return <ProjectCard link={project.link} customStyle={customStyle.projectCard} name={project.name} key={i} thumbnail={project.thumbnail} description={project.description} />
                     })}
                 </ul>
             </div>

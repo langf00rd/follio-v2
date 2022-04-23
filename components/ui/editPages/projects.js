@@ -6,9 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from "../buttons/button"
 import GhostButton from "../buttons/ghostButton"
+import ProjectCard from "../projectCard";
 
 const Projects = () => {
-    const { projects, setProjects, uploadFile, setShowLoader, } = useContext(FollioContext)
+    const { projects, setProjects, uploadFile } = useContext(FollioContext)
     const [name, setName] = useState("")
     const [link, setLink] = useState("")
     const [description, setDescription] = useState("")
@@ -34,7 +35,7 @@ const Projects = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-            });
+            })
             setName("")
             setLink("")
             setDescription("")
@@ -46,10 +47,36 @@ const Projects = () => {
         }
     }
 
+    const removeProject = (index) => {
+        console.log('index', index)
+        let prevProjects = [...projects]
+        for (let i = 0; i < prevProjects.length; i++) {
+            const element = prevProjects[i];
+            if (element === prevProjects[index]) {
+                prevProjects.splice(index, 1)
+                setProjects(prevProjects)
+                toast.info('Project removed!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                return
+            }
+        }
+    }
+
     return <div className={layoutStyles.container}>
         <p className="mb-7 font-medium">Your projects</p>
 
         {projects.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any projects yet</div> : null}
+
+        {projects.map((project, i) => {
+            return <ProjectCard onRemove={() => removeProject(i)} index={i} editMode={true} link={project.link} name={project.name} key={i} thumbnail={project.thumbnail} description={project.description} />
+        })}
 
         <Button label="Add a project" action={() => setShowProjectModal(true)} />
 
@@ -69,6 +96,7 @@ const Projects = () => {
                 </div>
             </div>
         </div> : null}
+
         <ToastContainer />
     </div>
 }
