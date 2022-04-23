@@ -8,7 +8,7 @@ const PageControlLinks = () => {
     const [showQrCode, setShowQrCode] = useState(false)
 
     return <div>
-        <div className="bg-white lg:shadow-sm h-max lg:p-5 rounded-md lg:border lg:border-mid">
+        <div className="bg-white lg:shadow-sm h-max lg:p-5 rounded-lg lg:border lg:border-borderColor">
             <p className={editLinks.link} onClick={() => setShowQrCode(true)}>👨‍💻 Share QR code</p>
             <p className={editLinks.link} onClick={copyLink}>📝 Copy link</p>
             <p className={editLinks.link} onClick={shareLink}>🌍 Share link</p>

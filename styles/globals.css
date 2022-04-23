@@ -8,7 +8,8 @@ html,
 body {
   padding: 0;
   /* background: #F8FAFC; */
-  background: #F5F7FD;
+  /* background: #F5F7FD; */
+  background: #F5F8FF;
   margin: 0;
   overflow-x: hidden;
   font-size: .94rem;

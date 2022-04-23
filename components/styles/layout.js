@@ -1,6 +1,6 @@
 export const layoutStyles = {
-    container: `modal-content bg-white lg:shadow-sm h-max p-3 lg:p-5 rounded-md border border-mid`,
-    // container: `bg-white lg:shadow-sm h-max p-5 rounded-md border border-mid`,
+    container: `modal-content bg-white lg:shadow-sm h-max p-3 lg:p-5 rounded-lg border border-borderColor`,
+    // container: `bg-white lg:shadow-sm h-max p-5 rounded-lg border border-borderColor`,
     modalContainer: `p-5 py-20 lg:py-10 modal-content bg-white sm:h-max lg:w-5/12 w-screen h-screen overflow-y-scroll rounded-lg`,
     modalBody: `flex items-center justify-center fixed inset-0 z-50 bg-dark bg-opacity-30 backdrop-blur-md`,
     main: `pt-20 w-screen px-5 lg:px-20 pb-56 sm:pb-0`,
@@ -9,5 +9,5 @@ export const layoutStyles = {
     // previewMainWrapper: `-mt-3 py-5 lg:min-h-[93vh] bg-brand`,
     previewMainWrapper: `-mt-3 py-5 lg:min-h-[93vh] flex justify-around`,
     textLg: `text-xl lg:text-3xl font-medium mb-10`,
-    preview: `bg-white h-[80vh] border border-mid w-full p-10 rounded-xl max-w-xl hidden lg:block`,
+    preview: `bg-white h-[80vh] border border-borderColor w-full p-10 rounded-xl max-w-xl hidden lg:block`,
 }
