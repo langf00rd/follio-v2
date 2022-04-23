@@ -205,7 +205,12 @@ export const FollioProvider = ({ children }) => {
         logout, uploadFile,
         viewCount, setViewCount,
         skills, setSkills,
-        projects
+        projects, setProjects,
+        about, setAbout,
+        fullname, setFullname,
+        work, setWork,
+        tagline, setTagline,
+        showPreview, setShowPreview
     }}>
         {children}
     </FollioContext.Provider>

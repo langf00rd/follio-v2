@@ -6,13 +6,14 @@ const Media = () => {
         <p className="mb-7 font-medium">Photos &amp; videos files</p>
 
         <p className="opacity-50 mb-3 mt-5">Profile photo</p>
-        <input className={inputStyles.input} accept="image/*" type="file" />
+        <input type="file" className={inputStyles.fileInput} />
+        {/* <input className={inputStyles.input} accept="image/*" type="file" /> */}
 
         <p className="opacity-50 mb-3 mt-5">Cover photo</p>
-        <input className={inputStyles.input} accept="image/*" type="file" />
+        <input className={inputStyles.fileInput} accept="image/*" type="file" />
 
         <p className="opacity-50 mb-3 mt-5">Featured video</p>
-        <input className={inputStyles.input} accept="video/*" type="file" />
+        <input className={inputStyles.fileInput} accept="video/*" type="file" />
     </div>
 }
 

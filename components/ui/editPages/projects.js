@@ -26,12 +26,23 @@ const Projects = () => {
                 thumbnail: await uploadFile(thumbnailFile)
             }
             setProjects([...projects, newProject])
+            toast.info('Project added successfully! 🎉', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setName("")
+            setLink("")
+            setDescription("")
+            setThumbnailFile()
             setShowProjectModal(false)
-            setShowLoader(false)
         }
         catch (e) {
             console.log(e.message)
-            setShowLoader(false)
         }
     }
 
@@ -46,22 +57,13 @@ const Projects = () => {
             <div className={layoutStyles.modalContainer}>
                 <p className="font-extrabold text-2xl mb-10">Add your project</p>
                 {thumbnailFile ? <img src={URL.createObjectURL(thumbnailFile)} alt="" className="w-full h-44 rounded-md object-cover mb-5" /> : <></>}
-                <input className={inputStyles.input} placeholder="Project name*" />
-                <input className={inputStyles.input} placeholder="Project description" />
-                <input className={inputStyles.input} placeholder="Link" />
-                <input className={inputStyles.input} accept="image/*" type="file" onChange={e => setThumbnailFile(e.target.files[0])} />
-                <div className="flex items-center">
-                    <Button label="Add project" action={() => {
-                        toast.info('Project added successfully! 🎉', {
-                            position: "top-center",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                        });
-                    }} full={false} />
+                <input className={inputStyles.input} value={name} onChange={e => setName(e.target.value)} placeholder="Project name*" />
+                <input className={inputStyles.input} value={description} onChange={e => setDescription(e.target.value)} placeholder="Project description" />
+                <input className={inputStyles.input} value={link} onChange={e => setLink(e.target.value)} placeholder="Link" />
+                <p className="opacity-50 my-3">Add project thumbnail</p>
+                <input className={inputStyles.fileInput} accept="image/*" type="file" onChange={e => setThumbnailFile(e.target.files[0])} />
+                <div className="flex items-center mt-5">
+                    <Button label="Add project" action={addProject} full={false} />
                     <div className="m-3" />
                     <GhostButton label="Cancel" action={() => setShowProjectModal(false)} full={false} />
                 </div>
