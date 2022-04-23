@@ -1,5 +1,8 @@
+import Head from 'next/head'
 import Landing from './landing'
 
 export default function Home() {
-  return <Landing />
+  return <div>
+    <Landing />
+  </div>
 }

@@ -13,6 +13,7 @@ import Button from "../../components/ui/buttons/button"
 import Projects from "../../components/ui/editPages/projects"
 import BottomNav from "../../components/ui/bottomNav"
 import Styles from "../../components/ui/editPages/styles"
+import Theme1 from "../../components/themes/theme1"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -30,6 +31,8 @@ const Pages = () => {
 }
 
 const Edit = () => {
+    const { showPreview, setShowPreview } = useContext(FollioContext)
+
     return <div>
         <Header />
         <div className={layoutStyles.main}>
@@ -46,7 +49,15 @@ const Edit = () => {
                     <Pages />
                     <BottomNav />
                 </div>
-                <div className={layoutStyles.preview}></div>
+
+                {showPreview ? <div className="lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
+                    <Theme1 editMode={true} />
+                    <BottomNav />
+                </div> : null}
+
+                <div className="hidden lg:block">
+                    <Theme1 editMode={true} />
+                </div>
             </div>
         </div>
     </div>
