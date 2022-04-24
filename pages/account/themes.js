@@ -31,9 +31,9 @@ const Themes = () => {
                     <div className="mt-20">
                         <p className="mb-3 mt-5 font-bold  opacity-50">Complex website designs</p>
                         <div className={styles.themeCardContainer}>
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={2} thumbnail={theme2} />
-                            <ThemeCard index={3} thumbnail={theme3} />
+                            <ThemeCard index={4} thumbnail={theme1} />
+                            <ThemeCard index={5} thumbnail={theme2} />
+                            <ThemeCard index={6} thumbnail={theme3} />
                         </div>
                     </div>
                 </div>

@@ -87,6 +87,22 @@ export const FollioProvider = ({ children }) => {
         }
     }
 
+    /** Change selected theme */
+    const changeThemeInSessionStorage = (index) => {
+        console.log('New theme index, ', index)
+        let _sessionData = JSON.parse(sessionStorage.getItem("data"))
+        _sessionData.theme = index
+        setTheme(index)
+        saveNewChangesToStorage(_sessionData)
+    }
+
+    /** Save data to localStorage */
+    const saveNewChangesToStorage = (data) => {
+        sessionStorage.setItem("data", JSON.stringify(data))
+    }
+
+
+    /** Check whether user is logged in */
     const checkAuthStatus = async () => {
         if (!session) {
             /** When no user logged in */
@@ -128,7 +144,7 @@ export const FollioProvider = ({ children }) => {
         }
         catch (e) {
             console.error('upload error', e.message)
-            return null
+            return undefined
         }
     }
 
@@ -209,8 +225,10 @@ export const FollioProvider = ({ children }) => {
         about, setAbout,
         fullname, setFullname,
         work, setWork,
+        theme,
         tagline, setTagline,
-        showPreview, setShowPreview
+        showPreview, setShowPreview,
+        changeThemeInSessionStorage
     }}>
         {children}
     </FollioContext.Provider>

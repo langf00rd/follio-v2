@@ -7,63 +7,72 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from "../buttons/button"
 import GhostButton from "../buttons/ghostButton"
 import ProjectCard from "../projectCard";
+import { uiStyles } from "../../styles/ui";
 
 const Projects = () => {
+    let thumbnailRef;
     const { projects, setProjects, uploadFile } = useContext(FollioContext)
     const [name, setName] = useState("")
     const [link, setLink] = useState("")
     const [description, setDescription] = useState("")
-    const [thumbnailFile, setThumbnailFile] = useState("")
+    const [thumbnailFile, setThumbnailFile] = useState()
     const [showProjectModal, setShowProjectModal] = useState(false)
+    let toastConfig = {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    }
 
     const addProject = async () => {
-        if (name.trim() === "") return
-        if (!thumbnailFile && thumbnailFile) return
-        try {
-            let newProject = {
-                name: name,
-                link: link,
-                description: description,
-                thumbnail: await uploadFile(thumbnailFile)
-            }
-            setProjects([...projects, newProject])
-            toast.info('Project added successfully! 🎉', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
-            setName("")
-            setLink("")
-            setDescription("")
-            setThumbnailFile()
+        if (name.trim() === "") {
+            toast.warn('Please add a project name', toastConfig)
+            return
+        }
+
+        if (!thumbnailFile) {
+            toast.warn('Please add a photo', toastConfig)
+            return
+        }
+
+        let _thumbnail = await uploadFile(thumbnailFile)
+
+        if (!_thumbnail) {
+            toast.error('An error occured. Try again', toastConfig)
             setShowProjectModal(false)
+            return
         }
-        catch (e) {
-            console.log(e.message)
+
+        let newProject = {
+            name: name,
+            link: link,
+            description: description,
+            thumbnail: _thumbnail
         }
+
+        setProjects([...projects, newProject])
+        setName("")
+        setLink("")
+        setDescription("")
+        setThumbnailFile()
+        setShowProjectModal(false)
+        toast.success('Project added successfully! 🎉', toastConfig)
     }
 
     const removeProject = (index) => {
-        console.log('index', index)
+        let confirmation = confirm("Do you want to remove this project?")
+        if (!confirmation) return
+
         let prevProjects = [...projects]
         for (let i = 0; i < prevProjects.length; i++) {
             const element = prevProjects[i];
             if (element === prevProjects[index]) {
                 prevProjects.splice(index, 1)
                 setProjects(prevProjects)
-                toast.info('Project removed!', {
-                    position: "top-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                toast.success('Project removed!', toastConfig);
                 return
             }
         }
@@ -87,8 +96,13 @@ const Projects = () => {
                 <input className={inputStyles.input} value={name} onChange={e => setName(e.target.value)} placeholder="Project name*" />
                 <input className={inputStyles.input} value={description} onChange={e => setDescription(e.target.value)} placeholder="Project description" />
                 <input className={inputStyles.input} value={link} onChange={e => setLink(e.target.value)} placeholder="Link" />
+
+                {/* <input className={inputStyles.fileInput} accept="image/*" type="file" onChange={e => setThumbnailFile(e.target.files[0])} /> */}
+
                 <p className="opacity-50 my-3">Add project thumbnail</p>
-                <input className={inputStyles.fileInput} accept="image/*" type="file" onChange={e => setThumbnailFile(e.target.files[0])} />
+                <label onClick={() => thumbnailRef.click()} className={uiStyles.uploadBox}>+</label>
+                <input ref={e => thumbnailRef = e} accept="image/*" onChange={e => setThumbnailFile(e.target.files[0])} type="file" hidden />
+
                 <div className="flex items-center mt-5">
                     <Button label="Add project" action={addProject} full={false} />
                     <div className="m-3" />
