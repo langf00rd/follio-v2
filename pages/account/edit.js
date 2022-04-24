@@ -38,7 +38,7 @@ const Edit = () => {
             case 1:
                 return <Theme1 editMode={true} />
             default:
-                return <Theme1 editMode={true} />
+                return null
         }
     }
 
@@ -59,7 +59,7 @@ const Edit = () => {
                 </div>
 
                 {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
-                    <Theme1 editMode={true} />
+                    <ThemePreview />
                 </div> : null}
 
                 <BottomNav />

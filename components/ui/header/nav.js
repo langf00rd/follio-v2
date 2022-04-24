@@ -12,6 +12,9 @@ const Nav = () => {
         <Link passHref={true} href="/account/themes">
             <p className={headerStyles.link}>Themes</p>
         </Link>
+        <Link passHref={true} href="/account/settings">
+            <p className={headerStyles.link}>Settings</p>
+        </Link>
     </nav>
 }
 

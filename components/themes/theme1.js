@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { Socials } from "../ui/themes/socials"
+import { FollioContext } from "../../context/follioContext"
+import menu from "../../assets/svg/menu.svg"
+import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
-import menu from "../../assets/svg/menu.svg"
-import { FollioContext } from "../../context/follioContext"
-import { layoutStyles } from "../styles/layout"
-import ProjectCard from "../ui/projectCard"
 
 const PageHeader = ({ customStyle }) => {
     return <header className={customStyle.header}>
@@ -39,7 +38,9 @@ const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) =
                 <p className="opacity-50">{work}</p>
                 {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Connect with me &rarr;</a> : null}
             </div>
-            <img className={customStyle.heroImg} src={profilePhoto} alt={greeting} />
+            {profilePhoto && (typeof profilePhoto === "object")
+                ? <img className={customStyle.heroImg} alt="" src={URL.createObjectURL(profilePhoto)} />
+                : <img className={customStyle.heroImg} alt="" src={profilePhoto} />}
         </div>
     </section>
 }
@@ -118,7 +119,7 @@ const styles = {
     heroWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0 lg:mx-5`,
-    heroImg: `rounded-md w-full lg:ml-5 mt-20 lg:mt-0`,
+    heroImg: `rounded-md w-full h-96 lg:h-full object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`
 }
@@ -134,16 +135,16 @@ const mobileStyles = {
     heroWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0 mx-5`,
-    heroImg: `rounded-md w-full mt-20`,
+    heroImg: `rounded-md w-full h-96 object-cover mt-20`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, tagline, fullname, work, projects } = useContext(FollioContext)
+    const { skills, about, tagline, profilePhoto, work, projects } = useContext(FollioContext)
 
     if (editMode) return <div className={mobileStyles.body}>
         <PageHeader customStyle={mobileStyles} />
-        <Hero tagline={tagline} work={work} customStyle={mobileStyles} />
+        <Hero profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={mobileStyles} />
         <About customStyle={mobileStyles} about={about} />
         <Projects customStyle={mobileStyles} projects={projects} />
         <Tools customStyle={mobileStyles} tools={skills} />
@@ -153,7 +154,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata />
         <PageHeader customStyle={styles} />
-        <Hero tagline={data.tagline} work={data.work} customStyle={styles} />
+        <Hero profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />

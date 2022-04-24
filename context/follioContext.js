@@ -15,10 +15,6 @@ export const FollioProvider = ({ children }) => {
     const [showPreview, setShowPreview] = useState(true)
     const [showLogin, setShowLogin] = useState(true)
     const [showLoader, setShowLoader] = useState(false)
-    const [showSettingsModal, setShowSettingsModal] = useState(false)
-    const [showProjectModal, setShowProjectModal] = useState(false)
-    const [coverPhotoPreview, setCoverPhotoPreview] = useState("")
-    const [profilePhotoPreview, setProfilePhotoPreview] = useState("")
 
     /** User data fields */
     const [fullname, setFullname] = useState("")
@@ -32,7 +28,8 @@ export const FollioProvider = ({ children }) => {
     const [showGithubStats, setShowGithubStats] = useState(false)
     const [skills, setSkills] = useState([])
     const [workplaces, setWorkplaces] = useState([])
-    const [coverPhoto, setCoverPhoto] = useState('')
+    const [coverPhoto, setCoverPhoto] = useState("")
+    const [featuredVideo, setFeaturedVideo] = useState("")
     const [profilePhoto, setProfilePhoto] = useState("")
     const [isPremiumAccount, setIsPremiumAccount] = useState(false)
     const [projects, setProjects] = useState([])
@@ -214,8 +211,96 @@ export const FollioProvider = ({ children }) => {
         setThemeColor(_source.themeColor)
     }
 
+    /** Update user data in DB */
+    const updateAccount = async () => {
+        try {
+            let confirmation = confirm("Do you want to save your changes?")
+            let _profilePhoto = profilePhoto;
+            let _coverPhoto = coverPhoto;
+            let _cv = cv;
+
+            if (!confirmation) return
+
+            setShowLoader(true)
+
+            if (typeof profilePhoto === 'object') {
+                _profilePhoto = await uploadFile(profilePhoto)
+            }
+
+            if (typeof coverPhoto === 'object') {
+                _coverPhoto = await uploadFile(coverPhoto)
+            }
+
+            if (typeof cv === 'object') {
+                _cv = await uploadFile(cv)
+            }
+
+            let _body = {
+                "fullname": fullname,
+                "cv": _cv,
+                "username": username,
+                "email": email,
+                "tagline": tagline,
+                "work": work,
+                "about": about,
+                "showGithubStats": showGithubStats,
+                "skills": skills,
+                "isPremiumAccount": isPremiumAccount,
+                "profilePhoto": _profilePhoto,
+                "coverPhoto": _coverPhoto,
+                "workplaces": workplaces,
+                "projects": projects,
+                "theme": theme,
+                "views": views,
+                "themeColor": themeColor,
+                "accentColor": accentColor,
+                "socials": socials,
+                "updatedAt": new Date().toISOString(),
+            }
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/update-user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(_body),
+            })
+
+            if (res.status !== 200) {
+                alert("An error occured. Please try again later.")
+                setShowLoader(false)
+                return
+            }
+
+            setShowLoader(false)
+            saveNewChangesToStorage(_body)
+        } catch (e) {
+            setShowLoader(false)
+            alert("An error occured. Please try again later.")
+            console.log(e.message)
+        }
+    }
+
+    /** Handle selected files */
+    const handleMediaFiles = (_file, _target) => {
+        switch (_target) {
+            case "profile-photo":
+                setProfilePhoto(_file)
+                break;
+            case "cover-photo":
+                setCoverPhoto(_file)
+                break;
+            case "featured-video":
+                setFeaturedVideo(_file)
+                break;
+            default:
+                break;
+        }
+    }
+
     return <FollioContext.Provider value={{
         authenticateUser,
+        handleMediaFiles,
         profilePhoto,
         copyLink, shareLink,
         logout, uploadFile,
@@ -225,7 +310,9 @@ export const FollioProvider = ({ children }) => {
         about, setAbout,
         fullname, setFullname,
         work, setWork,
-        theme,
+        theme, coverPhoto,
+        featuredVideo, showLoader,
+        setCoverPhoto, setProfilePhoto, setFeaturedVideo,
         tagline, setTagline,
         showPreview, setShowPreview,
         changeThemeInSessionStorage

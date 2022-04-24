@@ -26,6 +26,11 @@ const SideMenu = () => {
                 Themes
             </p>
         </Link>
+        <Link passHref={true} href="/account/settings">
+            <p className={styles.menuLink}>
+                Settings
+            </p>
+        </Link>
         <Button label="Login" />
     </div>
 }
