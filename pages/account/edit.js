@@ -33,14 +33,14 @@ const Pages = () => {
 const Edit = () => {
     const { showPreview, theme } = useContext(FollioContext)
 
-    const ThemePreview = () => {
-        switch (theme) {
-            case 1:
-                return <Theme1 editMode={true} />
-            default:
-                return null
-        }
-    }
+    // const ThemePreview = () => {
+    //     switch (theme) {
+    //         case 1:
+    //             return <Theme1 editMode={true} />
+    //         default:
+    //             return null
+    //     }
+    // }
 
     return <div>
         <Header />
@@ -59,13 +59,13 @@ const Edit = () => {
                 </div>
 
                 {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
-                    <ThemePreview />
+                    {theme === 3 ? <Theme1 editMode={true} /> : null}
                 </div> : null}
 
                 <BottomNav />
 
                 <div className="hidden lg:block">
-                    <ThemePreview />
+                    {theme === 3 ? <Theme1 editMode={true} /> : null}
                 </div>
             </div>
         </div>

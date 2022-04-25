@@ -225,14 +225,17 @@ export const FollioProvider = ({ children }) => {
 
             if (typeof profilePhoto === 'object') {
                 _profilePhoto = await uploadFile(profilePhoto)
+                setProfilePhoto(_profilePhoto)
             }
 
             if (typeof coverPhoto === 'object') {
                 _coverPhoto = await uploadFile(coverPhoto)
+                setCoverPhoto(_coverPhoto)
             }
 
             if (typeof cv === 'object') {
                 _cv = await uploadFile(cv)
+                setCv(_cv)
             }
 
             let _body = {
@@ -316,7 +319,7 @@ export const FollioProvider = ({ children }) => {
         tagline, setTagline,
         showPreview, setShowPreview,
         changeThemeInSessionStorage,
-        checkAuthStatus
+        checkAuthStatus, updateAccount
     }}>
         {children}
     </FollioContext.Provider>

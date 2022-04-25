@@ -16,7 +16,7 @@ import { headerStyles } from "../styles/headerStyles"
 const Header = () => {
     const [showModal, setShowModal] = useState(false)
     const [showSideMenu, setShowSideMenu] = useState(false)
-    const { profilePhoto } = useContext(FollioContext)
+    const { profilePhoto, updateAccount } = useContext(FollioContext)
 
     const toggleModal = () => {
         setShowModal(!showModal)
@@ -36,7 +36,7 @@ const Header = () => {
             <Nav />
             <div className="flex items-center">
                 <div className="hidden lg:block">
-                    <Button label="Save &amp; publish" full={false} />
+                    <Button label="Save &amp; publish" full={false} action={updateAccount} />
                 </div>
 
                 <div onClick={toggleModal} className="flex items-center">
