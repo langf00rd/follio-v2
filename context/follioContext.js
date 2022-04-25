@@ -315,7 +315,8 @@ export const FollioProvider = ({ children }) => {
         setCoverPhoto, setProfilePhoto, setFeaturedVideo,
         tagline, setTagline,
         showPreview, setShowPreview,
-        changeThemeInSessionStorage
+        changeThemeInSessionStorage,
+        checkAuthStatus
     }}>
         {children}
     </FollioContext.Provider>
