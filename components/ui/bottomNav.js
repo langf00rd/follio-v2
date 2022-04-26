@@ -5,7 +5,7 @@ import { useContext } from "react"
 import { FollioContext } from "../../context/follioContext"
 
 const BottomNav = () => {
-    const { showPreview, setShowPreview } = useContext(FollioContext)
+    const { showPreview, setShowPreview, updateAccount } = useContext(FollioContext)
 
     return <div className={layoutStyles.bottomNav}>
         {!showPreview ? <p className="flex items-center w-5" onClick={() => setShowPreview(!showPreview)}>
@@ -14,7 +14,7 @@ const BottomNav = () => {
         </p> : <p className="flex items-center" onClick={() => setShowPreview(!showPreview)}>
             &times; Close preview
         </p>}
-        <Button label="Publish" full={false} />
+        <Button action={updateAccount} label="Publish" full={false} />
     </div>
 }
 
