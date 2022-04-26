@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { useRouter } from "next/dist/client/router"
 import { signIn, signOut, useSession } from "next-auth/react"
 
@@ -18,6 +18,7 @@ export const FollioProvider = ({ children }) => {
 
     /** User data fields */
     const [fullname, setFullname] = useState("")
+    const [logo, setLogo] = useState("")
     const [email, setEmail] = useState("")
     const [tagline, setTagline] = useState("")
     const [username, setUsername] = useState("")
@@ -37,6 +38,10 @@ export const FollioProvider = ({ children }) => {
     const [theme, setTheme] = useState(1)
     const [cv, setCv] = useState("")
     const [isNewUser, setIsNewUser] = useState(false)
+
+    useEffect(() => {
+        onReload()
+    }, [])
 
     /** Copy string to clipboard */
     const copyLink = async () => {
@@ -98,6 +103,11 @@ export const FollioProvider = ({ children }) => {
         sessionStorage.setItem("data", JSON.stringify(data))
     }
 
+    /** On page reload */
+    const onReload = () => {
+        let _data = JSON.parse(sessionStorage.getItem("data"))
+        prefill(_data)
+    }
 
     /** Check whether user is logged in */
     const checkAuthStatus = async () => {
@@ -178,6 +188,7 @@ export const FollioProvider = ({ children }) => {
                 await createAccount()
                 return
             }
+
             prefill(data.payload)
         }
         catch (e) {
@@ -187,10 +198,12 @@ export const FollioProvider = ({ children }) => {
 
     /** Populate and prefill textfields and inputs with data from source */
     const prefill = (_source) => {
+        if (!_source) return
+
         sessionStorage.setItem("data", JSON.stringify(_source))
-        console.log(JSON.stringify(_source))
         setFullname(_source.fullname)
         setCv(_source.cv)
+        setLogo(_source.logo)
         setEmail(_source.email)
         setUsername(_source.username)
         setTagline(_source.tagline)
@@ -240,6 +253,7 @@ export const FollioProvider = ({ children }) => {
 
             let _body = {
                 "fullname": fullname,
+                "logo": logo,
                 "cv": _cv,
                 "username": username,
                 "email": email,
@@ -304,7 +318,7 @@ export const FollioProvider = ({ children }) => {
     return <FollioContext.Provider value={{
         authenticateUser,
         handleMediaFiles,
-        profilePhoto,
+        profilePhoto, onReload,
         copyLink, shareLink,
         logout, uploadFile,
         viewCount, setViewCount,
@@ -312,7 +326,7 @@ export const FollioProvider = ({ children }) => {
         projects, setProjects,
         about, setAbout,
         fullname, setFullname,
-        work, setWork,
+        work, setWork, logo,
         theme, coverPhoto,
         featuredVideo, showLoader,
         setCoverPhoto, setProfilePhoto, setFeaturedVideo,

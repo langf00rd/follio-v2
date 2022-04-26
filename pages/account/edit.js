@@ -14,6 +14,7 @@ import Projects from "../../components/ui/editPages/projects"
 import BottomNav from "../../components/ui/bottomNav"
 import Styles from "../../components/ui/editPages/styles"
 import Theme1 from "../../components/themes/theme1"
+import Loader from "../../components/ui/loader"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -31,16 +32,9 @@ const Pages = () => {
 }
 
 const Edit = () => {
-    const { showPreview, theme } = useContext(FollioContext)
+    const { showPreview, theme, showLoader } = useContext(FollioContext)
 
-    // const ThemePreview = () => {
-    //     switch (theme) {
-    //         case 1:
-    //             return <Theme1 editMode={true} />
-    //         default:
-    //             return null
-    //     }
-    // }
+    if (showLoader) return <Loader />
 
     return <div>
         <Header />

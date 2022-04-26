@@ -6,10 +6,11 @@ import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
 
-const PageHeader = ({ customStyle }) => {
+const PageHeader = ({ customStyle, fullname, logo }) => {
     return <header className={customStyle.header}>
         <div className={customStyle.headerWrapper}>
-            <p>JL</p>
+            {/* {logo ? <img ssrc={logo} /> : <p>{fullname}</p>} */}
+            <p>{fullname}</p>
             <nav className="lg:flex items-center hidden">
                 <Link passHref={true} href="#home">
                     <p className={customStyle.headerLink}>About</p>
@@ -89,21 +90,21 @@ const Tools = ({ customStyle, tools = [] }) => {
     </section>
 }
 
-const FindMe = ({ customStyle, socials }) => {
+const FindMe = ({ customStyle, socials, email }) => {
     if (!socials) return null
     return <section className={customStyle.hero} id="contact">
         <div className={customStyle.heroWrapper}>
             <div>
                 <p className={customStyle.textLg}>Connect with me</p>
-                <Socials socials={socials} />
+                <Socials socials={socials} email={email} />
             </div>
         </div>
     </section>
 }
 
-const HeadMetadata = () => {
+const HeadMetadata = ({ fullName }) => {
     return <Head>
-        <title>Jonathan Iverson</title>
+        <title>{fullName}</title>
         <meta name="description" content="{data.about}" />
         <link rel="icon" href="convert-user-logo-to-ico" />
     </Head>
@@ -140,10 +141,10 @@ const mobileStyles = {
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, tagline, profilePhoto, work, projects } = useContext(FollioContext)
+    const { skills, about, tagline, logo, fullname, profilePhoto, work, projects } = useContext(FollioContext)
 
     if (editMode) return <div className={mobileStyles.body}>
-        <PageHeader customStyle={mobileStyles} />
+        <PageHeader logo={logo} fullname={fullname} customStyle={mobileStyles} />
         <Hero profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={mobileStyles} />
         <About customStyle={mobileStyles} about={about} />
         <Projects customStyle={mobileStyles} projects={projects} />
@@ -152,13 +153,13 @@ const Theme1 = ({ data = {}, editMode = false }) => {
     </div>
 
     if (!editMode) return <div className={styles.body}>
-        <HeadMetadata />
-        <PageHeader customStyle={styles} />
+        <HeadMetadata fullname={data.fullname} />
+        <PageHeader logo={data.logo} fullname={fullname} customStyle={styles} />
         <Hero profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
-        <FindMe customStyle={styles} socials={data.socials} />
+        <FindMe customStyle={styles} email={data.email} socials={data.socials} />
     </div>
 
     return null
