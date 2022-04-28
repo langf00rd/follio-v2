@@ -141,7 +141,7 @@ const mobileStyles = {
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, socials, tagline, logo, fullname, profilePhoto, work, projects } = useContext(FollioContext)
+    const { skills, about, email, socials, tagline, logo, fullname, profilePhoto, work, projects } = useContext(FollioContext)
 
     if (editMode) return <div className={mobileStyles.body}>
         <PageHeader logo={logo} fullname={fullname} customStyle={mobileStyles} />
@@ -149,7 +149,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <About customStyle={mobileStyles} about={about} />
         <Projects customStyle={mobileStyles} projects={projects} />
         <Tools customStyle={mobileStyles} tools={skills} />
-        <FindMe customStyle={mobileStyles} />
+        <FindMe email={email} socials={socials} customStyle={mobileStyles} />
     </div>
 
     if (!editMode) return <div className={styles.body}>

@@ -1,4 +1,7 @@
+import { FollioContext } from "../../../context/follioContext"
+import { layoutStyles } from "../../styles/layout"
 import { inputStyles } from "../../styles/input"
+import { useContext } from "react"
 import twitter from "../../../assets/svg/twitter.svg"
 import github from "../../../assets/svg/github.svg"
 import instagram from "../../../assets/svg/instagram.svg"
@@ -9,9 +12,6 @@ import linkedin from "../../../assets/svg/linkedin.svg"
 import stackoverflow from "../../../assets/svg/stackoverflow.svg"
 import twitch from "../../../assets/svg/twitch.svg"
 import youtube from "../../../assets/svg/youtube.svg"
-import { layoutStyles } from "../../styles/layout"
-import { useContext } from "react"
-import { FollioContext } from "../../../context/follioContext"
 
 const styles = {
     socialIcon: `mb-5 h-6 w-6 mr-3`,
