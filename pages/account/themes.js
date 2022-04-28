@@ -5,6 +5,7 @@ import theme1 from "../../assets/themes/1.png"
 import theme2 from "../../assets/themes/2.png"
 import theme3 from "../../assets/themes/3.png"
 import ThemeCard from "../../components/ui/themeCard"
+import PageHead from "../../pageHead"
 
 const styles = {
     title: `text-3xl font-bold mb-3`,
@@ -14,6 +15,7 @@ const styles = {
 const Themes = () => {
     return <div>
         <Header />
+        <PageHead title="Follio - Pick A Theme 🦄" />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.mainWrapper}>
                 <div className="hidden lg:block"><PageControlLinks /></div>
@@ -31,9 +33,9 @@ const Themes = () => {
                     <div className="mt-20">
                         <p className="mb-3 mt-5 font-bold  opacity-50">Complex website designs</p>
                         <div className={styles.themeCardContainer}>
-                            <ThemeCard index={1} thumbnail={theme1} />
-                            <ThemeCard index={2} thumbnail={theme2} />
-                            <ThemeCard index={3} thumbnail={theme3} />
+                            <ThemeCard index={4} thumbnail={theme1} />
+                            <ThemeCard index={5} thumbnail={theme2} />
+                            <ThemeCard index={6} thumbnail={theme3} />
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { useRouter } from "next/dist/client/router"
 import { signIn, signOut, useSession } from "next-auth/react"
 
@@ -15,13 +15,10 @@ export const FollioProvider = ({ children }) => {
     const [showPreview, setShowPreview] = useState(true)
     const [showLogin, setShowLogin] = useState(true)
     const [showLoader, setShowLoader] = useState(false)
-    const [showSettingsModal, setShowSettingsModal] = useState(false)
-    const [showProjectModal, setShowProjectModal] = useState(false)
-    const [coverPhotoPreview, setCoverPhotoPreview] = useState("")
-    const [profilePhotoPreview, setProfilePhotoPreview] = useState("")
 
     /** User data fields */
     const [fullname, setFullname] = useState("")
+    const [logo, setLogo] = useState("")
     const [email, setEmail] = useState("")
     const [tagline, setTagline] = useState("")
     const [username, setUsername] = useState("")
@@ -32,14 +29,18 @@ export const FollioProvider = ({ children }) => {
     const [showGithubStats, setShowGithubStats] = useState(false)
     const [skills, setSkills] = useState([])
     const [workplaces, setWorkplaces] = useState([])
-    const [coverPhoto, setCoverPhoto] = useState('')
+    const [coverPhoto, setCoverPhoto] = useState("")
+    const [featuredVideo, setFeaturedVideo] = useState("")
     const [profilePhoto, setProfilePhoto] = useState("")
     const [isPremiumAccount, setIsPremiumAccount] = useState(false)
     const [projects, setProjects] = useState([])
     const [socials, setSocials] = useState({})
     const [theme, setTheme] = useState(1)
     const [cv, setCv] = useState("")
-    const [isNewUser, setIsNewUser] = useState(false)
+
+    useEffect(() => {
+        onReload()
+    }, [])
 
     /** Copy string to clipboard */
     const copyLink = async () => {
@@ -87,6 +88,27 @@ export const FollioProvider = ({ children }) => {
         }
     }
 
+    /** Change selected theme */
+    const changeThemeInSessionStorage = (index) => {
+        console.log('New theme index, ', index)
+        let _sessionData = JSON.parse(sessionStorage.getItem("data"))
+        _sessionData.theme = index
+        setTheme(index)
+        saveNewChangesToStorage(_sessionData)
+    }
+
+    /** Save data to localStorage */
+    const saveNewChangesToStorage = (data) => {
+        sessionStorage.setItem("data", JSON.stringify(data))
+    }
+
+    /** On page reload */
+    const onReload = () => {
+        let _data = JSON.parse(sessionStorage.getItem("data"))
+        prefill(_data)
+    }
+
+    /** Check whether user is logged in */
     const checkAuthStatus = async () => {
         if (!session) {
             /** When no user logged in */
@@ -128,7 +150,7 @@ export const FollioProvider = ({ children }) => {
         }
         catch (e) {
             console.error('upload error', e.message)
-            return null
+            return undefined
         }
     }
 
@@ -165,6 +187,7 @@ export const FollioProvider = ({ children }) => {
                 await createAccount()
                 return
             }
+
             prefill(data.payload)
         }
         catch (e) {
@@ -174,10 +197,12 @@ export const FollioProvider = ({ children }) => {
 
     /** Populate and prefill textfields and inputs with data from source */
     const prefill = (_source) => {
+        if (!_source) return
+
         sessionStorage.setItem("data", JSON.stringify(_source))
-        console.log(JSON.stringify(_source))
         setFullname(_source.fullname)
         setCv(_source.cv)
+        setLogo(_source.logo)
         setEmail(_source.email)
         setUsername(_source.username)
         setTagline(_source.tagline)
@@ -198,9 +223,107 @@ export const FollioProvider = ({ children }) => {
         setThemeColor(_source.themeColor)
     }
 
+    /** Update user data in DB */
+    const updateAccount = async () => {
+        try {
+            let confirmation = confirm("Do you want to save your changes?")
+            let _profilePhoto = profilePhoto
+            let _coverPhoto = coverPhoto
+            let _featuredVideo = featuredVideo
+            let _cv = cv
+
+            if (!confirmation) return
+
+            setShowLoader(true)
+
+            if (typeof profilePhoto === 'object') {
+                _profilePhoto = await uploadFile(profilePhoto)
+                setProfilePhoto(_profilePhoto)
+            }
+
+            if (typeof coverPhoto === 'object') {
+                _coverPhoto = await uploadFile(coverPhoto)
+                setCoverPhoto(_coverPhoto)
+            }
+
+            if (typeof cv === 'object') {
+                _cv = await uploadFile(cv)
+                setCv(_cv)
+            }
+
+            if (typeof featuredVideo === 'object') {
+                _featuredVideo = await uploadFile(featuredVideo)
+                setFeaturedVideo(_featuredVideo)
+            }
+
+            let _body = {
+                "fullname": fullname,
+                "logo": logo,
+                "cv": _cv,
+                "username": username,
+                "email": email,
+                "tagline": tagline,
+                "work": work,
+                "about": about,
+                "showGithubStats": showGithubStats,
+                "skills": skills,
+                "isPremiumAccount": isPremiumAccount,
+                "profilePhoto": _profilePhoto,
+                "coverPhoto": _coverPhoto,
+                "workplaces": workplaces,
+                "projects": projects,
+                "theme": theme,
+                "views": views,
+                "themeColor": themeColor,
+                "accentColor": accentColor,
+                "socials": socials,
+                "updatedAt": new Date().toISOString(),
+            }
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/update-user`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(_body),
+            })
+
+            if (res.status !== 200) {
+                alert("An error occured. Please try again later.")
+                setShowLoader(false)
+                return
+            }
+
+            setShowLoader(false)
+            saveNewChangesToStorage(_body)
+        } catch (e) {
+            setShowLoader(false)
+            alert("An error occured. Please try again later.")
+            console.log(e.message)
+        }
+    }
+
+    /** Handle selected files */
+    const handleMediaFiles = (_file, _target) => {
+        switch (_target) {
+            case "profile-photo":
+                setProfilePhoto(_file)
+                break
+            case "cover-photo":
+                setCoverPhoto(_file)
+                break
+            case "featured-video":
+                setFeaturedVideo(_file)
+                break
+            default:
+                break
+        }
+    }
+
     return <FollioContext.Provider value={{
         authenticateUser,
-        profilePhoto,
+        handleMediaFiles,
+        profilePhoto, onReload,
         copyLink, shareLink,
         logout, uploadFile,
         viewCount, setViewCount,
@@ -208,9 +331,15 @@ export const FollioProvider = ({ children }) => {
         projects, setProjects,
         about, setAbout,
         fullname, setFullname,
-        work, setWork,
+        work, setWork, logo,
+        theme, coverPhoto,
+        featuredVideo, showLoader,
+        socials, setSocials,
+        setCoverPhoto, setProfilePhoto, setFeaturedVideo,
         tagline, setTagline,
-        showPreview, setShowPreview
+        showPreview, setShowPreview,
+        changeThemeInSessionStorage,
+        checkAuthStatus, updateAccount
     }}>
         {children}
     </FollioContext.Provider>
