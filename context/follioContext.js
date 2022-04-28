@@ -37,7 +37,6 @@ export const FollioProvider = ({ children }) => {
     const [socials, setSocials] = useState({})
     const [theme, setTheme] = useState(1)
     const [cv, setCv] = useState("")
-    const [isNewUser, setIsNewUser] = useState(false)
 
     useEffect(() => {
         onReload()
@@ -329,6 +328,7 @@ export const FollioProvider = ({ children }) => {
         work, setWork, logo,
         theme, coverPhoto,
         featuredVideo, showLoader,
+        socials, setSocials,
         setCoverPhoto, setProfilePhoto, setFeaturedVideo,
         tagline, setTagline,
         showPreview, setShowPreview,
