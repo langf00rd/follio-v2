@@ -102,10 +102,10 @@ const FindMe = ({ customStyle, socials, email }) => {
     </section>
 }
 
-const HeadMetadata = ({ fullName }) => {
+const HeadMetadata = ({ fullname = "Portfolio", tagline, about }) => {
     return <Head>
-        <title>{fullName}</title>
-        <meta name="description" content="{data.about}" />
+        <title>{fullname} | {tagline}</title>
+        <meta name="description" content={about} />
         <link rel="icon" href="convert-user-logo-to-ico" />
     </Head>
 }
@@ -141,11 +141,11 @@ const mobileStyles = {
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, tagline, logo, fullname, profilePhoto, work, projects } = useContext(FollioContext)
+    const { skills, about, socials, tagline, logo, fullname, profilePhoto, work, projects } = useContext(FollioContext)
 
     if (editMode) return <div className={mobileStyles.body}>
         <PageHeader logo={logo} fullname={fullname} customStyle={mobileStyles} />
-        <Hero profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={mobileStyles} />
+        <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={mobileStyles} />
         <About customStyle={mobileStyles} about={about} />
         <Projects customStyle={mobileStyles} projects={projects} />
         <Tools customStyle={mobileStyles} tools={skills} />
@@ -153,9 +153,9 @@ const Theme1 = ({ data = {}, editMode = false }) => {
     </div>
 
     if (!editMode) return <div className={styles.body}>
-        <HeadMetadata fullname={data.fullname} />
-        <PageHeader logo={data.logo} fullname={fullname} customStyle={styles} />
-        <Hero profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
+        <HeadMetadata tagline={data.tagline} about={data.about} fullname={data.fullname} />
+        <PageHeader logo={data.logo} fullname={data.fullname} customStyle={styles} />
+        <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />

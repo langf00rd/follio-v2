@@ -227,9 +227,10 @@ export const FollioProvider = ({ children }) => {
     const updateAccount = async () => {
         try {
             let confirmation = confirm("Do you want to save your changes?")
-            let _profilePhoto = profilePhoto;
-            let _coverPhoto = coverPhoto;
-            let _cv = cv;
+            let _profilePhoto = profilePhoto
+            let _coverPhoto = coverPhoto
+            let _featuredVideo = featuredVideo
+            let _cv = cv
 
             if (!confirmation) return
 
@@ -248,6 +249,11 @@ export const FollioProvider = ({ children }) => {
             if (typeof cv === 'object') {
                 _cv = await uploadFile(cv)
                 setCv(_cv)
+            }
+
+            if (typeof featuredVideo === 'object') {
+                _featuredVideo = await uploadFile(featuredVideo)
+                setFeaturedVideo(_featuredVideo)
             }
 
             let _body = {
@@ -302,15 +308,15 @@ export const FollioProvider = ({ children }) => {
         switch (_target) {
             case "profile-photo":
                 setProfilePhoto(_file)
-                break;
+                break
             case "cover-photo":
                 setCoverPhoto(_file)
-                break;
+                break
             case "featured-video":
                 setFeaturedVideo(_file)
-                break;
+                break
             default:
-                break;
+                break
         }
     }
 

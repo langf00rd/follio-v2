@@ -1,10 +1,12 @@
+import { layoutStyles } from "../../components/styles/layout"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
-import { layoutStyles } from "../../components/styles/layout"
+import PageHead from "../../pageHead"
 
 const Settings = () => {
     return <div>
         <Header />
+        <PageHead title="Follio - Settings" />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.previewMainWrapper}>
                 <div className="hidden lg:block"><PageControlLinks /></div>
