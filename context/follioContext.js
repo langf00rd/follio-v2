@@ -73,6 +73,11 @@ export const FollioProvider = ({ children }) => {
         signOut()
     }
 
+    /** Check if user is logged in */
+    const checkIsLoggedIn = () => {
+        if (!session) router.replace("/auth")
+    }
+
     /** Begin user authentication */
     const authenticateUser = async () => {
         try {
@@ -337,6 +342,7 @@ export const FollioProvider = ({ children }) => {
         socials, setSocials,
         setCoverPhoto, setProfilePhoto, setFeaturedVideo,
         tagline, setTagline,
+        checkIsLoggedIn,
         showPreview, setShowPreview,
         changeThemeInSessionStorage,
         checkAuthStatus, updateAccount

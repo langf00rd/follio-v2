@@ -1,6 +1,8 @@
 import { layoutStyles } from "../../components/styles/layout"
 import { FollioContext } from "../../context/follioContext"
-import { useContext } from "react"
+import { useRouter } from 'next/router'
+import { useContext, useEffect } from "react"
+import { useSession } from "next-auth/react"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import EditPageLinks from "../../components/ui/sidebar/editPageLinks"
@@ -33,7 +35,11 @@ const Pages = () => {
 }
 
 const Edit = () => {
-    const { showPreview, theme, showLoader } = useContext(FollioContext)
+    const { showPreview, theme, showLoader, checkIsLoggedIn } = useContext(FollioContext)
+
+    useEffect(() => {
+        checkIsLoggedIn()
+    }, [])
 
     if (showLoader) return <Loader />
 
