@@ -6,13 +6,16 @@ import theme2 from "../../assets/themes/2.png"
 import theme3 from "../../assets/themes/3.png"
 import ThemeCard from "../../components/ui/themeCard"
 import PageHead from "../../pageHead"
-
-const styles = {
-    title: `text-3xl font-bold mb-3`,
-    themeCardContainer: `grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2`,
-}
+import { useContext, useEffect } from "react"
+import { FollioContext } from "../../context/follioContext"
 
 const Themes = () => {
+    const { checkIsLoggedIn } = useContext(FollioContext)
+
+    useEffect(() => {
+        checkIsLoggedIn()
+    }, [])
+
     return <div>
         <Header />
         <PageHead title="Follio - Pick A Theme 🦄" />
@@ -45,3 +48,8 @@ const Themes = () => {
 }
 
 export default Themes
+
+const styles = {
+    title: `text-3xl font-bold mb-3`,
+    themeCardContainer: `grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2`,
+}

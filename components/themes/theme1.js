@@ -110,19 +110,32 @@ const HeadMetadata = ({ fullname = "Portfolio", tagline, about }) => {
     </Head>
 }
 
+const FeaturedVideo = ({ customStyle, featuredVideo }) => {
+    if (featuredVideo && featuredVideo !== "") return <section className={customStyle.hero} id="featured-video">
+        {featuredVideo && (typeof featuredVideo === "object")
+            ? <video src={URL.createObjectURL(featuredVideo)} controls className={customStyle.featuredVideo} />
+            : <video src={featuredVideo} controls className={customStyle.featuredVideo}></video>
+        }
+
+    </section>
+
+    return null
+}
+
 const styles = {
     headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `border-b border-b-[#cccccc44] h-16`,
     headerLink: `ml-10 cursor-pointer hover:opacity-50 transition`,
     hero: `lg:py-32 py-20`,
     grid: `grid lg:grid-cols-2 grid-cols-1`,
-    body: `text-[1.2rem]`,
+    body: `bg-white text-[1.2rem]`,
     heroWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0 lg:mx-5`,
-    heroImg: `rounded-md w-full h-96 lg:h-full object-cover lg:ml-5 mt-20 lg:mt-0`,
+    heroImg: `rounded-md w-full h-96 lg:w-[80%] lg:h-full object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
-    tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`
+    tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
+    featuredVideo: `lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
 }
 
 const mobileStyles = {
@@ -131,21 +144,23 @@ const mobileStyles = {
     headerLink: `hidden`,
     hero: `py-20`,
     grid: `grid grid-cols-1`,
-    body: `lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
+    body: `bg-white lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
     heroWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0 mx-5`,
     heroImg: `rounded-md w-full h-96 object-cover mt-20`,
-    tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`
+    tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
+    featuredVideo: `lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, email, socials, tagline, logo, fullname, profilePhoto, work, projects } = useContext(FollioContext)
+    const { skills, about, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={mobileStyles.body}>
         <PageHeader logo={logo} fullname={fullname} customStyle={mobileStyles} />
         <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={mobileStyles} />
+        <FeaturedVideo customStyle={mobileStyles} featuredVideo={featuredVideo} />
         <About customStyle={mobileStyles} about={about} />
         <Projects customStyle={mobileStyles} projects={projects} />
         <Tools customStyle={mobileStyles} tools={skills} />
@@ -156,6 +171,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <HeadMetadata tagline={data.tagline} about={data.about} fullname={data.fullname} />
         <PageHeader logo={data.logo} fullname={data.fullname} customStyle={styles} />
         <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
+        <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
