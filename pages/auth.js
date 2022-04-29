@@ -5,12 +5,6 @@ import { useRouter } from "next/dist/client/router"
 import Button from "../components/ui/buttons/button"
 import PageHead from "../pageHead"
 
-const styles = {
-    title: `text-3xl sm:text-6xl mb-2 font-extrabold text-center`,
-    mainInputBox: ` p-5 rounded-md text-center sm:w-6/12`,
-    main: `w-screen h-screen flex flex-col items-center justify-center`,
-}
-
 const Auth = () => {
     const { authenticateUser, checkAuthStatus } = useContext(FollioContext)
     const { data: session } = useSession()
@@ -57,3 +51,9 @@ const Auth = () => {
 }
 
 export default Auth
+
+const styles = {
+    title: `text-3xl sm:text-6xl mb-2 font-extrabold text-center`,
+    mainInputBox: ` p-5 rounded-md text-center sm:w-6/12`,
+    main: `w-screen h-screen flex flex-col items-center justify-center`,
+}

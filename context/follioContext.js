@@ -142,6 +142,8 @@ export const FollioProvider = ({ children }) => {
     /** Upload file to cloudinary */
     const uploadFile = async (_file) => {
         try {
+            console.warn("uploading file", typeof _file)
+
             const data = new FormData()
             data.append("file", _file)
             data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET)
@@ -151,6 +153,7 @@ export const FollioProvider = ({ children }) => {
                 body: data
             })
             const resData = await res.json()
+            console.warn("done uploading file🎉", resData.url)
             return resData.url
         }
         catch (e) {
@@ -206,6 +209,7 @@ export const FollioProvider = ({ children }) => {
 
         sessionStorage.setItem("data", JSON.stringify(_source))
         setFullname(_source.fullname)
+        setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
         setEmail(_source.email)
@@ -274,6 +278,7 @@ export const FollioProvider = ({ children }) => {
                 "skills": skills,
                 "isPremiumAccount": isPremiumAccount,
                 "profilePhoto": _profilePhoto,
+                "featuredVideo": _featuredVideo,
                 "coverPhoto": _coverPhoto,
                 "workplaces": workplaces,
                 "projects": projects,

@@ -9,11 +9,6 @@ import PageHead from "../../pageHead"
 import { useContext, useEffect } from "react"
 import { FollioContext } from "../../context/follioContext"
 
-const styles = {
-    title: `text-3xl font-bold mb-3`,
-    themeCardContainer: `grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2`,
-}
-
 const Themes = () => {
     const { checkIsLoggedIn } = useContext(FollioContext)
 
@@ -53,3 +48,8 @@ const Themes = () => {
 }
 
 export default Themes
+
+const styles = {
+    title: `text-3xl font-bold mb-3`,
+    themeCardContainer: `grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2`,
+}

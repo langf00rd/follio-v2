@@ -12,7 +12,6 @@ const Page = () => {
 
     useEffect(() => {
         setUsername((window.location.pathname).replace("/", ""))
-        console.log((window.location.pathname).replace("/", ""))
         getData()
     }, [username])
 
@@ -43,15 +42,6 @@ const Page = () => {
     }
 
     if (loading) return <Loader />
-
-    // return <div>
-    //     <Head>
-    //         <title>Jonathan Iverson</title>
-    //         <meta name="description" content="{about}" />
-    //         <link rel="icon" href="convert-userr-logo-to-ico" />
-    //     </Head>
-    //     <Theme1 editMode={false} />
-    // </div>
 
     if ((data && data) && data.theme == 3) return <Theme1 editMode={false} data={data} />
 
