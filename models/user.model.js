@@ -9,6 +9,21 @@ const User = mongoose.model('User', Schema({
         default: uuid.v4,
     },
 
+    featuredVideo: {
+        type: String,
+        default: "",
+    },
+
+    logo: {
+        type: String,
+        default: "",
+    },
+
+    loader: {
+        type: String,
+        default: "",
+    },
+
     isPremiumAccount: {
         type: Boolean,
         default: false,
@@ -37,21 +52,6 @@ const User = mongoose.model('User', Schema({
     accentColor: {
         type: String,
         default: "#fea82f",
-    },
-
-    featuredVideo: {
-        type: String,
-        default: "",
-    },
-
-    logo: {
-        type: String,
-        default: "",
-    },
-
-    loader: {
-        type: String,
-        default: "",
     },
 
     theme: {
