@@ -20,28 +20,22 @@ const Auth = () => {
         console.warn("auth status 🚩", await checkAuthStatus())
     }
 
-    // return <div>
-    //     <Button label="Continue with Google" action={authenticateUser} />
-    // </div>
-
-
     return <div className={styles.main}>
         <PageHead title="Follio - Account 🦄" />
         <div className={styles.mainInputBox}>
             <header className="fixed top-0 left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
                 <Logo />
                 {session ? <div className="flex items-center">
-                    <img src={session.user.image} className='w-10 h-10 rounded-full mr-3 bg-mid border border-mid' />
+                    <img src={session.user.image} alt='avatar' className='w-10 h-10 rounded-full mr-3 bg-mid border border-mid' />
                     <p className="">{session.user.name}</p>
                 </div> : <></>}
             </header>
 
-
-            <div className="max-w-4xl m-auto p-10 rounded-xl">
+            <div className="max-w-4xl m-auto p-5 rounded-xl">
                 {!session ? <div>
-                    <p className="text-2xl sm:text-5xl font-medium leading-tight mb-3">👋Welcome to Follio</p>
-                    <p className="opacity-50">We just need you to sign up/in to account.</p>
-                </div> : <p className="text-2xl sm:text-5xl font-medium leading-tight mb-5">🎉Welcome back {session.user.name}🎉 </p>}
+                    <p className="text-2xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</p>
+                    <p className="opacity-50">You only need to sign up/in to account.</p>
+                </div> : <p className="text-2xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</p>}
 
 
                 {session && (session.user && sessionStorage.getItem("data")) ?
@@ -56,24 +50,7 @@ const Auth = () => {
                         </div>
                     </div>}
             </div>
-
-
-            {/* {session ? <p className="sm:mt-5 text-2xl sm:text-3xl leading-tight m-auto">Welcome Back {session.user.name}</p>
-                : <p className="sm:mt-5 text-2xl sm:text-3xl leading-tight m-auto">Sign up/Log in</p>}
-
-            {session && (session.user && sessionStorage.getItem("data")) ?
-                <div>
-                    <div className="flex justify-center items-center mt-10">
-                        <Button full={false} label="Go home" action={authenticateUser} />
-                    </div>
-                </div>
-                : <div>
-                    <div className="my-10 mb-3">
-                        <Button full={false} label="Continue with Google" action={authenticateUser} />
-                    </div>
-                </div>} */}
         </div>
-
     </div>
 }
 

@@ -31,8 +31,8 @@ const PageHeader = ({ customStyle, fullname, logo, cv }) => {
 
             <div className="flex items-center lg:hidden">
                 {cv ? <a href={cv} className={customStyle.button}>Download cv</a> : null}
-                <div className="m-3" />
-                <img src={menu.src} alt="menu button" />
+                {/* <div className="m-3" />
+                <img src={menu.src} alt="menu button" /> */}
             </div>
         </div>
     </header>
@@ -140,7 +140,7 @@ const styles = {
     heroWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0 lg:mx-5`,
-    heroImg: `rounded-md w-full h-96 lg:w-[80%] lg:h-full object-cover lg:ml-5 mt-20 lg:mt-0`,
+    heroImg: `rounded-md w-full h-96 lg:w-[80%] object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
