@@ -350,7 +350,8 @@ export const FollioProvider = ({ children }) => {
         checkIsLoggedIn,
         showPreview, setShowPreview,
         changeThemeInSessionStorage,
-        checkAuthStatus, updateAccount
+        checkAuthStatus, updateAccount,
+        setShowLoader
     }}>
         {children}
     </FollioContext.Provider>

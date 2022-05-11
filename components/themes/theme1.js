@@ -6,13 +6,12 @@ import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
 
-const PageHeader = ({ customStyle, fullname, logo }) => {
+const PageHeader = ({ customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
         <div className={customStyle.headerWrapper}>
-            {/* {logo ? <img ssrc={logo} /> : <p>{fullname}</p>} */}
             <p>{fullname}</p>
             <nav className="lg:flex items-center hidden">
-                <Link passHref={true} href="#home">
+                <Link passHref={true} href="#about">
                     <p className={customStyle.headerLink}>About</p>
                 </Link>
                 <Link passHref={true} href="#projects">
@@ -25,7 +24,16 @@ const PageHeader = ({ customStyle, fullname, logo }) => {
                     <p className={customStyle.headerLink}>Contact</p>
                 </Link>
             </nav>
-            <img src={menu.src} alt="menu button" className={customStyle.menuBtn} />
+
+            {cv ? <div className="lg:block hidden">
+                <a href={cv} className={customStyle.button}>Download cv</a>
+            </div> : null}
+
+            <div className="flex items-center lg:hidden">
+                {cv ? <a href={cv} className={customStyle.button}>Download cv</a> : null}
+                <div className="m-3" />
+                <img src={menu.src} alt="menu button" />
+            </div>
         </div>
     </header>
 }
@@ -40,8 +48,8 @@ const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) =
                 {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Connect with me &rarr;</a> : null}
             </div>
             {profilePhoto && (typeof profilePhoto === "object")
-                ? <img className={customStyle.heroImg} alt="" src={URL.createObjectURL(profilePhoto)} />
-                : <img className={customStyle.heroImg} alt="" src={profilePhoto} />}
+                ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
+                : <img className={customStyle.heroImg} alt="profile photo" src={profilePhoto} />}
         </div>
     </section>
 }
@@ -135,7 +143,8 @@ const styles = {
     heroImg: `rounded-md w-full h-96 lg:w-[80%] lg:h-full object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
-    featuredVideo: `lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
+    featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
+    button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
 
 const mobileStyles = {
@@ -151,14 +160,15 @@ const mobileStyles = {
     projectCard: `m-5 mx-0 mx-5`,
     heroImg: `rounded-md w-full h-96 object-cover mt-20`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
-    featuredVideo: `lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
+    featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
+    button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
+    const { skills, about, cv, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={mobileStyles.body}>
-        <PageHeader logo={logo} fullname={fullname} customStyle={mobileStyles} />
+        <PageHeader cv={cv} logo={logo} fullname={fullname} customStyle={mobileStyles} />
         <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={mobileStyles} />
         <FeaturedVideo customStyle={mobileStyles} featuredVideo={featuredVideo} />
         <About customStyle={mobileStyles} about={about} />
@@ -169,7 +179,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
 
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} about={data.about} fullname={data.fullname} />
-        <PageHeader logo={data.logo} fullname={data.fullname} customStyle={styles} />
+        <PageHeader cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
         <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
