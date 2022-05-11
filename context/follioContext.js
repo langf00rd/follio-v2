@@ -232,6 +232,31 @@ export const FollioProvider = ({ children }) => {
         setThemeColor(_source.themeColor)
     }
 
+    // update username and check if it already exists
+    const updateUsername = async () => {
+        try {
+
+            setShowLoader(true)
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/check-username-exists/${username}`, { method: "GET" })
+            const data = await res.json()
+
+            if (data.payload) {
+                alert("username already exists")
+                setShowLoader(false)
+                return
+            }
+
+            await updateAccount()
+        }
+
+        catch (e) {
+            alert("An error occured. Please try again later.")
+            setShowLoader(false)
+            console.log(e.message)
+        }
+    }
+
     /** Update user data in DB */
     const updateAccount = async () => {
         try {
@@ -269,7 +294,6 @@ export const FollioProvider = ({ children }) => {
                 "fullname": fullname,
                 "logo": logo,
                 "cv": _cv,
-                "username": username,
                 "email": email,
                 "tagline": tagline,
                 "work": work,
@@ -332,6 +356,7 @@ export const FollioProvider = ({ children }) => {
 
     return <FollioContext.Provider value={{
         authenticateUser,
+        username, setUsername,
         handleMediaFiles,
         profilePhoto, onReload,
         copyLink, shareLink,
@@ -349,9 +374,10 @@ export const FollioProvider = ({ children }) => {
         tagline, setTagline,
         checkIsLoggedIn,
         showPreview, setShowPreview,
+        cv, setCv,
         changeThemeInSessionStorage,
         checkAuthStatus, updateAccount,
-        setShowLoader
+        setShowLoader, updateUsername
     }}>
         {children}
     </FollioContext.Provider>
