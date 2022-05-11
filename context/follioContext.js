@@ -250,6 +250,8 @@ export const FollioProvider = ({ children }) => {
     // update username and check if it already exists
     const updateUsername = async () => {
         try {
+            let confirmation = confirm("Do you want to update username?")
+            if (!confirmation) return
 
             setShowLoader(true)
 
