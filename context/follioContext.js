@@ -139,6 +139,21 @@ export const FollioProvider = ({ children }) => {
         return (name.split(/\s+/).join("")).toLocaleLowerCase()
     }
 
+    /** upload resume file */
+    const uploadResume = async () => {
+        if (typeof cv === "string") {
+            alert("Please select a file")
+            return
+        }
+        const a = confirm("Do you want upload new resume?")
+        if (!a) return
+
+        setShowLoader(true)
+        let _cv = await uploadFile(cv)
+        setCv(_cv)
+        setShowLoader(false)
+    }
+
     /** Upload file to cloudinary */
     const uploadFile = async (_file) => {
         try {
@@ -296,6 +311,7 @@ export const FollioProvider = ({ children }) => {
                 "cv": _cv,
                 "email": email,
                 "tagline": tagline,
+                // 'username': username,
                 "work": work,
                 "about": about,
                 "showGithubStats": showGithubStats,
@@ -377,7 +393,8 @@ export const FollioProvider = ({ children }) => {
         cv, setCv,
         changeThemeInSessionStorage,
         checkAuthStatus, updateAccount,
-        setShowLoader, updateUsername
+        setShowLoader, updateUsername,
+        uploadResume,
     }}>
         {children}
     </FollioContext.Provider>

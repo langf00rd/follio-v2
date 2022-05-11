@@ -9,7 +9,7 @@ import { FollioContext } from "../../context/follioContext"
 import PageHead from "../../pageHead"
 
 const Settings = () => {
-    const { checkIsLoggedIn, setUsername, username, cv, setCv, showLoader, updateUsername } = useContext(FollioContext)
+    const { checkIsLoggedIn, setUsername, username, cv, setCv, showLoader, updateUsername, uploadResume } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -42,6 +42,7 @@ const Settings = () => {
                                     setCv(e.target.files[0])
                                 }}
                                 placeholder={username} />
+                            <Button action={uploadResume} full={false} label='Update resume' />
                         </div>
                     </div>
                 </div>
