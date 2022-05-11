@@ -11,7 +11,7 @@ import { uiStyles } from "../../styles/ui";
 
 const Projects = () => {
     let thumbnailRef;
-    const { projects, setProjects, uploadFile } = useContext(FollioContext)
+    const { projects, setProjects, uploadFile, setShowLoader } = useContext(FollioContext)
     const [name, setName] = useState("")
     const [link, setLink] = useState("")
     const [description, setDescription] = useState("")
@@ -40,11 +40,14 @@ const Projects = () => {
 
         let _thumbnail = await uploadFile(thumbnailFile)
 
+
         if (!_thumbnail) {
             toast.error('An error occured. Try again', toastConfig)
             setShowProjectModal(false)
             return
         }
+
+        setShowLoader(true)
 
         let newProject = {
             name: name,
@@ -60,6 +63,7 @@ const Projects = () => {
         setThumbnailFile()
         setShowProjectModal(false)
         toast.success('Project added successfully! 🎉', toastConfig)
+        setShowLoader(false)
     }
 
     const removeProject = (index) => {

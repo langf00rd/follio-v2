@@ -13,10 +13,6 @@ import stackoverflow from "../../../assets/svg/stackoverflow.svg"
 import twitch from "../../../assets/svg/twitch.svg"
 import youtube from "../../../assets/svg/youtube.svg"
 
-const styles = {
-    socialIcon: `mb-5 h-6 w-6 mr-3`,
-}
-
 const Socials = () => {
     const { socials, setSocials } = useContext(FollioContext)
 
@@ -119,3 +115,7 @@ const Socials = () => {
 }
 
 export default Socials
+
+const styles = {
+    socialIcon: `mb-5 h-6 w-6 mr-3`,
+}

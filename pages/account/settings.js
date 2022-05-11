@@ -1,9 +1,17 @@
+import { useContext, useEffect } from "react"
 import { layoutStyles } from "../../components/styles/layout"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
+import { FollioContext } from "../../context/follioContext"
 import PageHead from "../../pageHead"
 
 const Settings = () => {
+    const { checkIsLoggedIn } = useContext(FollioContext)
+
+    useEffect(() => {
+        checkIsLoggedIn()
+    }, [])
+
     return <div>
         <Header />
         <PageHead title="Follio - Settings" />

@@ -2,8 +2,16 @@ import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import { layoutStyles } from "../../components/styles/layout"
 import PageHead from "../../pageHead"
+import { useContext, useEffect } from "react"
+import { FollioContext } from "../../context/follioContext"
 
 const Analytics = () => {
+    const { checkIsLoggedIn } = useContext(FollioContext)
+
+    useEffect(() => {
+        checkIsLoggedIn()
+    }, [])
+
     return <div>
         <Header />
         <PageHead title="Follio - Analytics" />
