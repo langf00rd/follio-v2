@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react"
+import PreviewComponent from "../../components/previews/preview"
 import { inputStyles } from "../../components/styles/input"
 import { layoutStyles } from "../../components/styles/layout"
 import Button from "../../components/ui/buttons/button"
@@ -9,7 +10,7 @@ import { FollioContext } from "../../context/follioContext"
 import PageHead from "../../pageHead"
 
 const Settings = () => {
-    const { checkIsLoggedIn, setUsername, username, cv, setCv, showLoader, updateUsername, uploadResume } = useContext(FollioContext)
+    const { checkIsLoggedIn, setUsername, username, cv, setCv, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -42,14 +43,39 @@ const Settings = () => {
                                     setCv(e.target.files[0])
                                 }}
                                 placeholder={username} />
-                            <Button action={uploadResume} full={false} label='Update resume' />
+                            <Button action={uploadResume} full={false} label='Upload' />
+                        </div>
+                        <div className='m-5' />
+                        <div className={layoutStyles.container}>
+                            <p>Upload your custom page loader</p>
+                            <p className='mb-5 opacity-60'>Can be a gif or any other image format</p>
+                            <input
+                                className={inputStyles.fileInput}
+                                accept="image/*, .gif"
+                                type='file'
+                                onChange={e => {
+                                    setCv(e.target.files[0])
+                                }}
+                                placeholder={username} />
+                            <Button action={uploadPageLoader} full={false} label='Upload' />
+                        </div>
+                        <div className='m-5' />
+                        <div className={layoutStyles.container}>
+                            <p>Upload your favicon</p>
+                            <p className='mb-5 opacity-60'>Add an image that shows up in the title bar of your browser</p>
+                            <input
+                                className={inputStyles.fileInput}
+                                accept=".ico"
+                                type='file'
+                                onChange={e => {
+                                    setCv(e.target.files[0])
+                                }}
+                                placeholder={username} />
+                            <Button action={uploadFavicon} full={false} label='Upload' />
                         </div>
                     </div>
                 </div>
-                <div />
-                <div />
-                <div />
-                {/* <div className={layoutStyles.preview}></div> */}
+                <PreviewComponent />
             </div>
         </div>
     </div >

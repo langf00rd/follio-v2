@@ -154,6 +154,16 @@ export const FollioProvider = ({ children }) => {
         setShowLoader(false)
     }
 
+    /** upload page loader */
+    const uploadPageLoader = async () => {
+
+    }
+
+    /** upload page favicon */
+    const uploadFavicon = async () => {
+
+    }
+
     /** Upload file to cloudinary */
     const uploadFile = async (_file) => {
         try {
@@ -367,6 +377,9 @@ export const FollioProvider = ({ children }) => {
             case "featured-video":
                 setFeaturedVideo(_file)
                 break
+            case "logo":
+                setLogo(_file)
+                break
             default:
                 break
         }
@@ -396,7 +409,8 @@ export const FollioProvider = ({ children }) => {
         changeThemeInSessionStorage,
         checkAuthStatus, updateAccount,
         setShowLoader, updateUsername,
-        uploadResume,
+        uploadResume, uploadPageLoader, uploadFavicon,
+        logo,
     }}>
         {children}
     </FollioContext.Provider>
