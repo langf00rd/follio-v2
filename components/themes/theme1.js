@@ -110,11 +110,11 @@ const FindMe = ({ customStyle, socials, email }) => {
     </section>
 }
 
-const HeadMetadata = ({ fullname = "Portfolio", tagline, about }) => {
+const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
     return <Head>
         <title>{fullname} | {tagline}</title>
         <meta name="description" content={about} />
-        <link rel="icon" href="convert-user-logo-to-ico" />
+        <link rel="icon" href={favIcon} />
     </Head>
 }
 
@@ -178,7 +178,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
     </div>
 
     if (!editMode) return <div className={styles.body}>
-        <HeadMetadata tagline={data.tagline} about={data.about} fullname={data.fullname} />
+        <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
         <PageHeader cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
         <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
