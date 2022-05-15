@@ -19,6 +19,7 @@ export const FollioProvider = ({ children }) => {
     /** User data fields */
     const [fullname, setFullname] = useState("")
     const [logo, setLogo] = useState("")
+    const [loader, setLoader] = useState("")
     const [favIcon, setFavIcon] = useState("")
     const [email, setEmail] = useState("")
     const [tagline, setTagline] = useState("")
@@ -162,7 +163,17 @@ export const FollioProvider = ({ children }) => {
 
     /** upload page favicon */
     const uploadFavicon = async () => {
+        if (typeof favIcon === "string") {
+            alert("Please select a file")
+            return
+        }
+        const a = confirm("Do you want upload this fav icon?")
+        if (!a) return
 
+        setShowLoader(true)
+        let _favIcon = await uploadFile(favIcon)
+        setFavIcon(_favIcon)
+        setShowLoader(false)
     }
 
     /** Upload file to cloudinary */
@@ -384,6 +395,15 @@ export const FollioProvider = ({ children }) => {
             case "logo":
                 setLogo(_file)
                 break
+            case "cv":
+                setCv(_file)
+                break
+            case "loader":
+                setLoader(_file)
+                break
+            case "fav-icon":
+                setFavIcon(_file)
+                break
             default:
                 break
         }
@@ -414,7 +434,7 @@ export const FollioProvider = ({ children }) => {
         checkAuthStatus, updateAccount,
         setShowLoader, updateUsername,
         uploadResume, uploadPageLoader, uploadFavicon,
-        logo,
+        logo, favIcon,
     }}>
         {children}
     </FollioContext.Provider>

@@ -10,7 +10,7 @@ import { FollioContext } from "../../context/follioContext"
 import PageHead from "../../pageHead"
 
 const Settings = () => {
-    const { checkIsLoggedIn, setUsername, username, cv, setCv, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
+    const { checkIsLoggedIn, setUsername, username, cv, handleMediaFiles, setCv, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -34,13 +34,13 @@ const Settings = () => {
                         </div>
                         <div className='m-5' />
                         <div className={layoutStyles.container}>
-                            <p className='mb-2 opacity-60'>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[uploaded]</a> : null} </p>
+                            <p className='mb-2 opacity-60'>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept=".pdf, .doc, .docx, .rtf, .txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                 type='file'
                                 onChange={e => {
-                                    setCv(e.target.files[0])
+                                    handleMediaFiles(e.target.files[0], 'cv')
                                 }}
                                 placeholder={username} />
                             <Button action={uploadResume} full={false} label='Upload' />
@@ -54,21 +54,21 @@ const Settings = () => {
                                 accept="image/*, .gif"
                                 type='file'
                                 onChange={e => {
-                                    setCv(e.target.files[0])
+                                    handleMediaFiles(e.target.files[0], 'loader')
                                 }}
                                 placeholder={username} />
                             <Button action={uploadPageLoader} full={false} label='Upload' />
                         </div>
                         <div className='m-5' />
                         <div className={layoutStyles.container}>
-                            <p>Upload your favicon</p>
+                            <p>Upload your favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
                             <p className='mb-5 opacity-60'>Add an image that shows up in the title bar of your browser</p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept=".ico"
                                 type='file'
                                 onChange={e => {
-                                    setCv(e.target.files[0])
+                                    handleMediaFiles(e.target.files[0], 'fav-icon')
                                 }}
                                 placeholder={username} />
                             <Button action={uploadFavicon} full={false} label='Upload' />
