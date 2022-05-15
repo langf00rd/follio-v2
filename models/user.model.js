@@ -24,6 +24,11 @@ const User = mongoose.model('User', Schema({
         default: "",
     },
 
+    ico: {
+        type: String,
+        default: "",
+    },
+
     isPremiumAccount: {
         type: Boolean,
         default: false,
