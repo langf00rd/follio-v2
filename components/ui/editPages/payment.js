@@ -7,6 +7,19 @@ const Payment = () => {
     const { socials, setSocials } = useContext(FollioContext)
 
     let newSocials = {
+        twitter: socials.twitter,
+        dev: socials.dev,
+        dailydev: socials.dailydev,
+        hashnode: socials.hashnode,
+        linkedin: socials.linkedin,
+        stackoverflow: socials.stackoverflow,
+        youtube: socials.youtube,
+        dribbble: socials.dribbble,
+        twitch: socials.twitch,
+        discord: socials.discord,
+        behance: socials.behance,
+        instagram: socials.instagram,
+        github: socials.github,
         coffee: socials.coffee,
         ethAddress: socials.ethAddress,
     }

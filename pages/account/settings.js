@@ -28,13 +28,13 @@ const Settings = () => {
                     <p className={layoutStyles.textLg}>Settings</p>
                     <div>
                         <div className={layoutStyles.container}>
-                            <p className='mb-2 opacity-60'>Change your username</p>
+                            <p className='mb-2'>Change your username</p>
                             <input className={inputStyles.input} value={username} onChange={e => setUsername(e.target.value)} placeholder={username} />
                             <Button action={updateUsername} full={false} label='Change your username' />
                         </div>
                         <div className='m-5' />
                         <div className={layoutStyles.container}>
-                            <p className='mb-2 opacity-60'>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
+                            <p className='mb-2'>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept=".pdf, .doc, .docx, .rtf, .txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -48,7 +48,7 @@ const Settings = () => {
                         <div className='m-5' />
                         <div className={layoutStyles.container}>
                             <p>Upload your custom page loader</p>
-                            <p className='mb-5 opacity-60'>Can be a gif or any other image format</p>
+                            <p className='mb-5 mt-2 opacity-40'>Can be a gif or any other image format</p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept="image/*, .gif"
@@ -62,7 +62,7 @@ const Settings = () => {
                         <div className='m-5' />
                         <div className={layoutStyles.container}>
                             <p>Upload your favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
-                            <p className='mb-5 opacity-60'>Add an image that shows up in the title bar of your browser</p>
+                            <p className='mb-5 mt-2 opacity-40'>Add an image that shows up in the title bar of your browser</p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept=".ico"

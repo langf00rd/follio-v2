@@ -133,6 +133,19 @@ const FeaturedVideo = ({ customStyle, featuredVideo }) => {
     return null
 }
 
+const Payment = ({ socials, customStyle }) => {
+    if (socials.coffee !== "") return <section className={customStyle.hero} id="contact">
+        <div className={customStyle.heroWrapper}>
+            <div>
+                <p className={customStyle.textLg}>I receive donations</p>
+                <a href={`https://www.buymeacoffee.com/${socials.coffee}`}>
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="200" />
+                </a>
+            </div>
+        </div>
+    </section>
+}
+
 const styles = {
     headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `border-b border-b-[#cccccc44] h-20 fixed top-0 left-0 z-10 w-screen bg-[#fff]`,
@@ -181,6 +194,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
         <FindMe email={email} socials={socials} customStyle={previewStyles} />
+        <Payment customStyle={previewStyles} socials={socials} />
     </div>
 
     if (!editMode) return <div className={styles.body}>
@@ -192,6 +206,11 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
         <FindMe customStyle={styles} email={data.email} socials={data.socials} />
+        <Payment customStyle={styles} socials={data.socials} />
+        {/* MADE WITH FOLIO */}
+        {/* <div className="py-20 px-5 mt-10 pt-10 sm:text-center max-w-6xl m-auto">
+            <a href="https://follio.app" className="opacity-50">Made with 💛 by Folio</a>
+        </div> */}
     </div>
 
     return null
