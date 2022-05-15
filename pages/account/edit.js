@@ -19,6 +19,8 @@ import Theme1 from "../../components/themes/theme1"
 import Loader from "../../components/ui/loader"
 import PageHead from "../../pageHead"
 import PreviewComponent from "../../components/previews/preview"
+import Payment from "../../components/ui/editPages/payment"
+// import Payment from "../../components/ui/editPages/payment"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -28,9 +30,8 @@ const Pages = () => {
         case 2: return <Tools />
         case 3: return <Socials />
         case 4: return <Projects />
-        case 5: return <Styles />
-        case 6: return <Introduction />
-        case 7: return <Introduction />
+        // case 5: return <Styles />
+        case 6: return <Payment />
         default: return <div></div>
     }
 }

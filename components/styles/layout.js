@@ -11,7 +11,7 @@ export const layoutStyles = {
     textLg: `text-xl lg:text-3xl font-medium mb-10`,
     preview: `bg-white h-[80vh] border border-borderColor w-full p-10 rounded-xl max-w-xl hidden lg:block`,
     projectCard: `m-2 mx-0 mb-5 lg:mx-2 bg-[#F5F8FF] p-2 border border-borderColor rounded-xl`,
-    projectThumbnail: `h-52 rounded-xl w-full object-cover`,
+    projectThumbnail: `h-[350px] rounded-xl w-full object-cover`,
     loaderBody: `w-screen h-screen flex items-center justify-center`,
     loaderIcon: `-mt-5 -ml-12 h-10 w-10`
 }
