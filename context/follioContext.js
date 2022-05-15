@@ -106,6 +106,8 @@ export const FollioProvider = ({ children }) => {
 
     /** Save data to localStorage */
     const saveNewChangesToStorage = (data) => {
+        let _sessionData = JSON.parse(sessionStorage.getItem('data'))
+        if (_sessionData) data.username = _sessionData.username
         sessionStorage.setItem("data", JSON.stringify(data))
     }
 
