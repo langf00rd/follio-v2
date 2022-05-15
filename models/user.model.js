@@ -24,7 +24,7 @@ const User = mongoose.model('User', Schema({
         default: "",
     },
 
-    ico: {
+    favIcon: {
         type: String,
         default: "",
     },
