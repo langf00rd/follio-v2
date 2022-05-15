@@ -4,6 +4,7 @@ import { layoutStyles } from "../../components/styles/layout"
 import PageHead from "../../pageHead"
 import { useContext, useEffect } from "react"
 import { FollioContext } from "../../context/follioContext"
+import PreviewComponent from "../../components/previews/preview"
 
 const Analytics = () => {
     const { checkIsLoggedIn } = useContext(FollioContext)
@@ -21,7 +22,7 @@ const Analytics = () => {
                 <div className="w-full max-w-xl">
                     <p className={layoutStyles.textLg}>Analytics</p>
                 </div>
-                <div className={layoutStyles.preview}></div>
+                <PreviewComponent />
             </div>
         </div>
     </div>

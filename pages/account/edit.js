@@ -18,6 +18,9 @@ import Styles from "../../components/ui/editPages/styles"
 import Theme1 from "../../components/themes/theme1"
 import Loader from "../../components/ui/loader"
 import PageHead from "../../pageHead"
+import PreviewComponent from "../../components/previews/preview"
+import Payment from "../../components/ui/editPages/payment"
+// import Payment from "../../components/ui/editPages/payment"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -27,9 +30,8 @@ const Pages = () => {
         case 2: return <Tools />
         case 3: return <Socials />
         case 4: return <Projects />
-        case 5: return <Styles />
-        case 6: return <Introduction />
-        case 7: return <Introduction />
+        // case 5: return <Styles />
+        case 6: return <Payment />
         default: return <div></div>
     }
 }
@@ -60,7 +62,9 @@ const Edit = () => {
                     <Pages />
                 </div>
 
-                {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
+                <PreviewComponent />
+
+                {/* {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
                     {theme === 3 ? <Theme1 editMode={true} /> : null}
                 </div> : null}
 
@@ -68,7 +72,7 @@ const Edit = () => {
 
                 <div className="hidden lg:block">
                     {theme === 3 ? <Theme1 editMode={true} /> : null}
-                </div>
+                </div> */}
             </div>
         </div>
     </div>

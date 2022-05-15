@@ -1,9 +1,9 @@
-import { headerStyles } from "../styles/headerStyles"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Button from "./buttons/button"
-import Nav from "./header/nav"
-import PageControlLinks from "./sidebar/pageLinks"
+// import { headerStyles } from "../styles/headerStyles"
+// import Nav from "./header/nav"
+// import PageControlLinks from "./sidebar/pageLinks"
 
 const styles = {
     menuLink: `opacity-80 mb-5 cursor-pointer hover:opacity-100 hover:text-brand user-select-none`,

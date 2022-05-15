@@ -19,6 +19,8 @@ export const FollioProvider = ({ children }) => {
     /** User data fields */
     const [fullname, setFullname] = useState("")
     const [logo, setLogo] = useState("")
+    const [loader, setLoader] = useState("")
+    const [favIcon, setFavIcon] = useState("")
     const [email, setEmail] = useState("")
     const [tagline, setTagline] = useState("")
     const [username, setUsername] = useState("")
@@ -104,6 +106,8 @@ export const FollioProvider = ({ children }) => {
 
     /** Save data to localStorage */
     const saveNewChangesToStorage = (data) => {
+        let _sessionData = JSON.parse(sessionStorage.getItem('data'))
+        if (_sessionData) data.username = _sessionData.username
         sessionStorage.setItem("data", JSON.stringify(data))
     }
 
@@ -137,6 +141,41 @@ export const FollioProvider = ({ children }) => {
     /** Remove spaces and make string lowercase*/
     const formatUsername = (name) => {
         return (name.split(/\s+/).join("")).toLocaleLowerCase()
+    }
+
+    /** upload resume file */
+    const uploadResume = async () => {
+        if (typeof cv === "string") {
+            alert("Please select a file")
+            return
+        }
+        const a = confirm("Do you want upload new resume?")
+        if (!a) return
+
+        setShowLoader(true)
+        let _cv = await uploadFile(cv)
+        setCv(_cv)
+        setShowLoader(false)
+    }
+
+    /** upload page loader */
+    const uploadPageLoader = async () => {
+
+    }
+
+    /** upload page favicon */
+    const uploadFavicon = async () => {
+        if (typeof favIcon === "string") {
+            alert("Please select a file")
+            return
+        }
+        const a = confirm("Do you want upload this fav icon?")
+        if (!a) return
+
+        setShowLoader(true)
+        let _favIcon = await uploadFile(favIcon)
+        setFavIcon(_favIcon)
+        setShowLoader(false)
     }
 
     /** Upload file to cloudinary */
@@ -212,6 +251,7 @@ export const FollioProvider = ({ children }) => {
         setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
+        setFavIcon(_source.favIcon)
         setEmail(_source.email)
         setUsername(_source.username)
         setTagline(_source.tagline)
@@ -232,6 +272,33 @@ export const FollioProvider = ({ children }) => {
         setThemeColor(_source.themeColor)
     }
 
+    // update username and check if it already exists
+    const updateUsername = async () => {
+        try {
+            let confirmation = confirm("Do you want to update username?")
+            if (!confirmation) return
+
+            setShowLoader(true)
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/check-username-exists/${username}`, { method: "GET" })
+            const data = await res.json()
+
+            if (data.payload) {
+                alert("username already exists")
+                setShowLoader(false)
+                return
+            }
+
+            await updateAccount()
+        }
+
+        catch (e) {
+            alert("An error occured. Please try again later.")
+            setShowLoader(false)
+            console.log(e.message)
+        }
+    }
+
     /** Update user data in DB */
     const updateAccount = async () => {
         try {
@@ -240,6 +307,7 @@ export const FollioProvider = ({ children }) => {
             let _coverPhoto = coverPhoto
             let _featuredVideo = featuredVideo
             let _cv = cv
+            let _logo = logo
 
             if (!confirmation) return
 
@@ -260,6 +328,11 @@ export const FollioProvider = ({ children }) => {
                 setCv(_cv)
             }
 
+            if (typeof logo === 'object') {
+                _logo = await uploadFile(logo)
+                setLogo(_logo)
+            }
+
             if (typeof featuredVideo === 'object') {
                 _featuredVideo = await uploadFile(featuredVideo)
                 setFeaturedVideo(_featuredVideo)
@@ -267,11 +340,13 @@ export const FollioProvider = ({ children }) => {
 
             let _body = {
                 "fullname": fullname,
-                "logo": logo,
+                "logo": _logo,
+                "loader": loader,
+                "favIcon": favIcon,
                 "cv": _cv,
-                "username": username,
                 "email": email,
                 "tagline": tagline,
+                // 'username': username,
                 "work": work,
                 "about": about,
                 "showGithubStats": showGithubStats,
@@ -325,6 +400,18 @@ export const FollioProvider = ({ children }) => {
             case "featured-video":
                 setFeaturedVideo(_file)
                 break
+            case "logo":
+                setLogo(_file)
+                break
+            case "cv":
+                setCv(_file)
+                break
+            case "loader":
+                setLoader(_file)
+                break
+            case "fav-icon":
+                setFavIcon(_file)
+                break
             default:
                 break
         }
@@ -332,6 +419,7 @@ export const FollioProvider = ({ children }) => {
 
     return <FollioContext.Provider value={{
         authenticateUser,
+        username, setUsername,
         handleMediaFiles,
         profilePhoto, onReload,
         copyLink, shareLink,
@@ -341,7 +429,7 @@ export const FollioProvider = ({ children }) => {
         projects, setProjects,
         about, setAbout,
         fullname, setFullname,
-        work, setWork, logo,
+        work, setWork,
         theme, coverPhoto,
         featuredVideo, showLoader,
         socials, setSocials,
@@ -349,9 +437,12 @@ export const FollioProvider = ({ children }) => {
         tagline, setTagline,
         checkIsLoggedIn,
         showPreview, setShowPreview,
+        cv, setCv,
         changeThemeInSessionStorage,
         checkAuthStatus, updateAccount,
-        setShowLoader
+        setShowLoader, updateUsername,
+        uploadResume, uploadPageLoader, uploadFavicon,
+        logo, favIcon,
     }}>
         {children}
     </FollioContext.Provider>

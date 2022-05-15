@@ -1,13 +1,14 @@
-import { useContext } from "react";
-import { FollioContext } from "../../../context/follioContext";
+import { useContext } from "react"
+import { FollioContext } from "../../../context/follioContext"
 import { layoutStyles } from "../../styles/layout"
-import { uiStyles } from "../../styles/ui";
+import { uiStyles } from "../../styles/ui"
 
 const Media = () => {
-    const { coverPhoto, profilePhoto, featuredVideo, handleMediaFiles } = useContext(FollioContext)
-    let profileRef;
-    let coverRef;
-    let videoRef;
+    const { coverPhoto, profilePhoto, featuredVideo, handleMediaFiles, logo, setLogo } = useContext(FollioContext)
+    let profileRef
+    let coverRef
+    let videoRef
+    let logoRef
 
     return <div className={layoutStyles.container}>
         <p className="mb-7 font-medium">Photos &amp; videos files</p>
@@ -24,6 +25,13 @@ const Media = () => {
             <label onClick={() => coverRef.click()} className={uiStyles.uploadBox}>+</label>
             {typeof coverPhoto === "object" ? <img className={uiStyles.uploadBoxImg} alt="" src={URL.createObjectURL(coverPhoto)} /> : <img className={uiStyles.uploadBoxImg} alt="" src={coverPhoto} />}
             <input ref={e => coverRef = e} onChange={e => handleMediaFiles(e.target.files[0], "cover-photo")} accept="image/*" type="file" hidden />
+        </div>
+
+        <p className="opacity-50 mb-3 mt-5">Upload your logo</p>
+        <div className="flex">
+            <label onClick={() => logoRef.click()} className={uiStyles.uploadBox}>+</label>
+            {typeof logo === "object" ? <img className={uiStyles.uploadBoxImg} alt="" src={URL.createObjectURL(logo)} /> : <img className={uiStyles.uploadBoxImg} alt="" src={logo} />}
+            <input ref={e => logoRef = e} onChange={e => handleMediaFiles(e.target.files[0], "logo")} accept="image/*" type="file" hidden />
         </div>
 
         <p className="opacity-50 mb-3 mt-5">Featured video</p>
