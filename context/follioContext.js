@@ -19,6 +19,7 @@ export const FollioProvider = ({ children }) => {
     /** User data fields */
     const [fullname, setFullname] = useState("")
     const [logo, setLogo] = useState("")
+    const [favIcon, setFavIcon] = useState("")
     const [email, setEmail] = useState("")
     const [tagline, setTagline] = useState("")
     const [username, setUsername] = useState("")
@@ -237,6 +238,7 @@ export const FollioProvider = ({ children }) => {
         setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
+        setFavIcon(_source.favIcon)
         setEmail(_source.email)
         setUsername(_source.username)
         setTagline(_source.tagline)
@@ -320,6 +322,8 @@ export const FollioProvider = ({ children }) => {
             let _body = {
                 "fullname": fullname,
                 "logo": logo,
+                "loader": loader,
+                "favIcon": favIcon,
                 "cv": _cv,
                 "email": email,
                 "tagline": tagline,
