@@ -9,7 +9,8 @@ import Link from "next/link"
 const PageHeader = ({ customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
         <div className={customStyle.headerWrapper}>
-            <p>{fullname}</p>
+            {/* <p>{fullname}</p> */}
+            <img src={logo} alt='fullname' className={customStyle.logo} />
             <nav className="lg:flex items-center hidden">
                 <Link passHref={true} href="#about">
                     <p className={customStyle.headerLink}>About</p>
@@ -142,6 +143,7 @@ const styles = {
     projectCard: `m-5 mx-0 lg:mx-5`,
     heroImg: `rounded-md w-full h-96 lg:w-[80%] object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
+    logo: `h-[30px] object-cover`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
     button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
@@ -153,6 +155,7 @@ const mobileStyles = {
     headerLink: `hidden`,
     hero: `py-20`,
     grid: `grid grid-cols-1`,
+    logo: `h-[30px] object-cover`,
     body: `bg-white lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
     heroWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,

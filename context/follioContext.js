@@ -307,6 +307,7 @@ export const FollioProvider = ({ children }) => {
             let _coverPhoto = coverPhoto
             let _featuredVideo = featuredVideo
             let _cv = cv
+            let _logo = logo
 
             if (!confirmation) return
 
@@ -327,6 +328,11 @@ export const FollioProvider = ({ children }) => {
                 setCv(_cv)
             }
 
+            if (typeof logo === 'object') {
+                _logo = await uploadFile(logo)
+                setLogo(_logo)
+            }
+
             if (typeof featuredVideo === 'object') {
                 _featuredVideo = await uploadFile(featuredVideo)
                 setFeaturedVideo(_featuredVideo)
@@ -334,7 +340,7 @@ export const FollioProvider = ({ children }) => {
 
             let _body = {
                 "fullname": fullname,
-                "logo": logo,
+                "logo": _logo,
                 "loader": loader,
                 "favIcon": favIcon,
                 "cv": _cv,
@@ -423,7 +429,7 @@ export const FollioProvider = ({ children }) => {
         projects, setProjects,
         about, setAbout,
         fullname, setFullname,
-        work, setWork, logo,
+        work, setWork,
         theme, coverPhoto,
         featuredVideo, showLoader,
         socials, setSocials,
