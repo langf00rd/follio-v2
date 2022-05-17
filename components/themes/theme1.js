@@ -7,7 +7,7 @@ import Head from "next/head"
 import Link from "next/link"
 import CoffeeButton from "../ui/coffeeButton"
 
-const PageHeader = ({ data, customStyle, fullname, logo, cv }) => {
+const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
         <div className={customStyle.headerWrapper}>
             <Link passHref={true} href='#'>
@@ -20,16 +20,16 @@ const PageHeader = ({ data, customStyle, fullname, logo, cv }) => {
                 <Link passHref={true} href="#">
                     <p className={customStyle.headerLink}>Home</p>
                 </Link>
-                {data.about ? <Link passHref={true} href="#about">
+                {about ? <Link passHref={true} href="#about">
                     <p className={customStyle.headerLink}>About</p>
                 </Link> : null}
-                {data.projects ? <Link passHref={true} href="#projects">
+                {projects ? <Link passHref={true} href="#projects">
                     <p className={customStyle.headerLink}>Projects</p>
                 </Link> : null}
-                {data.skills ? <Link passHref={true} href="#tools">
+                {skills ? <Link passHref={true} href="#tools">
                     <p className={customStyle.headerLink}>Tools</p>
                 </Link> : null}
-                {data.socials ? <Link passHref={true} href="#contact">
+                {socials ? <Link passHref={true} href="#contact">
                     <p className={customStyle.headerLink}>Contact</p>
                 </Link> : null}
             </nav>
@@ -204,7 +204,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
 
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
-        <PageHeader data={data} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
+        <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
         <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
