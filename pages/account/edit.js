@@ -56,7 +56,7 @@ const Edit = () => {
                     <EditPageLinks />
                 </div>
 
-                <div className="w-full max-w-xl lg:h-screen lg:overflow-scroll lg:pb-20">
+                <div className="w-full max-w-xl">
                     <p className={layoutStyles.textLg}>Edit your page</p>
                     <EditPageTabs />
                     <Pages />
