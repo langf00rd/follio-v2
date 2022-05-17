@@ -37,7 +37,7 @@ const Pages = () => {
 }
 
 const Edit = () => {
-    const { showPreview, theme, showLoader, checkIsLoggedIn } = useContext(FollioContext)
+    const { showLoader, checkIsLoggedIn } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -56,23 +56,13 @@ const Edit = () => {
                     <EditPageLinks />
                 </div>
 
-                <div className="w-full max-w-xl">
+                <div className="w-full max-w-xl lg:h-screen lg:overflow-scroll lg:pb-20">
                     <p className={layoutStyles.textLg}>Edit your page</p>
                     <EditPageTabs />
                     <Pages />
                 </div>
 
                 <PreviewComponent />
-
-                {/* {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
-                    {theme === 3 ? <Theme1 editMode={true} /> : null}
-                </div> : null}
-
-                <BottomNav />
-
-                <div className="hidden lg:block">
-                    {theme === 3 ? <Theme1 editMode={true} /> : null}
-                </div> */}
             </div>
         </div>
     </div>

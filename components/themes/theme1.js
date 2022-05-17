@@ -5,28 +5,35 @@ import menu from "../../assets/svg/menu.svg"
 import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
+import CoffeeButton from "../ui/coffeeButton"
 
-const PageHeader = ({ customStyle, fullname, logo, cv }) => {
+const PageHeader = ({ data, customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
         <div className={customStyle.headerWrapper}>
-            {logo && (typeof logo === "object")
-                ? <img className={customStyle.logo} alt={fullname} src={URL.createObjectURL(logo)} />
-                : <img src={logo} alt={fullname} className={customStyle.logo} />}
+            <Link passHref={true} href='#'>
+                {logo && (typeof logo === "object")
+                    ? <img className={customStyle.logo} alt={fullname} src={URL.createObjectURL(logo)} />
+                    : <img src={logo} alt={fullname} className={customStyle.logo} />}
+            </Link>
 
             <nav className="lg:flex items-center hidden">
-                <Link passHref={true} href="#about">
+                <Link passHref={true} href="#">
+                    <p className={customStyle.headerLink}>Home</p>
+                </Link>
+                {data.about ? <Link passHref={true} href="#about">
                     <p className={customStyle.headerLink}>About</p>
-                </Link>
-                <Link passHref={true} href="#projects">
-                    <p className={customStyle.headerLink}>Portfolio</p>
-                </Link>
-                <Link passHref={true} href="#tools">
-                    <p className={customStyle.headerLink}>Tools &amp; skills</p>
-                </Link>
-                <Link passHref={true} href="#contact">
+                </Link> : null}
+                {data.projects ? <Link passHref={true} href="#projects">
+                    <p className={customStyle.headerLink}>Projects</p>
+                </Link> : null}
+                {data.skills ? <Link passHref={true} href="#tools">
+                    <p className={customStyle.headerLink}>Tools</p>
+                </Link> : null}
+                {data.socials ? <Link passHref={true} href="#contact">
                     <p className={customStyle.headerLink}>Contact</p>
-                </Link>
+                </Link> : null}
             </nav>
+
 
             {cv ? <div className="lg:block hidden">
                 <a href={cv} className={customStyle.button}>Download cv</a>
@@ -138,9 +145,7 @@ const Payment = ({ socials, customStyle }) => {
         <div className={customStyle.heroWrapper}>
             <div>
                 <p className={customStyle.textLg}>I receive donations</p>
-                <a href={`https://www.buymeacoffee.com/${socials.coffee}`}>
-                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="200" />
-                </a>
+                <CoffeeButton username={socials.coffee} />
             </div>
         </div>
     </section>
@@ -199,7 +204,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
 
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
-        <PageHeader cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
+        <PageHeader data={data} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
         <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
