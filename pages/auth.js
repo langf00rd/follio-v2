@@ -33,9 +33,9 @@ const Auth = () => {
 
             <div className="max-w-4xl m-auto p-5 rounded-xl">
                 {!session ? <div>
-                    <h1 className="text-2xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</h1>
+                    <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</h1>
                     <p className="opacity-50">You only need to sign up/in to account.</p>
-                </div> : <h1 className="text-2xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</h1>}
+                </div> : <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</h1>}
 
 
                 {session && (session.user && sessionStorage.getItem("data")) ?

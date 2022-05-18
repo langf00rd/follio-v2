@@ -40,7 +40,6 @@ const Socials = () => {
     }
 
     return <div className={layoutStyles.container}>
-        <p className="mb-7 font-medium">Your socials</p>
         <div className="flex items-center">
             <img src={twitter.src} alt="" className={styles.socialIcon} />
             <div className={inputStyles.socialInput}>

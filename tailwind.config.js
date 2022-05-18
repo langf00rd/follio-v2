@@ -10,7 +10,7 @@ module.exports = {
       // brand: "#FFC107",
       brand: "#0063F7",
       borderColor: "#ededed",
-      red: '#ff4f42',
+      red: '#EF4444',
       dark: "#475569",
       mid: "#CBD5E1",
       light: "#F8FAFC",

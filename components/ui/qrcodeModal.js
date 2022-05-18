@@ -4,6 +4,7 @@ import { FollioContext } from "../../context/follioContext"
 import { layoutStyles } from "../styles/layout"
 import ReactSwitch from "react-switch"
 import Button from "./buttons/button"
+import OutlineButton from "./buttons/outlineButton"
 
 const QRCodeModal = ({ onCloseModal }) => {
     const { username, cv } = useContext(FollioContext)
@@ -35,7 +36,7 @@ const QRCodeModal = ({ onCloseModal }) => {
                     <ReactSwitch onChange={e => setShowCv(e)} checked={showCv} />
                 </div>
 
-                <Button action={downloadQrCode} full={false} label='Download QR code' />
+                <OutlineButton action={downloadQrCode} full={false} label='Download QR code' />
             </div>
         </div>
     </div>

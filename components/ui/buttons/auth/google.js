@@ -6,7 +6,7 @@ const Google = () => {
     const { authenticateUser } = useContext(FollioContext)
 
     return <div className="flex items-center justify-center">
-        <button onClick={authenticateUser} className={buttonStyles.borderButton}>
+        <button onClick={authenticateUser} className={buttonStyles.outlineButton}>
             <img src='https://www.follio.app/_next/static/media/google.7bb8a5e4.svg' className="w-10 h-10 rounded-full mr-3" alt='google' />
             Continue with google
         </button>

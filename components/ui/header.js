@@ -7,12 +7,12 @@ import chevronDown from "../../assets/svg/chevronDown.svg"
 import chevronUp from "../../assets/svg/chevronUp.svg"
 import menu from "../../assets/svg/menu.svg"
 import close from "../../assets/svg/close.svg"
-import SideMenu from "./sideMenu"
 import Button from "./buttons/button"
 import Nav from "./header/nav"
 import { FollioContext } from "../../context/follioContext"
 import { headerStyles } from "../styles/headerStyles"
 import { useSession } from "next-auth/react"
+import HeaderMenu from "./headerMenu"
 
 const Header = () => {
     const [showModal, setShowModal] = useState(false)
@@ -53,7 +53,7 @@ const Header = () => {
         </div>
 
         {showModal ? <HeaderModal /> : null}
-        {showSideMenu ? <SideMenu /> : null}
+        {showSideMenu ? <HeaderMenu /> : null}
     </div >
 }
 

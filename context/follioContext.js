@@ -144,39 +144,39 @@ export const FollioProvider = ({ children }) => {
     }
 
     /** upload resume file */
-    const uploadResume = async () => {
-        if (typeof cv === "string") {
-            alert("Please select a file")
-            return
-        }
-        const a = confirm("Do you want upload new resume?")
-        if (!a) return
+    // const uploadResume = async () => {
+    //     if (typeof cv === "string") {
+    //         alert("Please select a file")
+    //         return
+    //     }
+    //     const a = confirm("Do you want upload new resume?")
+    //     if (!a) return
 
-        setShowLoader(true)
-        let _cv = await uploadFile(cv)
-        setCv(_cv)
-        setShowLoader(false)
-    }
+    //     setShowLoader(true)
+    //     let _cv = await uploadFile(cv)
+    //     setCv(_cv)
+    //     setShowLoader(false)
+    // }
 
     /** upload page loader */
-    const uploadPageLoader = async () => {
+    // const uploadPageLoader = async () => {
 
-    }
+    // }
 
     /** upload page favicon */
-    const uploadFavicon = async () => {
-        if (typeof favIcon === "string") {
-            alert("Please select a file")
-            return
-        }
-        const a = confirm("Do you want upload this fav icon?")
-        if (!a) return
+    // const uploadFavicon = async () => {
+    //     if (typeof favIcon === "string") {
+    //         alert("Please select a file")
+    //         return
+    //     }
+    //     const a = confirm("Do you want upload this fav icon?")
+    //     if (!a) return
 
-        setShowLoader(true)
-        let _favIcon = await uploadFile(favIcon)
-        setFavIcon(_favIcon)
-        setShowLoader(false)
-    }
+    //     setShowLoader(true)
+    //     let _favIcon = await uploadFile(favIcon)
+    //     setFavIcon(_favIcon)
+    //     setShowLoader(false)
+    // }
 
     /** Upload file to cloudinary */
     const uploadFile = async (_file) => {
@@ -251,6 +251,7 @@ export const FollioProvider = ({ children }) => {
         setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
+        setLoader(_source.loader)
         setFavIcon(_source.favIcon)
         setEmail(_source.email)
         setUsername(_source.username)
@@ -308,6 +309,8 @@ export const FollioProvider = ({ children }) => {
             let _featuredVideo = featuredVideo
             let _cv = cv
             let _logo = logo
+            let _favIcon = favIcon
+            let _loader = loader
 
             if (!confirmation) return
 
@@ -336,6 +339,16 @@ export const FollioProvider = ({ children }) => {
             if (typeof featuredVideo === 'object') {
                 _featuredVideo = await uploadFile(featuredVideo)
                 setFeaturedVideo(_featuredVideo)
+            }
+
+            if (typeof favIcon === 'object') {
+                _favIcon = await uploadFile(favIcon)
+                setFavIcon(_favIcon)
+            }
+
+            if (typeof loader === 'object') {
+                _loader = await uploadFile(loader)
+                setLoader(_loader)
             }
 
             let _body = {
@@ -441,7 +454,6 @@ export const FollioProvider = ({ children }) => {
         changeThemeInSessionStorage,
         checkAuthStatus, updateAccount,
         setShowLoader, updateUsername,
-        uploadResume, uploadPageLoader, uploadFavicon,
         logo, favIcon,
     }}>
         {children}

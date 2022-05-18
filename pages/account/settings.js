@@ -28,13 +28,21 @@ const Settings = () => {
                 <div className="w-full max-w-xl">
                     <p className={layoutStyles.textLg}>Settings</p>
                     <div>
-                        <div className={layoutStyles.container}>
+                        <div className="mb-[30px]">
                             <p className={textStyles.label}>Change your username</p>
-                            <input className={inputStyles.input} value={username} onChange={e => setUsername(e.target.value)} placeholder={username} />
-                            <Button action={updateUsername} full={false} label='Change your username' />
+                            <div className="flex items-center">
+                                <div className={inputStyles.socialInput}>
+                                    <label className={inputStyles.label}>follio.app/</label>
+                                    <input value={username} onChange={e => setUsername(e.target.value)} className={inputStyles.ghostInput} type="text" />
+                                </div>
+                                <div className="relative -top-2 left-3">
+                                    <Button action={updateUsername} full={false} label='Save' />
+                                </div>
+                            </div>
                         </div>
-                        <div className='m-16' />
-                        <div className={layoutStyles.container}>
+
+
+                        <div className="mb-[30px]">
                             <p className={textStyles.label}>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
                             <input
                                 className={inputStyles.fileInput}
@@ -44,12 +52,11 @@ const Settings = () => {
                                     handleMediaFiles(e.target.files[0], 'cv')
                                 }}
                                 placeholder={username} />
-                            <Button action={uploadResume} full={false} label='Upload' />
                         </div>
-                        <div className='m-16' />
-                        <div className={layoutStyles.container}>
+
+                        <div className="mb-[30px]">
                             <p className={textStyles.label}>Custom page loader</p>
-                            <p className='mb-5 mt-2 opacity-40'>Can be a gif or any other image format</p>
+                            <p className={textStyles.labelDescription}>Can be a gif or any other image format</p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept="image/*, .gif"
@@ -58,12 +65,11 @@ const Settings = () => {
                                     handleMediaFiles(e.target.files[0], 'loader')
                                 }}
                                 placeholder={username} />
-                            <Button action={uploadPageLoader} full={false} label='Upload' />
                         </div>
-                        <div className='m-16' />
-                        <div className={layoutStyles.container}>
+
+                        <div className="mb-[30px]">
                             <p className={textStyles.label}>Page favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
-                            <p className='mb-5 mt-2 opacity-40'>Add an image that shows up in the title bar of your browser</p>
+                            <p className={textStyles.labelDescription}>Add an image that shows up in the title bar of your browser</p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept=".ico"
@@ -72,7 +78,6 @@ const Settings = () => {
                                     handleMediaFiles(e.target.files[0], 'fav-icon')
                                 }}
                                 placeholder={username} />
-                            <Button action={uploadFavicon} full={false} label='Upload' />
                         </div>
                     </div>
                 </div>
