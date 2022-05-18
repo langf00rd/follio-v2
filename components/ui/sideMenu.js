@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { FollioContext } from "../../context/follioContext"
 import Button from "./buttons/button"
 // import { headerStyles } from "../styles/headerStyles"
 // import Nav from "./header/nav"
@@ -13,6 +14,7 @@ const styles = {
 
 const SideMenu = () => {
     const [route, setRoute] = useState("/")
+    const { logout } = useContext(FollioContext)
 
     useEffect(() => {
         setRoute(window.location.pathname)
@@ -39,7 +41,7 @@ const SideMenu = () => {
                 Settings
             </p>
         </Link>
-        <Button label="Login" />
+        <Button label="Logout" action={logout} />
     </div>
 }
 
