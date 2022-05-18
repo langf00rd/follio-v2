@@ -4,10 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "CalFonts";
+  src: local("CalFonts"),
+    url("../assets/fonts/cal-sans.otf")
+}
+
 html,
 body {
   padding: 0;
-  background: #F5F8FF;
+  /* background: #F3F4F6; */
+  /* background: #F5F8FF; */
   margin: 0;
   overflow-x: hidden;
   font-size: .94rem;
@@ -19,13 +26,14 @@ a {
 }
 
 * {
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: "", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -70,4 +78,14 @@ html textarea {
   user-select: text;
   -webkit-user-select: text;
   -moz-user-select: text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+  font-family: 'CalFonts';
 }

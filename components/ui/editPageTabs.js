@@ -11,7 +11,7 @@ const EditPageTabs = () => {
         <p onClick={() => setViewCount(3)} className={viewCount === 3 ? tabStyles.activeTab : tabStyles.tab}>🔗 Socials</p>
         <p onClick={() => setViewCount(4)} className={viewCount === 4 ? tabStyles.activeTab : tabStyles.tab}>💪 Projects &amp; works</p>
         <p onClick={() => setViewCount(6)} className={viewCount === 6 ? tabStyles.activeTab : tabStyles.tab}>💸 Payments</p>
-        <p onClick={() => setViewCount(6)} className={viewCount === 6 ? tabStyles.activeTab : tabStyles.tab}>💳 Shop</p>
+        <p onClick={() => setViewCount(7)} className={viewCount === 7 ? tabStyles.activeTab : tabStyles.tab}>💳 Shop</p>
         {/* <p onClick={() => setViewCount(5)} className={viewCount === 5 ? tabStyles.activeTab : tabStyles.tab}>🎨 Styles &amp; colors</p> */}
     </div>
 }

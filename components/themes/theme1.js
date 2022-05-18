@@ -145,7 +145,7 @@ const Payment = ({ socials, customStyle }) => {
         <div className={customStyle.heroWrapper}>
             <div>
                 <p className={customStyle.textLg}>I receive donations</p>
-                <CoffeeButton username={socials.coffee} />
+                <CoffeeButton coffee={socials.coffee} />
             </div>
         </div>
     </section>
@@ -177,7 +177,7 @@ const previewStyles = {
     hero: `py-20`,
     grid: `grid grid-cols-1`,
     logo: `h-[39px] object-cover`,
-    body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
+    body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
     heroWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,

@@ -20,6 +20,7 @@ import Loader from "../../components/ui/loader"
 import PageHead from "../../pageHead"
 import PreviewComponent from "../../components/previews/preview"
 import Payment from "../../components/ui/editPages/payment"
+import Shop from "../../components/ui/editPages/shop"
 // import Payment from "../../components/ui/editPages/payment"
 
 const Pages = () => {
@@ -32,7 +33,7 @@ const Pages = () => {
         case 4: return <Projects />
         // case 5: return <Styles />
         case 6: return <Payment />
-        default: return <div></div>
+        default: return <Shop />
     }
 }
 
