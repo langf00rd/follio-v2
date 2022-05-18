@@ -41,14 +41,14 @@ const Header = () => {
                     <Button label="Save &amp; publish" full={false} action={updateAccount} />
                 </div>
 
-                <div onClick={toggleModal} className="flex items-center">
+                {session ? <div onClick={toggleModal} className="flex items-center">
                     <div className="lg:ml-5">
                         <Avatar src={session.user.image} />
                     </div>
                     {!showModal ?
                         <img src={chevronDown.src} className={headerStyles.chevron} />
                         : <img src={chevronUp.src} className={headerStyles.chevron} />}
-                </div>
+                </div> : nul}
             </div>
         </div>
 
