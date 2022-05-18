@@ -48,7 +48,7 @@ const Header = () => {
                     {!showModal ?
                         <img src={chevronDown.src} className={headerStyles.chevron} />
                         : <img src={chevronUp.src} className={headerStyles.chevron} />}
-                </div> : nul}
+                </div> : null}
             </div>
         </div>
 
