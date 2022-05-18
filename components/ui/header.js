@@ -12,11 +12,13 @@ import Button from "./buttons/button"
 import Nav from "./header/nav"
 import { FollioContext } from "../../context/follioContext"
 import { headerStyles } from "../styles/headerStyles"
+import { useSession } from "next-auth/react"
 
 const Header = () => {
     const [showModal, setShowModal] = useState(false)
     const [showSideMenu, setShowSideMenu] = useState(false)
     const { profilePhoto, updateAccount } = useContext(FollioContext)
+    const { data: session } = useSession()
 
     const toggleModal = () => {
         setShowModal(!showModal)
@@ -41,7 +43,7 @@ const Header = () => {
 
                 <div onClick={toggleModal} className="flex items-center">
                     <div className="lg:ml-5">
-                        <Avatar src={profilePhoto} />
+                        <Avatar src={session.user.image} />
                     </div>
                     {!showModal ?
                         <img src={chevronDown.src} className={headerStyles.chevron} />

@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import PreviewComponent from "../../components/previews/preview"
 import { inputStyles } from "../../components/styles/input"
 import { layoutStyles } from "../../components/styles/layout"
+import { textStyles } from "../../components/styles/textStyles"
 import Button from "../../components/ui/buttons/button"
 import Header from "../../components/ui/header"
 import Loader from "../../components/ui/loader"
@@ -28,13 +29,13 @@ const Settings = () => {
                     <p className={layoutStyles.textLg}>Settings</p>
                     <div>
                         <div className={layoutStyles.container}>
-                            <p className='mb-2'>Change your username</p>
+                            <p className={textStyles.label}>Change your username</p>
                             <input className={inputStyles.input} value={username} onChange={e => setUsername(e.target.value)} placeholder={username} />
                             <Button action={updateUsername} full={false} label='Change your username' />
                         </div>
-                        <div className='m-5' />
+                        <div className='m-16' />
                         <div className={layoutStyles.container}>
-                            <p className='mb-2'>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
+                            <p className={textStyles.label}>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
                             <input
                                 className={inputStyles.fileInput}
                                 accept=".pdf, .doc, .docx, .rtf, .txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -45,9 +46,9 @@ const Settings = () => {
                                 placeholder={username} />
                             <Button action={uploadResume} full={false} label='Upload' />
                         </div>
-                        <div className='m-5' />
+                        <div className='m-16' />
                         <div className={layoutStyles.container}>
-                            <p>Upload your custom page loader</p>
+                            <p className={textStyles.label}>Custom page loader</p>
                             <p className='mb-5 mt-2 opacity-40'>Can be a gif or any other image format</p>
                             <input
                                 className={inputStyles.fileInput}
@@ -59,9 +60,9 @@ const Settings = () => {
                                 placeholder={username} />
                             <Button action={uploadPageLoader} full={false} label='Upload' />
                         </div>
-                        <div className='m-5' />
+                        <div className='m-16' />
                         <div className={layoutStyles.container}>
-                            <p>Upload your favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
+                            <p className={textStyles.label}>Page favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
                             <p className='mb-5 mt-2 opacity-40'>Add an image that shows up in the title bar of your browser</p>
                             <input
                                 className={inputStyles.fileInput}
