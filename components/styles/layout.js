@@ -11,7 +11,7 @@ export const layoutStyles = {
     bottomNav: `flex items-center fixed justify-between bottom-0 w-screen left-0 bg-white border-t border-t-borderColor p-2 pl-5 lg:hidden`,
     // previewMainWrapper: `-mt-3 py-5 lg:min-h-[93vh] bg-brand`,
     previewMainWrapper: `-mt-3 py-10 lg:min-h-[93vh] flex justify-around`,
-    textLg: `font-[CalFonts] text-3xl lg:text-5xl font-medium mb-10`,
+    textLg: `bold-font text-3xl lg:text-5xl font-medium mb-10`,
     preview: `bg-white h-[80vh] w-full p-10 rounded-xl max-w-xl hidden lg:block`,
     projectCard: `m-2 mx-0 mb-5 p-2 rounded-xl`,
     projectThumbnail: `h-[350px] rounded-xl w-full object-cover`,
