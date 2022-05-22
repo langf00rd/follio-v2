@@ -6,7 +6,7 @@ import PageHead from "../pageHead"
 const Landing = () => {
     return (
         <>
-            <div className="text-[1.2rem]">
+            <div className="lg:text-[1.2rem]">
                 <PageHead title="Follio - Online portfolio builder 🚀" />
                 <Header />
                 <Hero />
@@ -161,7 +161,7 @@ const TestimonialCard = () => {
     return (
         <>
             <div className={styles.testimonial}>
-                <div className="text-left -mb-10 pt-5 opacity-50">
+                <div className="text-left lg:-mb-10 pt-5 opacity-50">
                     <h1 className={styles.h1}>
                         &ldquo;
                     </h1>
@@ -209,8 +209,8 @@ const UpdateFeature = ({ label, soon = false, working = false, icon }) => {
 const styles = {
     hero: `w-screen lg:px-56 px-5 m-auto lg:py-44 mt-[63px] py-32 text-center`,
     // hero: `w-screen lg:px-56 px-5 m-auto border-t border-t-[#f1f1f1] lg:py-44 mt-[63px] py-32 text-center`,
-    h1: `h1 lg:text-7xl text-3xl`,
-    h2: `h2 lg:text-5xl text-2xl`,
+    h1: `h1 lg:text-7xl text-4xl`,
+    h2: `h2 lg:text-5xl text-3xl`,
     section: `py-32`,
     sectionWrapper: `max-w-6xl m-auto text-center p-5`,
     testimonial: `lg:w-1/3 m-3 bg-[#f1f1f1] p-5 w-max lg:px-10 rounded-xl text-right`,
