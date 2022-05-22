@@ -43,7 +43,7 @@ const Footer = () => {
 }
 
 const Header = () => {
-    return <header className="fixed top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
+    return <header className="fixed z-10 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
         <Logo />
         {/* <nav className={styles.nav}>
             <ul className={styles.navLinks}>
@@ -130,7 +130,7 @@ const Quote = () => {
         <>
             <div className={styles.section}>
                 <div className={styles.sectionWrapper}>
-                    <h1 className={styles.h2}>&ldquo; Follio was made so everyone can have their very own portfolio site up and running in a few clicks &rdquo;</h1>
+                    <h1 className={styles.h2}>&ldquo; Follio was created so that anyone can have their own portfolio site up and running in just a few clicks. &rdquo;</h1>
                     <p className="italic my-5 opacity-50">Langford - Creator</p>
                 </div>
             </div>
@@ -166,7 +166,7 @@ const TestimonialCard = () => {
                         &ldquo;
                     </h1>
                 </div>
-                <p className="mb-3 text-left">Man i just made my portffolio within a few minutes. Really enjoyed it</p>
+                <p className="mb-5 text-left">Man i just made my portffolio within a few minutes. Really enjoyed it</p>
                 <div className="text-sm mt-3">
                     <p>Ahmad Fardous Azimi</p>
                     <Link passHref={true} href='https://www.follio.app/azimifardous'>
@@ -213,8 +213,8 @@ const styles = {
     h2: `h2 lg:text-5xl text-3xl`,
     section: `py-32`,
     sectionWrapper: `max-w-6xl m-auto text-center p-5`,
-    testimonial: `lg:w-1/3 m-3 bg-[#f1f1f1] p-5 w-max lg:px-10 rounded-xl text-right`,
-    featureCard: `hover:bg-[#fff] transition bg-[#f1f1f1] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
+    testimonial: `lg:w-1/3 m-3 bg-[#F5F6F7] border border-[#f1f1f1] p-5 w-max lg:px-10 rounded-xl text-right`,
+    featureCard: `hover:bg-[#fff] transition bg-[#F5F6F7] border border-[#f1f1f1] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
     featureIcon: `block mb-6 text-5xl`,
     navLinks: `flex items-center hidden lg:flex`,
     link: `p-3 hover:text-brand cursor-pointer`,
