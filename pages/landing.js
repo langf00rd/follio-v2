@@ -11,8 +11,33 @@ const Landing = () => {
                 <Header />
                 <Hero />
                 <Features />
+                <Quote />
                 <FeaturedUsers />
+                <Testimonials />
+                <Footer />
+                {/* 
+                */}
             </div>
+        </>
+    )
+}
+
+const ProductHuntBanner = () => {
+    return (
+        <>
+            <div className="flex justify-center mb-10">
+                <a href="https://www.producthunt.com/posts/follio?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-follio" target="_blank" rel="noreferrer">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=340571&theme=light" alt="Follio - Easy&#0044;&#0032;no&#0045;code&#0032;and&#0032;customizable&#0032;portfolio&#0032;site&#0032;builder | Product Hunt" style={{ width: "250px", height: "50px" }} />
+                </a>
+            </div>
+        </>
+    )
+}
+
+const Footer = () => {
+    return (
+        <>
+            <p className="text-center p-20 opacity-90">&copy; 2022 Follio | Product of Vaporware Studios</p>
         </>
     )
 }
@@ -34,6 +59,7 @@ const Header = () => {
 
 const Hero = () => {
     return <div className={styles.hero}>
+        {/* <ProductHuntBanner /> */}
         <div className="max-w-4xl m-auto">
             <h1 className={styles.h1}>Free Online Portfolio Builder</h1>
             <p className='my-10 opacity-50'>An easy way to create and deploy your portfolio site with your skills, projects, socials, meeting schedules, and custom domain for free!</p>
@@ -99,13 +125,66 @@ const FeaturedUsers = () => {
     )
 }
 
+const Quote = () => {
+    return (
+        <>
+            <div className={styles.section}>
+                <div className={styles.sectionWrapper}>
+                    <h1 className={styles.h2}>&ldquo; Follio was made so everyone can have their very own portfolio site up and running in a few clicks &rdquo;</h1>
+                    <p className="italic my-5 opacity-50">Langford - Creator</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const Testimonials = () => {
+    return (
+        <>
+            <div className={styles.section}>
+                <div className={styles.sectionWrapper}>
+                    <h1 className={styles.h2}>From our amazing users</h1>
+                    <div className="m-20" />
+                    <div className="flex items-center justify-center flex-wrap">
+                        <TestimonialCard />
+                        <TestimonialCard />
+                        <TestimonialCard />
+                        <TestimonialCard />
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const TestimonialCard = () => {
+    return (
+        <>
+            <div className={styles.testimonial}>
+                <div className="text-left -mb-10 pt-5 opacity-50">
+                    <h1 className={styles.h1}>
+                        &ldquo;
+                    </h1>
+                </div>
+                <p className="mb-3 text-left">Man i just made my portffolio within a few minutes. Really enjoyed it</p>
+                <div className="text-sm mt-3">
+                    <p>Ahmad Fardous Azimi</p>
+                    <Link passHref={true} href='https://www.follio.app/azimifardous'>
+                        <p className={styles.pageLink}>follio.app/azimifardous</p>
+                    </Link>
+                </div>
+            </div>
+        </>
+    )
+}
+
 const User = ({ image, role, link, twitter }) => {
-    return <div className="flex flex-col items-center mb-20 sm:mb-0 sm:mr-10">
+    return <div className="flex flex-col items-center mb-20 m-10 sm:mb-0 sm:mr-10">
         <a href={twitter} target="_blank" rel="noreferrer">
             <img src={image} className="rounded-full w-56 h-56 bg-[#f1f1f1] hover:opacity-70" />
         </a>
         <p className="text-xl mt-5">{role}</p>
-        <a href={link} target="_blank" rel="noreferrer" className="text-[#3d5bff] mt-1">{link.replace("https://", "").replace("www.", "")}</a>
+        <Link href={link} target="_blank" rel="noreferrer" className="text-[#3d5bff] mt-1">{link.replace("https://", "").replace("www.", "")}</Link>
         <Twitter twitterLink={twitter} />
     </div>
 }
@@ -133,11 +212,13 @@ const styles = {
     h1: `h1 lg:text-7xl text-3xl`,
     h2: `h2 lg:text-5xl text-2xl`,
     section: `py-32`,
-    sectionWrapper: `max-w-6xl m-auto text-center`,
+    sectionWrapper: `max-w-6xl m-auto text-center p-5`,
+    testimonial: `lg:w-1/3 m-3 bg-[#f1f1f1] p-5 w-max lg:px-10 rounded-xl text-right`,
     featureCard: `hover:bg-[#fff] transition bg-[#f1f1f1] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
     featureIcon: `block mb-6 text-5xl`,
     navLinks: `flex items-center hidden lg:flex`,
-    link: `p-3 hover:text-brand cursor-pointer`
+    link: `p-3 hover:text-brand cursor-pointer`,
+    pageLink: `my-1 hover:text-black text-brand cursor-pointer`
 }
 
 export default Landing
