@@ -1,11 +1,10 @@
 import { useContext } from "react"
 import { Socials } from "../ui/themes/socials"
 import { FollioContext } from "../../context/follioContext"
-import menu from "../../assets/svg/menu.svg"
+import CoffeeButton from "../ui/coffeeButton"
 import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
-import CoffeeButton from "../ui/coffeeButton"
 
 const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
@@ -34,7 +33,6 @@ const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, l
                 </Link> : null}
             </nav>
 
-
             {cv ? <div className="lg:block hidden">
                 <a href={cv} className={customStyle.button}>Download cv</a>
             </div> : null}
@@ -55,7 +53,7 @@ const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) =
                 <p>{greeting}</p>
                 <p className={customStyle.textLg}>{tagline}</p>
                 <p className="opacity-50">{work}</p>
-                {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Connect with me &rarr;</a> : null}
+                {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Lets connect &rarr;</a> : null}
             </div>
             {profilePhoto && (typeof profilePhoto === "object")
                 ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
@@ -113,7 +111,7 @@ const FindMe = ({ customStyle, socials, email }) => {
     return <section className={customStyle.hero} id="contact">
         <div className={customStyle.heroWrapper}>
             <div>
-                <p className={customStyle.textLg}>Connect with me</p>
+                <p className={customStyle.textLg}>Lets connect</p>
                 <Socials socials={socials} email={email} />
             </div>
         </div>

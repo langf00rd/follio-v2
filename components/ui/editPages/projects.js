@@ -29,42 +29,46 @@ const Projects = () => {
     }
 
     const addProject = async () => {
-        if (name.trim() === "") {
-            toast.warn('Please add a project name', toastConfig)
-            return
-        }
+        try {
+            if (name.trim() === "") {
+                toast.warn('Please add a project name', toastConfig)
+                return
+            }
 
-        if (!thumbnailFile) {
-            toast.warn('Please add a photo', toastConfig)
-            return
-        }
+            if (!thumbnailFile) {
+                toast.warn('Please add a thumbnail', toastConfig)
+                return
+            }
 
-        let _thumbnail = await uploadFile(thumbnailFile)
+            let _thumbnail = await uploadFile(thumbnailFile)
 
 
-        if (!_thumbnail) {
-            toast.error('An error occured. Try again', toastConfig)
+            if (!_thumbnail) {
+                toast.error('An error occured. Try again', toastConfig)
+                setShowProjectModal(false)
+                return
+            }
+
+            setShowLoader(true)
+
+            let newProject = {
+                name: name,
+                link: link,
+                description: description,
+                thumbnail: _thumbnail
+            }
+
+            setProjects([...projects, newProject])
+            setName("")
+            setLink("")
+            setDescription("")
+            setThumbnailFile()
             setShowProjectModal(false)
-            return
+            toast.success('Project added successfully! 🎉', toastConfig)
+            setShowLoader(false)
+        } catch (e) {
+            setShowLoader(false)
         }
-
-        setShowLoader(true)
-
-        let newProject = {
-            name: name,
-            link: link,
-            description: description,
-            thumbnail: _thumbnail
-        }
-
-        setProjects([...projects, newProject])
-        setName("")
-        setLink("")
-        setDescription("")
-        setThumbnailFile()
-        setShowProjectModal(false)
-        toast.success('Project added successfully! 🎉', toastConfig)
-        setShowLoader(false)
     }
 
     const removeProject = (index) => {
