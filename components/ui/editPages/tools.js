@@ -30,11 +30,10 @@ const Tools = () => {
     }
 
     return <div className={layoutStyles.container}>
-        <p className="mb-7 font-medium">Tools &amp; skills</p>
         <ul className="flex items-center flex-wrap mb-10">
             {skills.map((skill, index) => {
                 return <li key={index} className={styles.tool} onClick={() => removeSkill(index)}>
-                    <div className="mr-2">&times;</div>
+                    <div className="mr-2 font-bold text-xl">&times;</div>
                     {skill}
                 </li>
             })}
@@ -80,5 +79,6 @@ const Tools = () => {
 export default Tools
 
 const styles = {
-    tool: `border border-mid flex flex-center m-2 p-1 px-2 rounded-full bg-[#F8FAFC] hover:scale-90 hover:border-b-[#00000000] transition items-center cursor-pointer hover:bg-[#ff8a82]`
+    tool: `border-mid border flex transition items-center p-3 rounded-md m-2 hover:bg-red hover:text-white cursor-pointer hover:border-red`,
+    // tool: `border border-mid flex flex-center m-2 p-1 px-2 rounded-full bg-[#F8FAFC] hover:scale-90 hover:border-b-[#00000000] transition items-center cursor-pointer hover:bg-[#ff8a82]`
 }

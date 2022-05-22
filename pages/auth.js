@@ -8,7 +8,7 @@ import Logo from "../components/logo"
 import Google from "../components/ui/buttons/auth/google"
 
 const Auth = () => {
-    const { authenticateUser, checkAuthStatus } = useContext(FollioContext)
+    const { authenticateUser, checkAuthStatus, logout } = useContext(FollioContext)
     const { data: session } = useSession()
     const router = useRouter()
 
@@ -33,9 +33,9 @@ const Auth = () => {
 
             <div className="max-w-4xl m-auto p-5 rounded-xl">
                 {!session ? <div>
-                    <p className="text-2xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</p>
+                    <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</h1>
                     <p className="opacity-50">You only need to sign up/in to account.</p>
-                </div> : <p className="text-2xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</p>}
+                </div> : <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</h1>}
 
 
                 {session && (session.user && sessionStorage.getItem("data")) ?
@@ -49,6 +49,7 @@ const Auth = () => {
                             <Google />
                         </div>
                     </div>}
+                {session ? <p onClick={logout} className='mt-5 cursor-pointer'>Logout</p> : null}
             </div>
         </div>
     </div>

@@ -1,31 +1,36 @@
 import { useContext } from "react"
 import { Socials } from "../ui/themes/socials"
 import { FollioContext } from "../../context/follioContext"
-import menu from "../../assets/svg/menu.svg"
+import CoffeeButton from "../ui/coffeeButton"
 import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
 
-const PageHeader = ({ customStyle, fullname, logo, cv }) => {
+const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
         <div className={customStyle.headerWrapper}>
-            {logo && (typeof logo === "object")
-                ? <img className={customStyle.logo} alt={fullname} src={URL.createObjectURL(logo)} />
-                : <img src={logo} alt={fullname} className={customStyle.logo} />}
+            <Link passHref={true} href='#'>
+                {logo && (typeof logo === "object")
+                    ? <img className={customStyle.logo} alt={fullname} src={URL.createObjectURL(logo)} />
+                    : <img src={logo} alt={fullname} className={customStyle.logo} />}
+            </Link>
 
             <nav className="lg:flex items-center hidden">
-                <Link passHref={true} href="#about">
+                <Link passHref={true} href="#">
+                    <p className={customStyle.headerLink}>Home</p>
+                </Link>
+                {about ? <Link passHref={true} href="#about">
                     <p className={customStyle.headerLink}>About</p>
-                </Link>
-                <Link passHref={true} href="#projects">
-                    <p className={customStyle.headerLink}>Portfolio</p>
-                </Link>
-                <Link passHref={true} href="#tools">
-                    <p className={customStyle.headerLink}>Tools &amp; skills</p>
-                </Link>
-                <Link passHref={true} href="#contact">
+                </Link> : null}
+                {projects ? <Link passHref={true} href="#projects">
+                    <p className={customStyle.headerLink}>Projects</p>
+                </Link> : null}
+                {skills ? <Link passHref={true} href="#tools">
+                    <p className={customStyle.headerLink}>Tools</p>
+                </Link> : null}
+                {socials ? <Link passHref={true} href="#contact">
                     <p className={customStyle.headerLink}>Contact</p>
-                </Link>
+                </Link> : null}
             </nav>
 
             {cv ? <div className="lg:block hidden">
@@ -48,7 +53,7 @@ const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) =
                 <p>{greeting}</p>
                 <p className={customStyle.textLg}>{tagline}</p>
                 <p className="opacity-50">{work}</p>
-                {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Connect with me &rarr;</a> : null}
+                {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Lets connect &rarr;</a> : null}
             </div>
             {profilePhoto && (typeof profilePhoto === "object")
                 ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
@@ -106,7 +111,7 @@ const FindMe = ({ customStyle, socials, email }) => {
     return <section className={customStyle.hero} id="contact">
         <div className={customStyle.heroWrapper}>
             <div>
-                <p className={customStyle.textLg}>Connect with me</p>
+                <p className={customStyle.textLg}>Lets connect</p>
                 <Socials socials={socials} email={email} />
             </div>
         </div>
@@ -133,6 +138,17 @@ const FeaturedVideo = ({ customStyle, featuredVideo }) => {
     return null
 }
 
+const Payment = ({ socials, customStyle }) => {
+    if (socials.coffee !== "") return <section className={customStyle.hero} id="contact">
+        <div className={customStyle.heroWrapper}>
+            <div>
+                <p className={customStyle.textLg}>I receive donations</p>
+                <CoffeeButton coffee={socials.coffee} />
+            </div>
+        </div>
+    </section>
+}
+
 const styles = {
     headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `border-b border-b-[#cccccc44] h-20 fixed top-0 left-0 z-10 w-screen bg-[#fff]`,
@@ -142,7 +158,7 @@ const styles = {
     body: `bg-white text-[1.2rem]`,
     heroWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
-    projectCard: `m-5 mx-0 lg:mx-5`,
+    projectCard: `m-5 mx-0 lg:mr-5`,
     heroImg: `w-[400px] h-[400px] object-cover lg:ml-10 mt-20 lg:mt-0 rounded-xl`,
     // heroImg: `rounded-md w-full h-96 lg:w-[80%] object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
@@ -159,11 +175,11 @@ const previewStyles = {
     hero: `py-20`,
     grid: `grid grid-cols-1`,
     logo: `h-[39px] object-cover`,
-    body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
+    body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
     heroWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
-    projectCard: `m-5 mx-0 mx-5`,
+    projectCard: `m-5 mx-0`,
     heroImg: `rounded-md w-full h-96 object-cover mt-20`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
@@ -181,17 +197,23 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
         <FindMe email={email} socials={socials} customStyle={previewStyles} />
+        <Payment customStyle={previewStyles} socials={socials} />
     </div>
 
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
-        <PageHeader cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
+        <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
         <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
         <FindMe customStyle={styles} email={data.email} socials={data.socials} />
+        <Payment customStyle={styles} socials={data.socials} />
+        {/* MADE WITH FOLIO */}
+        {/* <div className="py-20 px-5 mt-10 pt-10 sm:text-center max-w-6xl m-auto">
+            <a href="https://follio.app" className="opacity-50">Made with 💛 by Folio</a>
+        </div> */}
     </div>
 
     return null
