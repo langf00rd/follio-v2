@@ -6,9 +6,13 @@ import PageHead from "../pageHead"
 const Landing = () => {
     return (
         <>
-            <PageHead title="Follio - Online portfolio builder 🚀" />
-            <Header />
-            <Hero />
+            <div className="text-[1.2rem]">
+                <PageHead title="Follio - Online portfolio builder 🚀" />
+                <Header />
+                <Hero />
+                <Features />
+                <FeaturedUsers />
+            </div>
         </>
     )
 }
@@ -16,23 +20,30 @@ const Landing = () => {
 const Header = () => {
     return <header className="fixed top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
         <Logo />
-        <nav className={styles.nav}>
+        {/* <nav className={styles.nav}>
             <ul className={styles.navLinks}>
                 <Link passHref={true} href='#'><p className={styles.link}>Home</p></Link>
                 <Link passHref={true} href='#'><p className={styles.link}>About</p></Link>
                 <Link passHref={true} href='#'><p className={styles.link}>Services</p></Link>
                 <Link passHref={true} href='#'><p className={styles.link}>Contact</p></Link>
             </ul>
-        </nav>
+        </nav> */}
         <GetStartedButton />
     </header>
 }
 
 const Hero = () => {
     return <div className={styles.hero}>
-        <h1 className={styles.h1}>Online Portfolio Builder</h1>
-        <p className='my-5'>Get your portfolio website in minutes</p>
-        {/* <div className='flex items-center justify-center'><GetStartedButton /></div> */}
+        <div className="max-w-4xl m-auto">
+            <h1 className={styles.h1}>Free Online Portfolio Builder</h1>
+            <p className='my-10 opacity-50'>An easy way to create and deploy your portfolio site with your skills, projects, socials, meeting schedules, and custom domain for free!</p>
+            <div className='flex items-center justify-center flex-wrap'>
+                <GetStartedButton />
+                <div className="m-5">
+                    <Link href='' passHref={true}>View demo &rarr;</Link>
+                </div>
+            </div>
+        </div>
     </div>
 }
 
@@ -42,9 +53,89 @@ const GetStartedButton = () => {
     </Link>
 }
 
+const Features = () => {
+    return (
+        <>
+            <div className={styles.section}>
+                <div className={styles.sectionWrapper}>
+                    <h1 className={styles.h2}>What you can do?</h1>
+                    <p className='my-5 opacity-50 mb-20'>No need for designers or plugins; simply pick a template, style it anyway you want, and fill it with your info. Boom! You have your website.</p>
+                    <div className="flex items-center justify-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 w-full">
+                            <UpdateFeature label="Dope themes" icon="🎨" />
+                            <UpdateFeature label="Custom QR code" icon="👩‍💻" />
+                            <UpdateFeature label="Color customization" icon="💅" />
+                            <UpdateFeature label="Responsive design" icon="📱" />
+                            <UpdateFeature working={true} label="Page analytics" icon="📈" />
+                            <UpdateFeature working={true} label="Meeting scheduling" icon="📆" />
+                            {/* <UpdateFeature soon={true} label="Submitting your design" icon="😎" /> */}
+                            <UpdateFeature soon={true} label="Custom domain" icon="🌟" />
+                            <UpdateFeature label="Tips/donations" icon="💰" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const FeaturedUsers = () => {
+    return (
+        <>
+            <div className={styles.section}>
+                <div className={styles.sectionWrapper}>
+                    <h1 className={styles.h2}>Loved by twitter</h1>
+                    <div className="m-20" />
+                    <div className="flex flex-wrap max-w-5xl m-auto items-center justify-evenly wrap">
+                        <User role="SWE Student" link="https://www.follio.app/azimifardous" twitter="https://twitter.com/azimifardous" image="http://res.cloudinary.com/breellz/image/upload/v1649851342/v1ywskvkyesqkzsc7zkp.jpg" />
+                        <User role="Software Developer" link="https://www.follio.app/abbaskhan" twitter="https://twitter.com/KhanAbbas201" image="https://lh3.googleusercontent.com/a-/AOh14GjKbuUSwQDcsQwc3FaiQBLJunny09pS8b7tvMGklQ=s96-c" />
+                        <User role="Web3 dev, Content creator" link="https://www.follio.app/favoronuoha" twitter="https://twitter.com/heyOnuoha" image="https://pbs.twimg.com/profile_images/1468914223405277189/_25swnVl_400x400.jpg" />
+                        <User role="Blockchain developer" link="https://https://www.follio.app/thevatsal" twitter="https://twitter.com/theVatsal_eth" image="http://res.cloudinary.com/breellz/image/upload/v1649672271/mlejeypghxifl67zmatb.png" />
+                        <User role="Digital artist" link="https://www.follio.app/eaziart" twitter="https://twitter.com/ezi_art_" image="https://pbs.twimg.com/profile_images/1508088843253256196/CGQCAjT8_400x400.jpg" />
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const User = ({ image, role, link, twitter }) => {
+    return <div className="flex flex-col items-center mb-20 sm:mb-0 sm:mr-10">
+        <a href={twitter} target="_blank" rel="noreferrer">
+            <img src={image} className="rounded-full w-56 h-56 bg-[#f1f1f1] hover:opacity-70" />
+        </a>
+        <p className="text-xl mt-5">{role}</p>
+        <a href={link} target="_blank" rel="noreferrer" className="text-[#3d5bff] mt-1">{link.replace("https://", "").replace("www.", "")}</a>
+        <Twitter twitterLink={twitter} />
+    </div>
+}
+
+const Twitter = ({ twitterLink }) => {
+    return <a href={twitterLink} target="_blank" rel="noreferrer" className="mt-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" /></svg>
+    </a>
+}
+
+const UpdateFeature = ({ label, soon = false, working = false, icon }) => {
+    return <div className="m-2">
+        <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>{icon}</div>
+            <p className="text-xl text-center">{label}</p>
+            {soon ? <p className="opacity-50 text-sm">Coming soon</p> : <></>}
+            {working ? <p className="opacity-50 text-sm text-brand">In progress</p> : <></>}
+        </div>
+    </div>
+}
+
 const styles = {
-    hero: `w-screen lg:px-56 px-5 m-auto border-t border-t-[#f1f1f1] lg:py-44 mt-[63px] py-32 text-center`,
-    h1: `h1 lg:text-5xl text-3xl`,
+    hero: `w-screen lg:px-56 px-5 m-auto lg:py-44 mt-[63px] py-32 text-center`,
+    // hero: `w-screen lg:px-56 px-5 m-auto border-t border-t-[#f1f1f1] lg:py-44 mt-[63px] py-32 text-center`,
+    h1: `h1 lg:text-7xl text-3xl`,
+    h2: `h2 lg:text-5xl text-2xl`,
+    section: `py-32`,
+    sectionWrapper: `max-w-6xl m-auto text-center`,
+    featureCard: `hover:bg-[#fff] transition bg-[#f1f1f1] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
+    featureIcon: `block mb-6 text-5xl`,
     navLinks: `flex items-center hidden lg:flex`,
     link: `p-3 hover:text-brand cursor-pointer`
 }
