@@ -14,7 +14,7 @@ const Landing = () => {
 }
 
 const Header = () => {
-    return <header className="fixed top-0 left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
+    return <header className="fixed top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
         <Logo />
         <nav className={styles.nav}>
             <ul className={styles.navLinks}>

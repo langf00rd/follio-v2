@@ -1,27 +1,20 @@
+import { useContext, useEffect } from "react"
 import { layoutStyles } from "../../components/styles/layout"
 import { FollioContext } from "../../context/follioContext"
-import { useRouter } from 'next/router'
-import { useContext, useEffect } from "react"
-import { useSession } from "next-auth/react"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
-import EditPageLinks from "../../components/ui/sidebar/editPageLinks"
+import EditSideMenu from "../../components/ui/sidebar/editSideMenu"
 import Introduction from "../../components/ui/editPages/introduction"
 import Media from "../../components/ui/editPages/media"
 import Tools from "../../components/ui/editPages/tools"
 import Socials from "../../components/ui/editPages/socials"
 import EditPageTabs from "../../components/ui/editPageTabs"
-import Button from "../../components/ui/buttons/button"
 import Projects from "../../components/ui/editPages/projects"
-import BottomNav from "../../components/ui/bottomNav"
-import Styles from "../../components/ui/editPages/styles"
-import Theme1 from "../../components/themes/theme1"
 import Loader from "../../components/ui/loader"
 import PageHead from "../../pageHead"
 import PreviewComponent from "../../components/previews/preview"
 import Payment from "../../components/ui/editPages/payment"
 import Shop from "../../components/ui/editPages/shop"
-// import Payment from "../../components/ui/editPages/payment"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -42,7 +35,7 @@ const Edit = () => {
 
     useEffect(() => {
         checkIsLoggedIn()
-    }, [])
+    }, [checkIsLoggedIn])
 
     if (showLoader) return <Loader />
 
@@ -54,7 +47,7 @@ const Edit = () => {
                 <div className="hidden lg:block">
                     <PageControlLinks />
                     <div className="m-5" />
-                    <EditPageLinks />
+                    <EditSideMenu />
                 </div>
 
                 <div className="w-full max-w-xl">
