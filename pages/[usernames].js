@@ -1,5 +1,7 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
+import Theme1 from "../components/themes/theme1"
+import Theme2 from "../components/themes/theme2"
 import Theme3 from "../components/themes/theme3"
 import Button from "../components/ui/buttons/button"
 import Loader from "../components/ui/loader"

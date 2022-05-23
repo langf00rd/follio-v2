@@ -6,13 +6,16 @@ import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import PageHead from "../../components/pageHead"
 import PreviewComponent from "../../components/previews/preview"
+import Loader from "../../components/ui/loader"
 
 const Analytics = () => {
-    const { checkIsLoggedIn } = useContext(FollioContext)
+    const { showLoader, checkIsLoggedIn } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
     }, [checkIsLoggedIn])
+
+    if (showLoader) return <Loader />
 
     return <div>
         <Header />

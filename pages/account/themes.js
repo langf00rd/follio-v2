@@ -9,13 +9,16 @@ import theme3 from '../../assets/themes/3.png'
 import ThemeCard from '../../components/ui/themeCard'
 import PageHead from '../../components/pageHead'
 import PreviewComponent from '../../components/previews/preview'
+import Loader from '../../components/ui/loader'
 
 const Themes = () => {
-    const { checkIsLoggedIn } = useContext(FollioContext)
+    const { showLoader, checkIsLoggedIn } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
-    }, [])
+    }, [checkIsLoggedIn])
+
+    if (showLoader) return <Loader />
 
     return <div>
         <Header />

@@ -4,7 +4,7 @@ export const layoutStyles = {
     // container: `modal-content bg-white lg:shadow-md h-max p-3 lg:p-5 rounded-lg border border-borderColor`,
     // container: `bg-white lg:shadow-md h-max p-5 rounded-lg`,
     modalContainer: `p-5 py-20 lg:py-10 modal-content bg-white sm:h-max lg:w-5/12 w-screen h-screen overflow-y-scroll rounded-lg`,
-    modalBody: `flex items-center justify-center fixed inset-0 z-50 bg-[#9095a0bf]`,
+    modalBody: `flex items-center justify-center fixed inset-0 z-30 bg-[#9095a0bf]`,
     main: `pt-20 w-screen px-5 lg:px-20 pb-56 sm:pb-0`,
     mainWrapper: `-mt-3 py-5 lg:min-h-[93vh] flex`,
     // comingSoonLabel: `fixed bottom-0 w-screen flex`,
