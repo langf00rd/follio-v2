@@ -48,19 +48,24 @@ const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, l
 }
 
 const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) => {
-    return <section className={customStyle.section} id="hero">
-        <div className={customStyle.sectionWrapper}>
-            <div>
-                <p>{greeting}</p>
-                <p className={customStyle.textLg}>{tagline}</p>
-                <p className="opacity-50">{work}</p>
-                {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Lets connect &rarr;</a> : null}
-            </div>
-            {profilePhoto && (typeof profilePhoto === "object")
-                ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
-                : <img className={customStyle.heroImg} alt="profile photo" src={profilePhoto} />}
-        </div>
-    </section>
+    return (
+        <>
+            <div className="mt-20" />
+            <section className={customStyle.section} id="hero">
+                <div className={customStyle.sectionWrapper}>
+                    <div>
+                        <p>{greeting}</p>
+                        <p className={customStyle.textLg}>{tagline}</p>
+                        <p className="opacity-50">{work}</p>
+                        {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Lets connect &rarr;</a> : null}
+                    </div>
+                    {profilePhoto && (typeof profilePhoto === "object")
+                        ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
+                        : <img className={customStyle.heroImg} alt="profile photo" src={profilePhoto} />}
+                </div>
+            </section>
+        </>
+    )
 }
 
 const About = ({ about, customStyle }) => {
@@ -107,7 +112,7 @@ const Tools = ({ customStyle, tools = [] }) => {
     </section>
 }
 
-const FindMe = ({ customStyle, socials, email }) => {
+const Contact = ({ customStyle, socials, email }) => {
     if (!socials) return null
     return <section className={customStyle.section} id="contact">
         <div className={customStyle.sectionWrapper}>
@@ -154,12 +159,12 @@ const styles = {
     headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `border-b border-b-[#cccccc44] h-20 fixed top-0 left-0 z-10 w-screen bg-[#fff]`,
     headerLink: `ml-10 cursor-pointer hover:opacity-50 transition`,
-    section: `mt-20 lg:py-32 py-20`,
+    section: `mt-10 py-20`,
     grid: `grid lg:grid-cols-2 grid-cols-1`,
     body: `bg-white text-[1.2rem]`,
     sectionWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
-    projectCard: `m-5 mx-0 lg:mr-5`,
+    projectCard: `text-left m-5 mx-0 lg:mr-5`,
     heroImg: `w-[400px] h-[400px] object-cover lg:ml-10 mt-20 lg:mt-0 rounded-xl`,
     menuBtn: `lg:hidden`,
     logo: `h-[39px] object-cover`,
@@ -173,13 +178,13 @@ const previewStyles = {
     header: `border-b border-b-[#cccccc44] h-20`,
     headerLink: `hidden`,
     section: `py-20`,
+    sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     grid: `grid grid-cols-1`,
     logo: `h-[39px] object-cover`,
     body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
-    sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
-    projectCard: `m-5 mx-0`,
+    projectCard: `text-left m-5 mx-0`,
     heroImg: `rounded-md w-full h-96 object-cover mt-20`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
@@ -196,7 +201,7 @@ const Theme3 = ({ data = {}, editMode = false }) => {
         <About customStyle={previewStyles} about={about} />
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
-        <FindMe email={email} socials={socials} customStyle={previewStyles} />
+        <Contact email={email} socials={socials} customStyle={previewStyles} />
         <Payment customStyle={previewStyles} socials={socials} />
         <MadeWithFollio isPremiumAccount={isPremiumAccount} />
     </div>
@@ -209,7 +214,7 @@ const Theme3 = ({ data = {}, editMode = false }) => {
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
-        <FindMe customStyle={styles} email={data.email} socials={data.socials} />
+        <Contact customStyle={styles} email={data.email} socials={data.socials} />
         <Payment customStyle={styles} socials={data.socials} />
         <MadeWithFollio isPremiumAccount={data.isPremiumAccount} />
     </div>

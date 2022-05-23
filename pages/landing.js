@@ -129,10 +129,14 @@ const FeaturedUsers = () => {
 const Quote = () => {
     return (
         <>
-            <div className={styles.section}>
-                <div className={styles.sectionWrapper}>
-                    <h1 className={styles.h2}>&ldquo; Follio was created so that anyone can have their own portfolio site up and running in just a few clicks. &rdquo;</h1>
-                    <p className="italic my-5 opacity-50">Langford - Creator</p>
+            <div className="">
+                <div className={styles.section}>
+                    <div className={styles.sectionWrapper}>
+                        <div className="max-w-6xl m-auto text-center p-5 bg-brand text-white pt-20 rounded-2xl">
+                            <h1 className={styles.h2}>&ldquo; Follio was created so that anyone can have their own portfolio site up and running in just a few clicks. &rdquo;</h1>
+                            <p className="italic my-5 opacity-50">Langford - Creator</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
@@ -202,7 +206,7 @@ const UpdateFeature = ({ label, soon = false, working = false, icon }) => {
             <div className={styles.featureIcon}>{icon}</div>
             <p className="text-xl text-center">{label}</p>
             {soon ? <p className="opacity-50 text-sm">Coming soon</p> : <></>}
-            {working ? <p className="opacity-50 text-sm text-brand">In progress</p> : <></>}
+            {working ? <p className="opacity-50 text-sm text-brand">loading...</p> : <></>}
         </div>
     </div>
 }
