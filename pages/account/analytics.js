@@ -1,9 +1,10 @@
+import { layoutStyles } from "../../components/styles/layout"
+import { FollioContext } from "../../context/follioContext"
+import { useContext, useEffect } from "react"
+import { textStyles } from "../../components/styles/textStyles"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
-import { layoutStyles } from "../../components/styles/layout"
-import PageHead from "../../pageHead"
-import { useContext, useEffect } from "react"
-import { FollioContext } from "../../context/follioContext"
+import PageHead from "../../components/pageHead"
 import PreviewComponent from "../../components/previews/preview"
 
 const Analytics = () => {
@@ -11,7 +12,7 @@ const Analytics = () => {
 
     useEffect(() => {
         checkIsLoggedIn()
-    }, [])
+    }, [checkIsLoggedIn])
 
     return <div>
         <Header />
@@ -21,6 +22,9 @@ const Analytics = () => {
                 <div className="hidden lg:block"><PageControlLinks /></div>
                 <div className="w-full max-w-xl">
                     <p className={layoutStyles.textLg}>Analytics</p>
+                    <div className={layoutStyles.container}>
+                        <h1 className={textStyles.comingSoonLabel}>Coming soon 😉</h1>
+                    </div>
                 </div>
                 <PreviewComponent />
             </div>
