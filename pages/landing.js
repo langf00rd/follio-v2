@@ -7,7 +7,7 @@ const Landing = () => {
     return (
         <>
             <div className="lg:text-[1.2rem]">
-                <PageHead title="Follio - Online portfolio builder 🚀" />
+                <PageHead title="Follio - Free Online portfolio builder 🚀" />
                 <Header />
                 <Hero />
                 <Features />
@@ -37,13 +37,13 @@ const ProductHuntBanner = () => {
 const Footer = () => {
     return (
         <>
-            <p className="text-center p-20 opacity-90">&copy; 2022 Follio | Product of Vaporware Studios</p>
+            <p className="text-center p-10 opacity-90">&copy; 2022 Follio | Powered by Vaporware Studios</p>
         </>
     )
 }
 
 const Header = () => {
-    return <header className="fixed z-10 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
+    return <header className="fixed z-10 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px]">
         <Logo />
         {/* <nav className={styles.nav}>
             <ul className={styles.navLinks}>
@@ -75,7 +75,7 @@ const Hero = () => {
 
 const GetStartedButton = () => {
     return <Link href='/auth' passHref={true}>
-        <p className={buttonStyles.brandButton}>Get started</p>
+        <p className={buttonStyles.button}>Get started</p>
     </Link>
 }
 
@@ -95,7 +95,7 @@ const Features = () => {
                             <UpdateFeature soon={true} label="Custom domain" icon="🌟" />
                             <UpdateFeature working={true} label="Tips/donations" icon="💰" />
                             <UpdateFeature working={true} label="Page analytics" icon="📈" />
-                            <UpdateFeature working={true} label="Meeting scheduling" icon="📆" />
+                            <UpdateFeature working={true} label="Meeting schedules" icon="📆" />
                             <UpdateFeature working={true} label="Mini shop" icon="🛍️" />
                             {/* <UpdateFeature soon={true} label="Submitting your design" icon="😎" /> */}
                         </div>
