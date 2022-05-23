@@ -5,6 +5,7 @@ import CoffeeButton from "../ui/coffeeButton"
 import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
+import MadeWithFollio from "../ui/madeWithFollio"
 
 const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>
@@ -47,8 +48,8 @@ const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, l
 }
 
 const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) => {
-    return <section className={customStyle.hero} id="hero">
-        <div className={customStyle.heroWrapper}>
+    return <section className={customStyle.section} id="hero">
+        <div className={customStyle.sectionWrapper}>
             <div>
                 <p>{greeting}</p>
                 <p className={customStyle.textLg}>{tagline}</p>
@@ -64,8 +65,8 @@ const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) =
 
 const About = ({ about, customStyle }) => {
     if (!about) return null
-    return <section className={customStyle.hero} id="about">
-        <div className={customStyle.heroWrapper}>
+    return <section className={customStyle.section} id="about">
+        <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>About me</p>
                 <p className="opacity-50">{about}</p>
@@ -76,8 +77,8 @@ const About = ({ about, customStyle }) => {
 
 const Projects = ({ customStyle, projects = [] }) => {
     if (projects.length < 1) return null
-    return <section className={customStyle.hero} id="projects">
-        <div className={customStyle.heroWrapper}>
+    return <section className={customStyle.section} id="projects">
+        <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>My portfolio</p>
                 <ul className={customStyle.grid}>
@@ -92,8 +93,8 @@ const Projects = ({ customStyle, projects = [] }) => {
 
 const Tools = ({ customStyle, tools = [] }) => {
     if (tools.length < 1) return null
-    return <section className={customStyle.hero} id="tools">
-        <div className={customStyle.heroWrapper}>
+    return <section className={customStyle.section} id="tools">
+        <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>Tools &amp; skills</p>
                 <ul className="flex flex-wrap">
@@ -108,8 +109,8 @@ const Tools = ({ customStyle, tools = [] }) => {
 
 const FindMe = ({ customStyle, socials, email }) => {
     if (!socials) return null
-    return <section className={customStyle.hero} id="contact">
-        <div className={customStyle.heroWrapper}>
+    return <section className={customStyle.section} id="contact">
+        <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>Lets connect</p>
                 <Socials socials={socials} email={email} />
@@ -127,7 +128,7 @@ const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
 }
 
 const FeaturedVideo = ({ customStyle, featuredVideo }) => {
-    if (featuredVideo && featuredVideo !== "") return <section className={customStyle.hero} id="featured-video">
+    if (featuredVideo && featuredVideo !== "") return <section className={customStyle.section} id="featured-video">
         {featuredVideo && (typeof featuredVideo === "object")
             ? <video src={URL.createObjectURL(featuredVideo)} controls className={customStyle.featuredVideo} />
             : <video src={featuredVideo} controls className={customStyle.featuredVideo}></video>
@@ -139,8 +140,8 @@ const FeaturedVideo = ({ customStyle, featuredVideo }) => {
 }
 
 const Payment = ({ socials, customStyle }) => {
-    if (socials.coffee !== "") return <section className={customStyle.hero} id="contact">
-        <div className={customStyle.heroWrapper}>
+    if (socials.coffee !== "") return <section className={customStyle.section} id="contact">
+        <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>I receive donations</p>
                 <CoffeeButton coffee={socials.coffee} />
@@ -153,14 +154,13 @@ const styles = {
     headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `border-b border-b-[#cccccc44] h-20 fixed top-0 left-0 z-10 w-screen bg-[#fff]`,
     headerLink: `ml-10 cursor-pointer hover:opacity-50 transition`,
-    hero: `mt-20 lg:py-32 py-20`,
+    section: `mt-20 lg:py-32 py-20`,
     grid: `grid lg:grid-cols-2 grid-cols-1`,
     body: `bg-white text-[1.2rem]`,
-    heroWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
+    sectionWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0 lg:mr-5`,
     heroImg: `w-[400px] h-[400px] object-cover lg:ml-10 mt-20 lg:mt-0 rounded-xl`,
-    // heroImg: `rounded-md w-full h-96 lg:w-[80%] object-cover lg:ml-5 mt-20 lg:mt-0`,
     menuBtn: `lg:hidden`,
     logo: `h-[39px] object-cover`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
@@ -172,12 +172,12 @@ const previewStyles = {
     headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `border-b border-b-[#cccccc44] h-20`,
     headerLink: `hidden`,
-    hero: `py-20`,
+    section: `py-20`,
     grid: `grid grid-cols-1`,
     logo: `h-[39px] object-cover`,
     body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
-    heroWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
+    sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
     projectCard: `m-5 mx-0`,
     heroImg: `rounded-md w-full h-96 object-cover mt-20`,
@@ -187,33 +187,31 @@ const previewStyles = {
 }
 
 const Theme2 = ({ data = {}, editMode = false }) => {
-    const { skills, about, cv, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
+    const { skills, about, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={previewStyles.body}>
         <PageHeader cv={cv} logo={logo} fullname={fullname} customStyle={previewStyles} />
-        {/* <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} /> */}
+        <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
         <FeaturedVideo customStyle={previewStyles} featuredVideo={featuredVideo} />
         <About customStyle={previewStyles} about={about} />
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
         <FindMe email={email} socials={socials} customStyle={previewStyles} />
         <Payment customStyle={previewStyles} socials={socials} />
+        <MadeWithFollio isPremiumAccount={isPremiumAccount} />
     </div>
 
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
         <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
-        {/* <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} /> */}
+        <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
         <FindMe customStyle={styles} email={data.email} socials={data.socials} />
         <Payment customStyle={styles} socials={data.socials} />
-        {/* MADE WITH FOLIO */}
-        {/* <div className="py-20 px-5 mt-10 pt-10 sm:text-center max-w-6xl m-auto">
-            <a href="https://follio.app" className="opacity-50">Made with 💛 by Folio</a>
-        </div> */}
+        <MadeWithFollio isPremiumAccount={data.isPremiumAccount} />
     </div>
 
     return null
