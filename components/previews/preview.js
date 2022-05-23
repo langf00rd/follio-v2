@@ -10,6 +10,8 @@ const PreviewComponent = () => {
 
     return <div>
         {showPreview ? <div className="modal-content lg:hidden w-screen h-screen pt-20 bg-white fixed top-0 left-0">
+            {theme === 1 ? <Theme1 editMode={true} /> : null}
+            {theme === 2 ? <Theme2 editMode={true} /> : null}
             {theme === 3 ? <Theme3 editMode={true} /> : null}
         </div > : null}
 
