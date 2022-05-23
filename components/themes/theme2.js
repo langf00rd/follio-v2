@@ -186,14 +186,14 @@ const previewStyles = {
     button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
 
-const Theme1 = ({ data = {}, editMode = false }) => {
+const Theme2 = ({ data = {}, editMode = false }) => {
     const { skills, about, cv, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={previewStyles.body}>
         <PageHeader cv={cv} logo={logo} fullname={fullname} customStyle={previewStyles} />
         {/* <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} /> */}
-        {/* <FeaturedVideo customStyle={previewStyles} featuredVideo={featuredVideo} /> */}
-        {/* <About customStyle={previewStyles} about={about} /> */}
+        <FeaturedVideo customStyle={previewStyles} featuredVideo={featuredVideo} />
+        <About customStyle={previewStyles} about={about} />
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
         <FindMe email={email} socials={socials} customStyle={previewStyles} />
@@ -204,8 +204,8 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
         <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
         {/* <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} /> */}
-        {/* <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} /> */}
-        {/* <About customStyle={styles} about={data.about} /> */}
+        <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
+        <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
         <FindMe customStyle={styles} email={data.email} socials={data.socials} />
@@ -219,4 +219,4 @@ const Theme1 = ({ data = {}, editMode = false }) => {
     return null
 }
 
-export default Theme1
+export default Theme2

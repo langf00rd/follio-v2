@@ -1,11 +1,11 @@
+import { layoutStyles } from "../../components/styles/layout"
+import { FollioContext } from "../../context/follioContext"
+import { useContext, useEffect } from "react"
+import { textStyles } from "../../components/styles/textStyles"
 import Header from "../../components/ui/header"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
-import { layoutStyles } from "../../components/styles/layout"
-import PageHead from "../../pageHead"
-import { useContext, useEffect } from "react"
-import { FollioContext } from "../../context/follioContext"
+import PageHead from "../../components/pageHead"
 import PreviewComponent from "../../components/previews/preview"
-import { textStyles } from "../../components/styles/textStyles"
 
 const Analytics = () => {
     const { checkIsLoggedIn } = useContext(FollioContext)

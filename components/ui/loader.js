@@ -1,4 +1,4 @@
-import PageHead from "../../pageHead"
+import PageHead from "../pageHead"
 import { layoutStyles } from "../styles/layout"
 
 const Loader = () => {

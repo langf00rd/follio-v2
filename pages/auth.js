@@ -3,7 +3,7 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 import { FollioContext } from "../context/follioContext"
 import { useRouter } from "next/dist/client/router"
 import Button from "../components/ui/buttons/button"
-import PageHead from "../pageHead"
+import PageHead from '../components/pageHead'
 import Logo from "../components/logo"
 import Google from "../components/ui/buttons/auth/google"
 

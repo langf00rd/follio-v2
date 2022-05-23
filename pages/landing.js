@@ -1,7 +1,7 @@
 import { buttonStyles } from "../components/styles/buttonStyles"
 import Link from "next/link"
 import Logo from "../components/logo"
-import PageHead from "../pageHead"
+import PageHead from '../components/pageHead'
 
 const Landing = () => {
     return (

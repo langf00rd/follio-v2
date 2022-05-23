@@ -1,14 +1,14 @@
 import { useContext, useEffect } from "react"
-import PreviewComponent from "../../components/previews/preview"
 import { inputStyles } from "../../components/styles/input"
 import { layoutStyles } from "../../components/styles/layout"
 import { textStyles } from "../../components/styles/textStyles"
+import { FollioContext } from "../../context/follioContext"
+import PreviewComponent from "../../components/previews/preview"
 import Button from "../../components/ui/buttons/button"
 import Header from "../../components/ui/header"
 import Loader from "../../components/ui/loader"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
-import { FollioContext } from "../../context/follioContext"
-import PageHead from "../../pageHead"
+import PageHead from "../../components/pageHead"
 
 const Settings = () => {
     const { checkIsLoggedIn, setUsername, username, cv, handleMediaFiles, setCv, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
