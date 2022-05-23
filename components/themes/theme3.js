@@ -5,7 +5,7 @@ import CoffeeButton from "../ui/coffeeButton"
 import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
 import Link from "next/link"
-import MadeWithFollio from "../ui/madeWithFollio"
+import MadeWithFollio from "../ui/themes/madeWithFollio"
 
 const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, logo, cv }) => {
     return <header className={customStyle.header}>

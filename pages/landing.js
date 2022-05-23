@@ -88,15 +88,16 @@ const Features = () => {
                     <p className='my-5 opacity-50 mb-20'>No need for designers or plugins; simply pick a template, style it anyway you want, and fill it with your info. Boom! You have your website.</p>
                     <div className="flex items-center justify-center">
                         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 w-full">
-                            <UpdateFeature label="Dope themes" icon="🎨" />
-                            <UpdateFeature label="Custom QR code" icon="👩‍💻" />
-                            <UpdateFeature label="Color customization" icon="💅" />
+                            <UpdateFeature label="Multiple themes" icon="🎨" />
                             <UpdateFeature label="Responsive design" icon="📱" />
+                            <UpdateFeature label="SEO optimization" icon="🔍" />
+                            <UpdateFeature label="Custom QR code" icon="👩‍💻" />
+                            <UpdateFeature soon={true} label="Custom domain" icon="🌟" />
+                            <UpdateFeature working={true} label="Tips/donations" icon="💰" />
                             <UpdateFeature working={true} label="Page analytics" icon="📈" />
                             <UpdateFeature working={true} label="Meeting scheduling" icon="📆" />
+                            <UpdateFeature working={true} label="Mini shop" icon="🛍️" />
                             {/* <UpdateFeature soon={true} label="Submitting your design" icon="😎" /> */}
-                            <UpdateFeature soon={true} label="Custom domain" icon="🌟" />
-                            <UpdateFeature label="Tips/donations" icon="💰" />
                         </div>
                     </div>
                 </div>
@@ -184,7 +185,7 @@ const User = ({ image, role, link, twitter }) => {
             <img src={image} className="rounded-full w-56 h-56 bg-[#f1f1f1] hover:opacity-70" />
         </a>
         <p className="text-xl mt-5">{role}</p>
-        <Link href={link} target="_blank" rel="noreferrer" className="text-[#3d5bff] mt-1">{link.replace("https://", "").replace("www.", "")}</Link>
+        <Link href={link} passHref={true} target="_blank" rel="noreferrer"><p className="text-brand text-sm mt-1 cursor-pointer">{link.replace("https://", "").replace("www.", "")}</p></Link>
         <Twitter twitterLink={twitter} />
     </div>
 }

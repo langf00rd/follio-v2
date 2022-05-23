@@ -6,7 +6,7 @@ const MadeWithFollio = ({ isPremiumAccount }) => {
         <>
             <div className={styles.section}>
                 <div className={styles.sectionWrapper}>
-                    <Link href='https://www.follio.app'>
+                    <Link href='https://www.follio.app' passHref={true} target="_blank" rel="noreferrer">
                         Made with follio 💛
                     </Link>
                 </div>
