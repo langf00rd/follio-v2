@@ -148,7 +148,7 @@ const previewStyles = {
     sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
     projectCard: `text-left m-5 mx-0`,
-    heroImg: `w-[230px] h-[230px] m-auto rounded-md w-full h-96 object-cover mt-20`,
+    heroImg: `w-[230px] h-[230px] m-auto rounded-md w-full object-cover mt-20`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
     button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,

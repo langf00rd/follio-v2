@@ -12,6 +12,18 @@
     url("../assets/fonts/cal-sans.otf")
 }
 
+@font-face {
+  font-family: "CeraPro";
+  src: local("CeraPro"),
+    url("../assets/fonts/cera-pro bold.otf")
+}
+
+@font-face {
+  font-family: "CeraProRegular";
+  src: local("CeraProRegular"),
+    url("../assets/fonts/cera-pro-regular.otf")
+}
+
 html,
 body {
   padding: 0;
@@ -28,7 +40,7 @@ a {
 }
 
 * {
-  font-family: "", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: "CeraProRegular", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -90,11 +102,11 @@ h5,
 h6,
 b,
 .bold-font {
-  font-family: 'CalFonts', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: 'CeraPro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .logo-font {
-  font-family: 'Righteous', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: 'CeraPro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
