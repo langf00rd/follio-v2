@@ -40,8 +40,6 @@ const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, l
 
             <div className="flex items-center lg:hidden">
                 {cv ? <a href={cv} className={customStyle.button}>Download cv</a> : null}
-                {/* <div className="m-3" />
-                <img src={menu.src} alt="menu button" /> */}
             </div>
         </div>
     </header>
@@ -69,7 +67,7 @@ const About = ({ about, customStyle }) => {
         <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>About me</p>
-                <p className="opacity-50">{about}</p>
+                <p>{about}</p>
             </div>
         </div>
     </section>

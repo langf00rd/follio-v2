@@ -74,7 +74,7 @@ const About = ({ about, customStyle }) => {
         <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>About me</p>
-                <p className="opacity-50">{about}</p>
+                <p>{about}</p>
             </div>
         </div>
     </section>
