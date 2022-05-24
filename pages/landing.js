@@ -82,22 +82,24 @@ const GetStartedButton = () => {
 const Features = () => {
     return (
         <>
-            <div className={styles.section}>
-                <div className={styles.sectionWrapper}>
-                    <h1 className={styles.h2}>What you can do?</h1>
-                    <p className='my-5 opacity-50 mb-20'>No need for designers or plugins; simply pick a template, style it anyway you want, and fill it with your info. Boom! You have your website.</p>
-                    <div className="flex items-center justify-center">
-                        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 w-full">
-                            <UpdateFeature label="Multiple themes" icon="🎨" />
-                            <UpdateFeature label="Responsive design" icon="📱" />
-                            <UpdateFeature label="SEO optimization" icon="🔍" />
-                            <UpdateFeature label="Custom QR code" icon="👩‍💻" />
-                            <UpdateFeature soon={true} label="Custom domain" icon="🌟" />
-                            <UpdateFeature working={true} label="Tips/donations" icon="💰" />
-                            <UpdateFeature working={true} label="Page analytics" icon="📈" />
-                            <UpdateFeature working={true} label="Meeting schedules" icon="📆" />
-                            <UpdateFeature working={true} label="Mini shop" icon="🛍️" />
-                            {/* <UpdateFeature soon={true} label="Submitting your design" icon="😎" /> */}
+            <div className="bg-[#F5F6F7]">
+                <div className={styles.section}>
+                    <div className={styles.sectionWrapper}>
+                        <h1 className={styles.h2}>What you can do?</h1>
+                        <p className='my-5 opacity-50 mb-20'>No need for designers or plugins; simply pick a template, style it anyway you want, and fill it with your info. Boom! You have your website.</p>
+                        <div className="flex items-center justify-center">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 w-full">
+                                <UpdateFeature label="Multiple themes" icon="🎨" />
+                                <UpdateFeature label="Responsive design" icon="📱" />
+                                <UpdateFeature label="SEO optimization" icon="🔍" />
+                                <UpdateFeature label="Custom QR code" icon="👩‍💻" />
+                                <UpdateFeature soon={true} label="Custom domain" icon="🌟" />
+                                <UpdateFeature working={true} label="Tips/donations" icon="💰" />
+                                <UpdateFeature working={true} label="Page analytics" icon="📈" />
+                                <UpdateFeature working={true} label="Meeting schedules" icon="📆" />
+                                <UpdateFeature working={true} label="Mini shop" icon="🛍️" />
+                                {/* <UpdateFeature soon={true} label="Submitting your design" icon="😎" /> */}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,8 +134,13 @@ const Quote = () => {
             <div className="">
                 <div className={styles.section}>
                     <div className={styles.sectionWrapper}>
-                        <div className="max-w-6xl m-auto text-center p-5 bg-brand text-white pt-20 rounded-2xl">
-                            <h1 className={styles.h2}>&ldquo; Follio was created so that anyone can have their own portfolio site up and running in just a few clicks. &rdquo;</h1>
+                        <div className="max-w-6xl m-auto text-center p-5 pt-20 rounded-2xl">
+                            <div className="-mt-10" />
+                            <h1 className={styles.h2}>
+                                <span className={styles.quote}>&ldquo; </span>
+                                Follio was created so that anyone can have their own portfolio site up and running in just a few clicks
+                                <span className={styles.quote}> &rdquo;</span>
+                            </h1>
                             <p className="italic my-5 opacity-50">Langford - Creator</p>
                         </div>
                     </div>
@@ -167,9 +174,7 @@ const TestimonialCard = () => {
         <>
             <div className={styles.testimonial}>
                 <div className="text-left lg:-mb-10 pt-5 opacity-50">
-                    <h1 className={styles.h1}>
-                        &ldquo;
-                    </h1>
+                    <h1 className={styles.quote}>&ldquo;</h1>
                 </div>
                 <p className="mb-5 text-left">Man i just made my portffolio within a few minutes. Really enjoyed it</p>
                 <div className="text-sm mt-3">
@@ -216,10 +221,11 @@ const styles = {
     // hero: `w-screen lg:px-56 px-5 m-auto border-t border-t-[#f1f1f1] lg:py-44 mt-[63px] py-32 text-center`,
     h1: `h1 lg:text-7xl text-4xl`,
     h2: `h2 lg:text-5xl text-3xl`,
+    quote: `quote lg:text-7xl text-4xl`,
     section: `py-32`,
     sectionWrapper: `max-w-6xl m-auto text-center p-5`,
-    testimonial: `lg:w-1/3 m-3 bg-[#F5F6F7] border border-[#f1f1f1] p-5 w-max lg:px-10 rounded-xl text-right`,
-    featureCard: `hover:bg-[#fff] transition bg-[#F5F6F7] border border-[#f1f1f1] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
+    testimonial: `lg:w-1/3 m-3 bg-[#F5F6F7] p-5 w-max lg:px-10 rounded-xl text-right`,
+    featureCard: `hover:bg-[#F5F6F7] transition bg-[#fff] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
     featureIcon: `block mb-6 text-5xl`,
     navLinks: `flex items-center hidden lg:flex`,
     link: `p-3 hover:text-brand cursor-pointer`,
