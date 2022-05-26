@@ -38,7 +38,7 @@ const Auth = () => {
                 </div> : <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</h1>}
 
 
-                {session && (session.user && sessionStorage.getItem("data")) ?
+                {session ?
                     <div>
                         <div className="flex justify-center items-center mt-10">
                             <Button full={false} label="Go home" action={authenticateUser} />

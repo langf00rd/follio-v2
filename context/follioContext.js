@@ -455,6 +455,7 @@ export const FollioProvider = ({ children }) => {
         checkAuthStatus, updateAccount,
         setShowLoader, updateUsername,
         logo, favIcon,
+        loader, isPremiumAccount,
     }}>
         {children}
     </FollioContext.Provider>

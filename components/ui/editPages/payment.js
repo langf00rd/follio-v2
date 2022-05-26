@@ -5,7 +5,7 @@ import { layoutStyles } from "../../styles/layout"
 import { textStyles } from "../../styles/textStyles"
 
 const Payment = () => {
-    const { socials, setSocials } = useContext(FollioContext)
+    const { socials, setSocials, isPremiumAccount } = useContext(FollioContext)
 
     let newSocials = {
         twitter: socials.twitter,
@@ -39,13 +39,30 @@ const Payment = () => {
             </div>
 
             <div>
-                <label className={textStyles.label}>Ethereum wallet address</label>
-                <input className={inputStyles.input} value={newSocials.ethAddress} onChange={e => setNewSocials(e.target.value, "ethAddress")} placeholder="https://www.buymeacoffee.com/john-doe" />
+                <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p>
+                <div className='opacity-50'>
+                    <label className={textStyles.label}>Ethereum wallet address</label>
+                    <input
+                        className={inputStyles.input}
+                        disabled={!isPremiumAccount ? true : false}
+                        value={newSocials.ethAddress}
+                        onChange={e => setNewSocials(e.target.value, "ethAddress")}
+                        placeholder="eg. 0x1...234" />
+                </div>
             </div>
 
             <div>
-                <label className={textStyles.label}>PayPal</label>
-                <input type='email' className={inputStyles.input} value={newSocials.paypal} onChange={e => setNewSocials(e.target.value, "paypal")} placeholder="langford@paypal.com" />
+                <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p>
+                <div className='opacity-50'>
+                    <label className={textStyles.label}>PayPal</label>
+                    <input
+                        type='email'
+                        disabled={!isPremiumAccount ? true : false}
+                        className={inputStyles.input}
+                        value={newSocials.paypal}
+                        onChange={e => setNewSocials(e.target.value, "paypal")}
+                        placeholder="follio@paypal.com" />
+                </div>
             </div>
         </div>
     </div>

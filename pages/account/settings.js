@@ -11,7 +11,7 @@ import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import PageHead from "../../components/pageHead"
 
 const Settings = () => {
-    const { checkIsLoggedIn, setUsername, username, cv, handleMediaFiles, setCv, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
+    const { checkIsLoggedIn, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -41,43 +41,52 @@ const Settings = () => {
                             </div>
                         </div>
 
-
                         <div className="mb-[30px]">
-                            <p className={textStyles.label}>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
-                            <input
-                                className={inputStyles.fileInput}
-                                accept=".pdf, .doc, .docx, .rtf, .txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                type='file'
-                                onChange={e => {
-                                    handleMediaFiles(e.target.files[0], 'cv')
-                                }}
-                                placeholder={username} />
+                            <div>
+                                <p className={textStyles.label}>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
+                                <input
+                                    className={inputStyles.fileInput}
+                                    accept=".pdf, .doc, .docx, .rtf, .txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                    type='file'
+                                    onChange={e => {
+                                        handleMediaFiles(e.target.files[0], 'cv')
+                                    }}
+                                    placeholder={username} />
+                            </div>
                         </div>
 
-                        <div className="mb-[30px]">
-                            <p className={textStyles.label}>Custom page loader</p>
-                            <p className={textStyles.labelDescription}>Can be a gif or any other image format</p>
-                            <input
-                                className={inputStyles.fileInput}
-                                accept="image/*, .gif"
-                                type='file'
-                                onChange={e => {
-                                    handleMediaFiles(e.target.files[0], 'loader')
-                                }}
-                                placeholder={username} />
+                        <div>
+                            <p className='text-accent -mb-[10px]'>Go premium to unlock feature</p>
+                            <div className={!isPremiumAccount ? 'opacity-50 mb-[30px]' : 'mb-[30px]'}>
+                                <p className={textStyles.label}>Custom page loader image {loader ? <a target='_blank' className="text-brand" href={loader} rel="noreferrer">[view]</a> : null}</p>
+                                <p className={textStyles.labelDescription}>Upload an image to replace the default page loader</p>
+                                <input
+                                    className={inputStyles.fileInput}
+                                    accept="image/*, .gif, .png"
+                                    disabled={!isPremiumAccount ? true : false}
+                                    type='file'
+                                    onChange={e => {
+                                        handleMediaFiles(e.target.files[0], 'loader')
+                                    }}
+                                    placeholder={username} />
+                            </div>
                         </div>
 
-                        <div className="mb-[30px]">
-                            <p className={textStyles.label}>Page favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
-                            <p className={textStyles.labelDescription}>Add an image that shows up in the title bar of your browser</p>
-                            <input
-                                className={inputStyles.fileInput}
-                                accept=".ico"
-                                type='file'
-                                onChange={e => {
-                                    handleMediaFiles(e.target.files[0], 'fav-icon')
-                                }}
-                                placeholder={username} />
+                        <div>
+                            <p className='text-accent -mb-[10px]'>Go premium to unlock feature</p>
+                            <div className={!isPremiumAccount ? 'opacity-50 mb-[30px]' : 'mb-[30px]'}>
+                                <p className={textStyles.label}>Page favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
+                                <p className={textStyles.labelDescription}>Add an image that shows up in the title bar of your browser</p>
+                                <input
+                                    className={inputStyles.fileInput}
+                                    disabled={!isPremiumAccount ? true : false}
+                                    accept=".ico"
+                                    type='file'
+                                    onChange={e => {
+                                        handleMediaFiles(e.target.files[0], 'fav-icon')
+                                    }}
+                                    placeholder={username} />
+                            </div>
                         </div>
                     </div>
                 </div>
