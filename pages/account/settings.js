@@ -60,15 +60,17 @@ const Settings = () => {
                             <div className={!isPremiumAccount ? 'opacity-50 mb-[30px]' : 'mb-[30px]'}>
                                 <p className={textStyles.label}>Custom page loader image {loader ? <a target='_blank' className="text-brand" href={loader} rel="noreferrer">[view]</a> : null}</p>
                                 <p className={textStyles.labelDescription}>Upload an image to replace the default page loader</p>
-                                <input
-                                    className={inputStyles.fileInput}
-                                    accept="image/*, .gif, .png"
-                                    disabled={!isPremiumAccount ? true : false}
-                                    type='file'
-                                    onChange={e => {
-                                        handleMediaFiles(e.target.files[0], 'loader')
-                                    }}
-                                    placeholder={username} />
+
+                                {!isPremiumAccount
+                                    ? <input className={inputStyles.fileInput} type='file' disabled />
+                                    : <input
+                                        className={inputStyles.fileInput}
+                                        accept="image/*, .gif, .png"
+                                        type='file'
+                                        onChange={e => {
+                                            handleMediaFiles(e.target.files[0], 'loader')
+                                        }}
+                                        placeholder={username} />}
                             </div>
                         </div>
 
@@ -77,15 +79,18 @@ const Settings = () => {
                             <div className={!isPremiumAccount ? 'opacity-50 mb-[30px]' : 'mb-[30px]'}>
                                 <p className={textStyles.label}>Page favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
                                 <p className={textStyles.labelDescription}>Add an image that shows up in the title bar of your browser</p>
-                                <input
-                                    className={inputStyles.fileInput}
-                                    disabled={!isPremiumAccount ? true : false}
-                                    accept=".ico"
-                                    type='file'
-                                    onChange={e => {
-                                        handleMediaFiles(e.target.files[0], 'fav-icon')
-                                    }}
-                                    placeholder={username} />
+
+                                {!isPremiumAccount
+                                    ? <input className={inputStyles.fileInput} type='file' disabled />
+                                    : <input
+                                        className={inputStyles.fileInput}
+                                        disabled={!isPremiumAccount ? true : false}
+                                        accept=".ico"
+                                        type='file'
+                                        onChange={e => {
+                                            handleMediaFiles(e.target.files[0], 'fav-icon')
+                                        }}
+                                        placeholder={username} />}
                             </div>
                         </div>
                     </div>
