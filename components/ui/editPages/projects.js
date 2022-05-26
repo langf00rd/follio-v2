@@ -8,10 +8,11 @@ import Button from "../buttons/button"
 import GhostButton from "../buttons/ghostButton"
 import ProjectCard from "../projectCard";
 import { uiStyles } from "../../styles/ui";
+import { textStyles } from "../../styles/textStyles";
 
 const Projects = () => {
     let thumbnailRef;
-    const { projects, setProjects, uploadFile } = useContext(FollioContext)
+    const { projects, setProjects, uploadFile, setShowLoader } = useContext(FollioContext)
     const [name, setName] = useState("")
     const [link, setLink] = useState("")
     const [description, setDescription] = useState("")
@@ -28,38 +29,46 @@ const Projects = () => {
     }
 
     const addProject = async () => {
-        if (name.trim() === "") {
-            toast.warn('Please add a project name', toastConfig)
-            return
-        }
+        try {
+            if (name.trim() === "") {
+                toast.warn('Please add a project name', toastConfig)
+                return
+            }
 
-        if (!thumbnailFile) {
-            toast.warn('Please add a photo', toastConfig)
-            return
-        }
+            if (!thumbnailFile) {
+                toast.warn('Please add a thumbnail', toastConfig)
+                return
+            }
 
-        let _thumbnail = await uploadFile(thumbnailFile)
+            let _thumbnail = await uploadFile(thumbnailFile)
 
-        if (!_thumbnail) {
-            toast.error('An error occured. Try again', toastConfig)
+
+            if (!_thumbnail) {
+                toast.error('An error occured. Try again', toastConfig)
+                setShowProjectModal(false)
+                return
+            }
+
+            setShowLoader(true)
+
+            let newProject = {
+                name: name,
+                link: link,
+                description: description,
+                thumbnail: _thumbnail
+            }
+
+            setProjects([...projects, newProject])
+            setName("")
+            setLink("")
+            setDescription("")
+            setThumbnailFile()
             setShowProjectModal(false)
-            return
+            toast.success('Project added successfully! 🎉', toastConfig)
+            setShowLoader(false)
+        } catch (e) {
+            setShowLoader(false)
         }
-
-        let newProject = {
-            name: name,
-            link: link,
-            description: description,
-            thumbnail: _thumbnail
-        }
-
-        setProjects([...projects, newProject])
-        setName("")
-        setLink("")
-        setDescription("")
-        setThumbnailFile()
-        setShowProjectModal(false)
-        toast.success('Project added successfully! 🎉', toastConfig)
     }
 
     const removeProject = (index) => {
@@ -79,8 +88,6 @@ const Projects = () => {
     }
 
     return <div className={layoutStyles.container}>
-        <p className="mb-7 font-medium">Your projects</p>
-
         {projects.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any projects yet</div> : null}
 
         {projects.map((project, i) => {
@@ -89,19 +96,33 @@ const Projects = () => {
 
         <Button label="Add a project" action={() => setShowProjectModal(true)} />
 
+        {/* PROJECT MODAL */}
         {showProjectModal ? <div className={layoutStyles.modalBody}>
             <div className={layoutStyles.modalContainer}>
+                <div className="m-10 lg:hidden" />
                 <p className="font-extrabold text-2xl mb-10">Add your project</p>
                 {thumbnailFile ? <img src={URL.createObjectURL(thumbnailFile)} alt="" className="w-full h-44 rounded-md object-cover mb-5" /> : <></>}
-                <input className={inputStyles.input} value={name} onChange={e => setName(e.target.value)} placeholder="Project name*" />
-                <input className={inputStyles.input} value={description} onChange={e => setDescription(e.target.value)} placeholder="Project description" />
-                <input className={inputStyles.input} value={link} onChange={e => setLink(e.target.value)} placeholder="Link" />
 
-                {/* <input className={inputStyles.fileInput} accept="image/*" type="file" onChange={e => setThumbnailFile(e.target.files[0])} /> */}
+                <div>
+                    <label className={textStyles.label}>Project name*</label>
+                    <input className={inputStyles.input} value={name} onChange={e => setName(e.target.value)} placeholder="My portfolio website" />
+                </div>
 
-                <p className="opacity-50 my-3">Add project thumbnail</p>
-                <label onClick={() => thumbnailRef.click()} className={uiStyles.uploadBox}>+</label>
-                <input ref={e => thumbnailRef = e} accept="image/*" onChange={e => setThumbnailFile(e.target.files[0])} type="file" hidden />
+                <div>
+                    <label className={textStyles.label}>Description</label>
+                    <input className={inputStyles.input} value={description} onChange={e => setDescription(e.target.value)} placeholder="A simple website for selling electronic appliances" />
+                </div>
+
+                <div>
+                    <label className={textStyles.label}>Link</label>
+                    <input className={inputStyles.input} value={link} onChange={e => setLink(e.target.value)} placeholder="https://www.follio.app" />
+                </div>
+
+                <div>
+                    <label className={textStyles.label}>Project thumbnail</label>
+                    <input ref={e => thumbnailRef = e} accept="image/*" onChange={e => setThumbnailFile(e.target.files[0])} type="file" hidden />
+                    <label onClick={() => thumbnailRef.click()} className={uiStyles.uploadBox}>+</label>
+                </div>
 
                 <div className="flex items-center mt-5">
                     <Button label="Add project" action={addProject} full={false} />

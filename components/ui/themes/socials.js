@@ -1,8 +1,3 @@
-const styles = {
-    link: `hover:opacity-50`,
-    iconSize: `w-8 h-8 m-3`
-}
-
 export const Socials = ({ socials, themeColor, email }) => {
     const GitHub = ({ username }) => {
         return <a href={"https://github.com/" + username} target="_blank" rel="noreferrer" className={styles.link}>
@@ -93,18 +88,6 @@ export const Socials = ({ socials, themeColor, email }) => {
     }
 
     if (socials) return <div className="flex items-center flex-wrap">
-        {/* <Email email={email} />
-        <Twitter />
-        <GitHub />
-        <Linkedin />
-        <Behance />
-        <Stackoverflow /> :
-        <YouTube />
-        <Dribbble />
-        <Twitch />
-        <Discord />
-        <Instagram /> */}
-
         {email ? <Email email={email} /> : null}
         {socials.twitter ? <Twitter username={socials.twitter} /> : null}
         {socials.github ? <GitHub username={socials.github} /> : null}
@@ -119,4 +102,9 @@ export const Socials = ({ socials, themeColor, email }) => {
     </div>
 
     return null
+}
+
+const styles = {
+    link: `hover:opacity-50 transition hover:scale-75`,
+    iconSize: `w-8 h-8 m-3`
 }
