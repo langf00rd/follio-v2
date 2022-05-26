@@ -7,6 +7,7 @@ import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import PageHead from "../../components/pageHead"
 import PreviewComponent from "../../components/previews/preview"
 import Loader from "../../components/ui/loader"
+import FAB from "../../components/ui/fab"
 
 const Analytics = () => {
     const { showLoader, checkIsLoggedIn } = useContext(FollioContext)
@@ -20,6 +21,7 @@ const Analytics = () => {
     return <div>
         <Header />
         <PageHead title="Follio - Analytics" />
+        <FAB />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.previewMainWrapper}>
                 <div className="hidden lg:block"><PageControlLinks /></div>

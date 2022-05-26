@@ -159,10 +159,12 @@ const Testimonials = () => {
                     <h1 className={styles.h2}>From our amazing users</h1>
                     <div className="m-20" />
                     <div className="flex items-center justify-center flex-wrap">
-                        <TestimonialCard />
-                        <TestimonialCard />
-                        <TestimonialCard />
-                        <TestimonialCard />
+                        <TestimonialCard content='Man i just made my portfolio website within a few minutes. Really enjoyed it 😍' name='- Ahmad Fardous Azimi' link='https://www.follio.app/azimifardous' />
+                        <TestimonialCard content='This tool is excellent for creating a portfolio website and showcasing your projects and skills.' name='' link='' />
+                        <TestimonialCard content='I recommend follio because it is so simple to use in comparison to the other website builders. It is also free!' name='' link='' />
+                        <TestimonialCard content='I built my portfolio, and I just love the process you have created.' name='- Vatsal Awadhiya' link='https://www.follio.app/thevatsal' />
+                        {/* <TestimonialCard content='This tool is excellent for creating a portfolio website and showcasing your projects and skills.' name='- Gerald B.' link='' />
+                        <TestimonialCard content='I really love Follio because it is so simple to use in comparison to the other builders. It is also free.' name='- Patricia Fisher' link='' /> */}
                     </div>
                 </div>
             </div>
@@ -170,19 +172,17 @@ const Testimonials = () => {
     )
 }
 
-const TestimonialCard = () => {
+const TestimonialCard = ({ content, name, link }) => {
     return (
         <>
             <div className={styles.testimonial}>
                 <div className="text-left lg:-mb-10 pt-5 opacity-50">
                     <h1 className={styles.quote}>&ldquo;</h1>
                 </div>
-                <p className="mb-5 text-left">Man i just made my portffolio within a few minutes. Really enjoyed it</p>
+                <p className="mb-5 text-left">{content}</p>
                 <div className="text-sm mt-3">
-                    <p>Ahmad Fardous Azimi</p>
-                    <Link passHref={true} href='https://www.follio.app/azimifardous'>
-                        <p className={styles.pageLink}>follio.app/azimifardous</p>
-                    </Link>
+                    <p>{name}</p>
+                    <Link passHref={true} href={link}><p className={styles.pageLink}>{link.replace('https://www.','')}</p></Link>
                 </div>
             </div>
         </>

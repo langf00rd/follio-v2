@@ -9,7 +9,6 @@ export default function Home() {
 
   return <div>
     <PageHead title="Follio - Easy Free Portfolio Builder 🦄" />
-
-    {showLoader ? <Loader /> : <Landing />}
+    {showLoader ? <Loader image={null} /> : <Landing />}
   </div>
 }

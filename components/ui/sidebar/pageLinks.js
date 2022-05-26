@@ -14,6 +14,11 @@ const PageControlLinks = () => {
             <p className={editLinks.link} onClick={copyLink}>📝 Copy link</p>
             <p className={editLinks.link} onClick={shareLink}>🌍 Share link</p>
             <p className={editLinks.link}><Link href={`https://follio.app/${username}`}>👀 View published site</Link> </p>
+            <p className={editLinks.link} onClick={logout}>
+                <Link href="mailto:follioap@gmail.com" passHref>
+                    💁 Leave a review
+                </Link>
+            </p>
             <p className={editLinks.logoutLink} onClick={logout}>❌ Logout</p>
         </div>
         {showQrCode ? <QRCodeModal onCloseModal={() => setShowQrCode(false)} /> : null}

@@ -9,6 +9,7 @@ import Header from "../../components/ui/header"
 import Loader from "../../components/ui/loader"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import PageHead from "../../components/pageHead"
+import FAB from "../../components/ui/fab"
 
 const Settings = () => {
     const { checkIsLoggedIn, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
@@ -22,6 +23,7 @@ const Settings = () => {
     return <div>
         <Header />
         <PageHead title="Follio - Settings" />
+        <FAB />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.previewMainWrapper}>
                 <div className="hidden lg:block"><PageControlLinks /></div>

@@ -15,6 +15,7 @@ import PageHead from "../../components/pageHead"
 import PreviewComponent from "../../components/previews/preview"
 import Payment from "../../components/ui/editPages/payment"
 import Shop from "../../components/ui/editPages/shop"
+import FAB from "../../components/ui/fab"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -42,6 +43,7 @@ const Edit = () => {
     return <div>
         <Header />
         <PageHead title="Follio - Edit Your Page" />
+        <FAB />
         <div className={layoutStyles.main}>
             <div className={layoutStyles.previewMainWrapper}>
                 <div className="hidden lg:block">
