@@ -10,6 +10,7 @@ import Loader from "../../components/ui/loader"
 import PageControlLinks from "../../components/ui/sidebar/pageLinks"
 import PageHead from "../../components/pageHead"
 import FAB from "../../components/ui/fab"
+import PrimaryButton from "../../components/ui/buttons/primaryButton"
 
 const Settings = () => {
     const { checkIsLoggedIn, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
@@ -94,6 +95,10 @@ const Settings = () => {
                                         }}
                                         placeholder={username} />}
                             </div>
+                        </div>
+
+                        <div>
+                            <PrimaryButton label='Go premium' action={() => window.alert('Feature coming soon 🤞')} full={false} />
                         </div>
                     </div>
                 </div>

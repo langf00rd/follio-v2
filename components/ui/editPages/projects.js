@@ -99,6 +99,7 @@ const Projects = () => {
         {/* PROJECT MODAL */}
         {showProjectModal ? <div className={layoutStyles.modalBody}>
             <div className={layoutStyles.modalContainer}>
+                <div className="m-10 lg:hidden" />
                 <p className="font-extrabold text-2xl mb-10">Add your project</p>
                 {thumbnailFile ? <img src={URL.createObjectURL(thumbnailFile)} alt="" className="w-full h-44 rounded-md object-cover mb-5" /> : <></>}
 

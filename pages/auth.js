@@ -25,20 +25,20 @@ const Auth = () => {
         <div className={styles.mainInputBox}>
             <header className="fixed top-0 left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[60px]">
                 <Logo />
-                {session ? <div className="flex items-center">
+                {session && checkAuthStatus() ? <div className="flex items-center">
                     <img src={session.user.image} alt='avatar' className='w-10 h-10 rounded-full mr-3 bg-mid border border-mid' />
                     <p className="">{session.user.name}</p>
                 </div> : <></>}
             </header>
 
             <div className="max-w-4xl m-auto p-5 rounded-xl">
-                {!session ? <div>
+                {!session && checkAuthStatus() ? <div>
                     <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</h1>
                     <p className="opacity-50">You only need to sign up/in to account.</p>
                 </div> : <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</h1>}
 
 
-                {session ?
+                {session && checkAuthStatus() ?
                     <div>
                         <div className="flex justify-center items-center mt-10">
                             <Button full={false} label="Go home" action={authenticateUser} />
@@ -49,7 +49,7 @@ const Auth = () => {
                             <Google />
                         </div>
                     </div>}
-                {session ? <p onClick={logout} className='mt-5 cursor-pointer'>Logout</p> : null}
+                {session && checkAuthStatus() ? <p onClick={logout} className='mt-5 cursor-pointer'>Logout</p> : null}
             </div>
         </div>
     </div>
