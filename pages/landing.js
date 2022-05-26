@@ -13,7 +13,7 @@ const Landing = () => {
                 <Fade><Hero /></Fade>
                 <Fade bottom><Features /></Fade>
                 <Fade bottom><Quote /></Fade>
-                {/* <FeaturedUsers /> */}
+                <FeaturedUsers />
                 <Fade bottom><Testimonials /></Fade>
                 <Footer />
                 {/* 
@@ -114,14 +114,16 @@ const FeaturedUsers = () => {
         <>
             <div className={styles.section}>
                 <div className={styles.sectionWrapper}>
-                    <h1 className={styles.h2}>Loved by twitter</h1>
+                    <h1 className={styles.h2}>Meet the team</h1>
                     <div className="m-20" />
                     <div className="flex flex-wrap max-w-5xl m-auto items-center justify-evenly wrap">
-                        <User role="SWE Student" link="https://www.follio.app/azimifardous" twitter="https://twitter.com/azimifardous" image="http://res.cloudinary.com/breellz/image/upload/v1649851342/v1ywskvkyesqkzsc7zkp.jpg" />
-                        <User role="Software Developer" link="https://www.follio.app/abbaskhan" twitter="https://twitter.com/KhanAbbas201" image="https://lh3.googleusercontent.com/a-/AOh14GjKbuUSwQDcsQwc3FaiQBLJunny09pS8b7tvMGklQ=s96-c" />
-                        <User role="Web3 dev, Content creator" link="https://www.follio.app/favoronuoha" twitter="https://twitter.com/heyOnuoha" image="https://pbs.twimg.com/profile_images/1468914223405277189/_25swnVl_400x400.jpg" />
+                        <User name='Langford K.' role="Web &amp; Software Developer" link="https://www.follio.app/langford" twitter="https://twitter.com/langford_dev" image="http://res.cloudinary.com/follio/image/upload/v1653591951/kywoz8jztns5d7dzofc3.jpg" />
+                        <User name='Godfred TJ.' role="Fullstack Web Developer" link="https://www.follio.app/godfred" twitter="https://twitter.com/GoofieRey" image="https://www.redwolf.in/image/catalog/designer-Images/themes/iron-man-artist-image.png" />
+                        {/* <User role="Web &amp; Software Developer" link="https://www.follio.app/langford" twitter="https://twitter.com/azimifardous" image="http://res.cloudinary.com/breellz/image/upload/v1649851342/v1ywskvkyesqkzsc7zkp.jpg" />
+                        <User role="Fullstack Web Developer" link="https://www.follio.app/godfred" twitter="https://twitter.com/KhanAbbas201" image="https://lh3.googleusercontent.com/a-/AOh14GjKbuUSwQDcsQwc3FaiQBLJunny09pS8b7tvMGklQ=s96-c" /> */}
+                        {/* <User role="Web3 dev, Content creator" link="https://www.follio.app/favoronuoha" twitter="https://twitter.com/heyOnuoha" image="https://pbs.twimg.com/profile_images/1468914223405277189/_25swnVl_400x400.jpg" />
                         <User role="Blockchain developer" link="https://https://www.follio.app/thevatsal" twitter="https://twitter.com/theVatsal_eth" image="http://res.cloudinary.com/breellz/image/upload/v1649672271/mlejeypghxifl67zmatb.png" />
-                        <User role="Digital artist" link="https://www.follio.app/eaziart" twitter="https://twitter.com/ezi_art_" image="https://pbs.twimg.com/profile_images/1508088843253256196/CGQCAjT8_400x400.jpg" />
+                        <User role="Digital artist" link="https://www.follio.app/eaziart" twitter="https://twitter.com/ezi_art_" image="https://pbs.twimg.com/profile_images/1508088843253256196/CGQCAjT8_400x400.jpg" /> */}
                     </div>
                 </div>
             </div>
@@ -194,12 +196,13 @@ const TestimonialCard = ({ content, name, link }) => {
     )
 }
 
-const User = ({ image, role, link, twitter }) => {
+const User = ({ name, image, role, link, twitter }) => {
     return <div className="flex flex-col items-center mb-20 m-10 sm:mb-0 sm:mr-10">
         <a href={twitter} target="_blank" rel="noreferrer">
-            <img src={image} className="rounded-full w-56 h-56 bg-[#f1f1f166] hover:opacity-70" />
+            <img src={image} className="rounded-full w-56 h-56 object-cover bg-[#f1f1f166] hover:opacity-70" />
         </a>
-        <p className="text-xl mt-5">{role}</p>
+        <p className="text-xl mt-5 -mb-5">{name}</p>
+        <p className="text-xl mt-[25px] opacity-50">{role}</p>
         <Link href={link} passHref={true} target="_blank" rel="noreferrer"><p className="text-brand text-sm mt-1 cursor-pointer">{link.replace("https://", "").replace("www.", "")}</p></Link>
         <Twitter twitterLink={twitter} />
     </div>
