@@ -6,9 +6,10 @@ import Button from "../components/ui/buttons/button"
 import PageHead from '../components/pageHead'
 import Logo from "../components/logo"
 import Google from "../components/ui/buttons/auth/google"
+import Loader from "../components/ui/loader"
 
 const Auth = () => {
-    const { authenticateUser, checkAuthStatus, logout } = useContext(FollioContext)
+    const { authenticateUser, checkAuthStatus, logout, showLoader } = useContext(FollioContext)
     const { data: session } = useSession()
     const router = useRouter()
 
@@ -19,6 +20,8 @@ const Auth = () => {
     const onload = async () => {
         console.warn("auth status 🚩", await checkAuthStatus())
     }
+
+    if (showLoader) return <Loader image={null} />
 
     return <div className={styles.main}>
         <PageHead title="Follio - Account 🦄" />

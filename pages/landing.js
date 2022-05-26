@@ -145,12 +145,7 @@ const Quote = () => {
                                 Follio was created so that anyone can have their own portfolio site up and running in just a few clicks
                                 <span className={styles.quote}> &rdquo;</span>
                             </h1>
-                            <div className="flex items-center opacity-50 justify-center">
-                                <p className="italic my-5 mr-3">
-                                    Langford - Creator
-                                </p>
-                                <Twitter twitterLink='https://twitter.com/langford_dev' />
-                            </div>
+                            <p className="italic my-5 mr-3 opacity-50">Langford - Creator</p>
                         </div>
                     </div>
                 </div>

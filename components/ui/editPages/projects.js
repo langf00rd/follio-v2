@@ -90,11 +90,12 @@ const Projects = () => {
     return <div className={layoutStyles.container}>
         {projects.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any projects yet</div> : null}
 
+        <Button label="Add a project" action={() => setShowProjectModal(true)} />
+
         {projects.map((project, i) => {
             return <ProjectCard onRemove={() => removeProject(i)} index={i} editMode={true} link={project.link} name={project.name} key={i} thumbnail={project.thumbnail} description={project.description} />
         })}
 
-        <Button label="Add a project" action={() => setShowProjectModal(true)} />
 
         {/* PROJECT MODAL */}
         {showProjectModal ? <div className={layoutStyles.modalBody}>

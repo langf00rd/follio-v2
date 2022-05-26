@@ -83,11 +83,15 @@ export const FollioProvider = ({ children }) => {
     /** Begin user authentication */
     const authenticateUser = async () => {
         try {
+            console.log('checkAuthStatus', await checkAuthStatus())
+            setShowLoader(true)
+
             if (!await checkAuthStatus()) {
                 await signIn("google")
                 return
             }
             prefill(JSON.parse(sessionStorage.getItem("data")))
+            setShowLoader(false)
             router.replace("/account/edit")
         } catch (e) {
             alert("An error occured. Please try again later.")
