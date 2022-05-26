@@ -5,7 +5,7 @@ import Header from '../../components/ui/header'
 import PageControlLinks from '../../components/ui/sidebar/pageLinks'
 import theme1 from '../../assets/themes/1.png'
 import theme2 from '../../assets/themes/2.png'
-import theme3 from '../../assets/themes/3.png'
+// import theme3 from '../../assets/themes/3.png'
 import ThemeCard from '../../components/ui/themeCard'
 import PageHead from '../../components/pageHead'
 import PreviewComponent from '../../components/previews/preview'
@@ -33,7 +33,8 @@ const Themes = () => {
                     <div className={styles.themeCardContainer}>
                         <ThemeCard index={1} thumbnail={theme1} />
                         <ThemeCard index={2} thumbnail={theme2} />
-                        <ThemeCard index={3} thumbnail={theme3} />
+                        {/* <ThemeCard index={2} thumbnail={theme2} /> */}
+                        {/* <ThemeCard index={2} thumbnail={theme2} /> */}
                     </div>
                 </div>
                 <PreviewComponent />
