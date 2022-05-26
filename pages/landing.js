@@ -142,7 +142,12 @@ const Quote = () => {
                                 Follio was created so that anyone can have their own portfolio site up and running in just a few clicks
                                 <span className={styles.quote}> &rdquo;</span>
                             </h1>
-                            <p className="italic my-5 opacity-50">Langford - Creator</p>
+                            <div className="flex items-center opacity-50 justify-center">
+                                <p className="italic my-5 mr-3">
+                                    Langford - Creator
+                                </p>
+                                <Twitter twitterLink='https://twitter.com/langford_dev' />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,7 +187,7 @@ const TestimonialCard = ({ content, name, link }) => {
                 <p className="mb-5 text-left">{content}</p>
                 <div className="text-sm mt-3">
                     <p>{name}</p>
-                    <Link passHref={true} href={link}><p className={styles.pageLink}>{link.replace('https://www.','')}</p></Link>
+                    <Link passHref={true} href={link}><p className={styles.pageLink}>{link.replace('https://www.', '')}</p></Link>
                 </div>
             </div>
         </>
