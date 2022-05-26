@@ -2,6 +2,7 @@ import { buttonStyles } from "../components/styles/buttonStyles"
 import Link from "next/link"
 import Logo from "../components/logo"
 import PageHead from '../components/pageHead'
+import { Fade } from "react-reveal"
 
 const Landing = () => {
     return (
@@ -9,11 +10,11 @@ const Landing = () => {
             <div className="lg:text-[1.2rem]">
                 <PageHead title="Follio - Free Online portfolio builder 🚀" />
                 <Header />
-                <Hero />
-                <Features />
-                <Quote />
-                <FeaturedUsers />
-                <Testimonials />
+                <Fade><Hero /></Fade>
+                <Fade bottom><Features /></Fade>
+                <Fade bottom><Quote /></Fade>
+                {/* <FeaturedUsers /> */}
+                <Fade bottom><Testimonials /></Fade>
                 <Footer />
                 {/* 
                 */}
@@ -43,7 +44,7 @@ const Footer = () => {
 }
 
 const Header = () => {
-    return <header className="fixed z-10 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px]">
+    return <header className="fixed border-b border-b-[#f1f1f1] z-20 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px]">
         <Logo />
         {/* <nav className={styles.nav}>
             <ul className={styles.navLinks}>
@@ -61,12 +62,12 @@ const Hero = () => {
     return <div className={styles.hero}>
         {/* <ProductHuntBanner /> */}
         <div className="max-w-4xl m-auto">
-            <h1 className={styles.h1}>Free Online Portfolio Builder</h1>
+            <h1 className={styles.h1}> <span className='text-brand font-bold'>Free Online</span> Portfolio Builder</h1>
             <p className='my-10 opacity-50'>An easy way to create and deploy your portfolio site with your skills, projects, socials, meeting schedules, and custom domain for free!</p>
             <div className='flex items-center justify-center flex-wrap'>
                 <GetStartedButton />
                 <div className="m-5">
-                    <Link href='' passHref={true}>View demo &rarr;</Link>
+                    <Link href='https://follio.app/langford' passHref={true}>View demo &rarr;</Link>
                 </div>
             </div>
         </div>
@@ -82,11 +83,11 @@ const GetStartedButton = () => {
 const Features = () => {
     return (
         <>
-            <div className="bg-[#F5F6F7]">
+            <div className="bg-[#f1f1f133] border-r-0 border-l-0">
                 <div className={styles.section}>
                     <div className={styles.sectionWrapper}>
                         <h1 className={styles.h2}>What you can do?</h1>
-                        <p className='my-5 opacity-50 mb-20'>No need for designers or plugins; simply pick a template, style it anyway you want, and fill it with your info. Boom! You have your website.</p>
+                        <p className='my-5 opacity-50 mb-20 max-w-[700px] m-auto'>No need for designers or plugins; simply pick a template, style it anyway you want, and fill it with your info. Boom! You have your website.</p>
                         <div className="flex items-center justify-center">
                             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 w-full">
                                 <UpdateFeature label="Multiple themes" icon="🎨" />
@@ -191,7 +192,7 @@ const TestimonialCard = () => {
 const User = ({ image, role, link, twitter }) => {
     return <div className="flex flex-col items-center mb-20 m-10 sm:mb-0 sm:mr-10">
         <a href={twitter} target="_blank" rel="noreferrer">
-            <img src={image} className="rounded-full w-56 h-56 bg-[#f1f1f1] hover:opacity-70" />
+            <img src={image} className="rounded-full w-56 h-56 bg-[#f1f1f166] hover:opacity-70" />
         </a>
         <p className="text-xl mt-5">{role}</p>
         <Link href={link} passHref={true} target="_blank" rel="noreferrer"><p className="text-brand text-sm mt-1 cursor-pointer">{link.replace("https://", "").replace("www.", "")}</p></Link>
@@ -224,8 +225,9 @@ const styles = {
     quote: `quote lg:text-7xl text-4xl`,
     section: `py-32`,
     sectionWrapper: `max-w-6xl m-auto text-center p-5`,
-    testimonial: `lg:w-1/3 m-3 bg-[#F5F6F7] p-5 w-max lg:px-10 rounded-xl text-right`,
-    featureCard: `hover:bg-[#F5F6F7] transition bg-[#fff] p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
+    testimonial: `lg:w-1/3 m-3 bg-[#fff] border border-[#f1f1f1] hover:shadow-md transition hover:shadow-md p-5 w-max lg:px-10 rounded-xl text-right`,
+    // testimonial: `lg:w-1/3 m-3 bg-[#f1f1f166] p-5 w-max lg:px-10 rounded-xl text-right`,
+    featureCard: `bg-[#fff] transition border border-[#f1f1f1] hover:bg-brand hover:text-white p-5 py-10 w-full flex items-center justify-center flex-col rounded-xl`,
     featureIcon: `block mb-6 text-5xl`,
     navLinks: `flex items-center hidden lg:flex`,
     link: `p-3 hover:text-brand cursor-pointer`,

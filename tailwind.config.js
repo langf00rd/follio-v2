@@ -9,6 +9,7 @@ module.exports = {
       // brand: "#FEA82F",
       // brand: "#FFC107",
       brand: "#0063F7",
+      accent: '#ffb100',
       borderColor: "#ededed",
       red: '#EF4444',
       dark: "#475569",
