@@ -13,8 +13,8 @@ const Landing = () => {
                 <Fade><Hero /></Fade>
                 <Fade bottom><Features /></Fade>
                 <Fade bottom><Quote /></Fade>
-                <FeaturedUsers />
                 <Fade bottom><Testimonials /></Fade>
+                <Fade bottom><FeaturedUsers /></Fade>
                 <Footer />
                 {/* 
                 */}
@@ -83,7 +83,8 @@ const GetStartedButton = () => {
 const Features = () => {
     return (
         <>
-            <div className="bg-[#f1f1f133] border-r-0 border-l-0">
+            {/* <div className="bg-[#f1f1f133] "> */}
+            <div className="">
                 <div className={styles.section}>
                     <div className={styles.sectionWrapper}>
                         <h1 className={styles.h2}>What you can do?</h1>
@@ -134,7 +135,7 @@ const FeaturedUsers = () => {
 const Quote = () => {
     return (
         <>
-            <div className="">
+            <div className="bg-brand text-white">
                 <div className={styles.section}>
                     <div className={styles.sectionWrapper}>
                         <div className="max-w-6xl m-auto text-center p-5 pt-20 rounded-2xl">
