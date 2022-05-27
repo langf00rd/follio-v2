@@ -54,7 +54,7 @@ const Header = () => {
                 <Link passHref={true} href='#'><p className={styles.link}>Contact</p></Link>
             </ul>
         </nav> */}
-        <GetStartedButton />
+        <GetStartedButton label='Get started' />
     </header>
 }
 
@@ -65,7 +65,7 @@ const Hero = () => {
             <h1 className={styles.h1}> <span className='text-brand font-bold'>Free Online</span> Portfolio Builder</h1>
             <p className='my-10 opacity-50'>An easy way to create and deploy your portfolio site with your skills, projects, socials, meeting schedules, and custom domain for free!</p>
             <div className='flex items-center justify-center flex-wrap'>
-                <GetStartedButton />
+                <GetStartedButton label='Build your website!' />
                 <div className="m-5">
                     <Link href='https://follio.app/langford' passHref={true}>View demo &rarr;</Link>
                 </div>
@@ -74,9 +74,9 @@ const Hero = () => {
     </div>
 }
 
-const GetStartedButton = () => {
+const GetStartedButton = ({ label }) => {
     return <Link href='/auth' passHref={true}>
-        <p className={buttonStyles.button}>Get started</p>
+        <p className={buttonStyles.button}>{label}</p>
     </Link>
 }
 
