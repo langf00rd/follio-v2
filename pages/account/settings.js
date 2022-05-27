@@ -59,7 +59,7 @@ const Settings = () => {
                         </div>
 
                         <div>
-                            <p className='text-accent -mb-[10px]'>Go premium to unlock feature</p>
+                            {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
                             <div className={!isPremiumAccount ? 'opacity-50 mb-[30px]' : 'mb-[30px]'}>
                                 <p className={textStyles.label}>Custom page loader image {loader ? <a target='_blank' className="text-brand" href={loader} rel="noreferrer">[view]</a> : null}</p>
                                 <p className={textStyles.labelDescription}>Upload an image to replace the default page loader</p>
@@ -78,7 +78,7 @@ const Settings = () => {
                         </div>
 
                         <div>
-                            <p className='text-accent -mb-[10px]'>Go premium to unlock feature</p>
+                            {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
                             <div className={!isPremiumAccount ? 'opacity-50 mb-[30px]' : 'mb-[30px]'}>
                                 <p className={textStyles.label}>Page favicon {favIcon ? <a target='_blank' className="text-brand" href={favIcon} rel="noreferrer">[view]</a> : null} </p>
                                 <p className={textStyles.labelDescription}>Add an image that shows up in the title bar of your browser</p>

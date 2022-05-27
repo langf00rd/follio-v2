@@ -43,8 +43,8 @@ const Payment = () => {
             </div>
 
             <div>
-                <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p>
-                <div className='opacity-50'>
+                {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
+                <div className={!isPremiumAccount ? 'opacity-50' : ''}>
                     <label className={textStyles.label}>Ethereum wallet address</label>
                     {!isPremiumAccount ? <div className={inputStyles.input}>eg. 0x1...234</div>
                         : <input
@@ -56,8 +56,8 @@ const Payment = () => {
             </div>
 
             <div>
-                <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p>
-                <div className='opacity-50'>
+                {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
+                <div className={!isPremiumAccount ? 'opacity-50' : ''}>
                     <label className={textStyles.label}>PayPal</label>
                     {!isPremiumAccount ? <div className={inputStyles.input}>follio@paypal.com</div>
                         : <input
