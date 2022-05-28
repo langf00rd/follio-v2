@@ -2,10 +2,10 @@ import Link from "next/link"
 import { useContext } from "react"
 import { FollioContext } from "../../../context/follioContext"
 
-const MadeWithFollio = ({ isPremiumAccount }) => {
-    const { showFollioTag } = useContext(FollioContext)
+const MadeWithFollio = ({ show }) => {
+    // const { showFollioTag } = useContext(FollioContext)
 
-    if (isPremiumAccount && !showFollioTag) return null
+    if (!show) return null
 
     return (
         <>

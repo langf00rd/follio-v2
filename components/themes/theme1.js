@@ -155,7 +155,7 @@ const previewStyles = {
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
+    const { skills, about, showFollioTag, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={previewStyles.body}>
         <Hero cv={cv} email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
@@ -164,7 +164,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
         <Payment customStyle={previewStyles} socials={socials} />
-        <MadeWithFollio isPremiumAccount={isPremiumAccount} />
+        <MadeWithFollio show={showFollioTag} />
     </div>
 
     if (!editMode) return <div className={styles.body}>
@@ -175,7 +175,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
         <Payment customStyle={styles} socials={data.socials} />
-        <MadeWithFollio isPremiumAccount={data.isPremiumAccount} />
+        <MadeWithFollio show={data.showFollioTag} />
     </div>
 
     return null

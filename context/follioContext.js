@@ -1,6 +1,18 @@
 import { createContext, useEffect, useState } from "react"
 import { useRouter } from "next/dist/client/router"
 import { signIn, signOut, useSession } from "next-auth/react"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+let toastConfig = {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+}
 
 export const FollioContext = createContext()
 
@@ -369,7 +381,7 @@ export const FollioProvider = ({ children }) => {
                 "fullname": fullname,
                 "logo": _logo,
                 "loader": _loader,
-                "favIcon": favIcon,
+                "favIcon": _favIcon,
                 "cv": _cv,
                 "email": email,
                 "tagline": tagline,
@@ -407,8 +419,11 @@ export const FollioProvider = ({ children }) => {
                 return
             }
 
+            toast.success('Project added successfully! 🎉', toastConfig)
+
             setShowLoader(false)
             saveNewChangesToStorage(_body)
+
         } catch (e) {
             setShowLoader(false)
             alert("An error occured. Please try again later.")
