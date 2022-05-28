@@ -139,7 +139,7 @@ const FeaturedUsers = () => {
                     <p className={styles.h2}>Meet the team</p>
                     <div className="m-20" />
                     <div className="flex flex-wrap max-w-5xl m-auto items-center justify-evenly wrap">
-                        <User name='Langford K.' role="Web &amp; Software Developer" link="https://www.follio.app/langford" twitter="https://twitter.com/langford_dev" image="http://res.cloudinary.com/follio/image/upload/v1653591951/kywoz8jztns5d7dzofc3.jpg" />
+                        <User name='Langford K.' role="Web &amp; Software Developer" link="https://www.follio.app/langford" twitter="https://twitter.com/langford_dev" image="http://res.cloudinary.com/follio/image/upload/v1653762824/iu0oua1xfwbyl5rnakke.png" />
                         <User name='Godfred TJ.' role="Fullstack Web Developer" link="https://www.follio.app/godfred" twitter="https://twitter.com/GoofieRey" image="https://www.redwolf.in/image/catalog/designer-Images/themes/iron-man-artist-image.png" />
                         {/* <User role="Web &amp; Software Developer" link="https://www.follio.app/langford" twitter="https://twitter.com/azimifardous" image="http://res.cloudinary.com/breellz/image/upload/v1649851342/v1ywskvkyesqkzsc7zkp.jpg" />
                         <User role="Fullstack Web Developer" link="https://www.follio.app/godfred" twitter="https://twitter.com/KhanAbbas201" image="https://lh3.googleusercontent.com/a-/AOh14GjKbuUSwQDcsQwc3FaiQBLJunny09pS8b7tvMGklQ=s96-c" /> */}
