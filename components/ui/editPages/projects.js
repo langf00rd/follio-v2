@@ -68,6 +68,7 @@ const Projects = () => {
             toast.success('Project added successfully! 🎉', toastConfig)
         } catch (e) {
             setShowLoader(false)
+            toast.error('Project was not added. Try again later', toastConfig)
         }
     }
 

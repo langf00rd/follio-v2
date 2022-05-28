@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { FollioContext } from "../../../context/follioContext"
+import Lockable from "../../lockable"
 import { inputStyles } from "../../styles/input"
 import { layoutStyles } from "../../styles/layout"
 import { textStyles } from "../../styles/textStyles"
@@ -42,7 +43,26 @@ const Payment = () => {
                     placeholder="https://www.buymeacoffee.com/john-doe" />
             </div>
 
-            <div>
+            <Lockable unlock={isPremiumAccount} label='Ethereum wallet address'>
+                {!isPremiumAccount ? <div className={inputStyles.input}>eg. 0x1...234</div>
+                    : <input
+                        className={inputStyles.input}
+                        value={newSocials.ethAddress}
+                        onChange={e => setNewSocials(e.target.value, "ethAddress")}
+                        placeholder="eg. 0x1...234" />}
+            </Lockable>
+
+            <Lockable unlock={isPremiumAccount} label='PayPal address'>
+                {!isPremiumAccount ? <div className={inputStyles.input}>follio@paypal.com</div>
+                    : <input
+                        type='email'
+                        className={inputStyles.input}
+                        value={newSocials.paypal}
+                        onChange={e => setNewSocials(e.target.value, "paypal")}
+                        placeholder="follio@paypal.com" />}
+            </Lockable>
+
+            {/* <div>
                 {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
                 <div className={!isPremiumAccount ? 'opacity-50' : ''}>
                     <label className={textStyles.label}>Ethereum wallet address</label>
@@ -67,7 +87,7 @@ const Payment = () => {
                             onChange={e => setNewSocials(e.target.value, "paypal")}
                             placeholder="follio@paypal.com" />}
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
 }
