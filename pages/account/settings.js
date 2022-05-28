@@ -51,7 +51,7 @@ const Settings = () => {
                     <ReactSwitch checked={!isPremiumAccount ? null : !showFollioTag} onChange={e => !isPremiumAccount ? null : setShowFollioTag(!e)} />
                 </LockableInput>
 
-                <LockableInput previewLink={loader} unlock={isPremiumAccount} label='Custom page loader image' description='Upload an image to replace the default page loader'>
+                <LockableInput previewLink={loader} unlock={isPremiumAccount} label='Custom page loader' description='Replace the default page loader with an image/gif of your choice.'>
                     {!isPremiumAccount
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
@@ -63,7 +63,7 @@ const Settings = () => {
                             }} />}
                 </LockableInput>
 
-                <LockableInput previewLink={favIcon} unlock={isPremiumAccount} label='Page favicon' description='Add an image that shows up in the title bar of your browser'>
+                <LockableInput previewLink={favIcon} unlock={isPremiumAccount} label='Website favicon' description='Upload an image (or logo) that will show in the browser title bar'>
                     {!isPremiumAccount
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
