@@ -144,3 +144,7 @@ b,
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.lockable {
+  background: linear-gradient(to bottom, #ffffffb8, white);
+}

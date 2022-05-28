@@ -10,9 +10,9 @@ const Lockable = ({ label, children, unlock, description, previewLink }) => {
                 <p className={textStyles.labelDescription}>{description}</p>
                 {!unlock
                     ? <div>
-                        <div className={!unlock ? 'bg-[#ffffffbb] font-bold absolute w-full h-full top-0 left-0 z-10 flex items-center justify-center' : 'mb-[30px]'}>
+                        <div className={!unlock ? 'lockable pt-5 font-bold absolute w-full h-full top-0 left-0 z-10 flex items-center justify-center' : 'mb-[30px]'}>
 
-                            <Image alt='locked feature icon' src={lock.src} width={24} height={24} />
+                            <Image alt='locked feature icon' src={lock.src} width={22} height={22} />
                             <div className="m-1" />
                             Go premium to unlock feature
 
