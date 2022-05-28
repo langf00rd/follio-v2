@@ -27,7 +27,7 @@ const Page = () => {
                 setTimeout(() => {
                     setLoading(false)
                     setExists(false)
-                }, 4000);
+                }, 5000);
                 return
             }
 
