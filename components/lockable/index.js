@@ -5,7 +5,7 @@ import lock from '../../assets/svg/lock.svg'
 const Lockable = ({ label, children, unlock, description, previewLink }) => {
     return (
         <>
-            <div className="mb-[30px] relative">
+            <div className="mb-[30px] z-0 relative">
                 <p className={textStyles.label}>{label} {previewLink ? <a target='_blank' className="text-brand" href={previewLink} rel="noreferrer">[view]</a> : null}</p>
                 <p className={textStyles.labelDescription}>{description}</p>
                 {!unlock
