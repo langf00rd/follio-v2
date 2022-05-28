@@ -1,13 +1,18 @@
 import Link from "next/link"
+import { useContext } from "react"
+import { FollioContext } from "../../../context/follioContext"
 
 const MadeWithFollio = ({ isPremiumAccount }) => {
-    if (isPremiumAccount) return null
+    const { showFollioTag } = useContext(FollioContext)
+
+    if (isPremiumAccount && !showFollioTag) return null
+
     return (
         <>
             <div className={styles.section}>
                 <div className={styles.sectionWrapper}>
                     <Link href='https://www.follio.app' passHref={true} target="_blank" rel="noreferrer">
-                        💛 Made with follio 💛
+                        Made with follio 🚀
                     </Link>
                 </div>
             </div>

@@ -19,6 +19,7 @@ export const FollioProvider = ({ children }) => {
     /** User data fields */
     const [fullname, setFullname] = useState("")
     const [logo, setLogo] = useState("")
+    const [showFollioTag, setShowFollioTag] = useState(true)
     const [loader, setLoader] = useState("")
     const [favIcon, setFavIcon] = useState("")
     const [email, setEmail] = useState("")
@@ -83,13 +84,18 @@ export const FollioProvider = ({ children }) => {
     /** Begin user authentication */
     const authenticateUser = async () => {
         try {
+            setShowLoader(true)
+            console.log('checkAuthStatus', await checkAuthStatus())
+
             if (!await checkAuthStatus()) {
                 await signIn("google")
                 return
             }
             prefill(JSON.parse(sessionStorage.getItem("data")))
+            setShowLoader(false)
             router.replace("/account/edit")
         } catch (e) {
+            setShowLoader(false)
             alert("An error occured. Please try again later.")
             console.log(e.message)
         }
@@ -248,6 +254,7 @@ export const FollioProvider = ({ children }) => {
 
         sessionStorage.setItem("data", JSON.stringify(_source))
         setFullname(_source.fullname)
+        setShowFollioTag(_source.showFollioTag)
         setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
@@ -317,36 +324,43 @@ export const FollioProvider = ({ children }) => {
             setShowLoader(true)
 
             if (typeof profilePhoto === 'object') {
+                console.log('uploading profilePhoto')
                 _profilePhoto = await uploadFile(profilePhoto)
                 setProfilePhoto(_profilePhoto)
             }
 
             if (typeof coverPhoto === 'object') {
+                console.log('uploading coverPhoto')
                 _coverPhoto = await uploadFile(coverPhoto)
                 setCoverPhoto(_coverPhoto)
             }
 
             if (typeof cv === 'object') {
+                console.log('uploading cv')
                 _cv = await uploadFile(cv)
                 setCv(_cv)
             }
 
             if (typeof logo === 'object') {
+                console.log('uploading logo')
                 _logo = await uploadFile(logo)
                 setLogo(_logo)
             }
 
             if (typeof featuredVideo === 'object') {
+                console.log('uploading featuredVideo')
                 _featuredVideo = await uploadFile(featuredVideo)
                 setFeaturedVideo(_featuredVideo)
             }
 
             if (typeof favIcon === 'object') {
+                console.log('uploading favIcon')
                 _favIcon = await uploadFile(favIcon)
                 setFavIcon(_favIcon)
             }
 
             if (typeof loader === 'object') {
+                console.log('uploading loader')
                 _loader = await uploadFile(loader)
                 setLoader(_loader)
             }
@@ -354,11 +368,12 @@ export const FollioProvider = ({ children }) => {
             let _body = {
                 "fullname": fullname,
                 "logo": _logo,
-                "loader": loader,
+                "loader": _loader,
                 "favIcon": favIcon,
                 "cv": _cv,
                 "email": email,
                 "tagline": tagline,
+                "showFollioTag": showFollioTag,
                 // 'username': username,
                 "work": work,
                 "about": about,
@@ -456,6 +471,7 @@ export const FollioProvider = ({ children }) => {
         setShowLoader, updateUsername,
         logo, favIcon,
         loader, isPremiumAccount,
+        showFollioTag, setShowFollioTag,
     }}>
         {children}
     </FollioContext.Provider>

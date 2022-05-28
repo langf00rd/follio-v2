@@ -3,6 +3,7 @@ import { FollioContext } from "../../../context/follioContext"
 import { inputStyles } from "../../styles/input"
 import { layoutStyles } from "../../styles/layout"
 import { textStyles } from "../../styles/textStyles"
+import LockableInput from "../../lockableInput"
 
 const Payment = () => {
     const { socials, setSocials, isPremiumAccount } = useContext(FollioContext)
@@ -42,9 +43,28 @@ const Payment = () => {
                     placeholder="https://www.buymeacoffee.com/john-doe" />
             </div>
 
-            <div>
-                <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p>
-                <div className='opacity-50'>
+            <LockableInput unlock={isPremiumAccount} label='Ethereum wallet address'>
+                {!isPremiumAccount ? <div className={inputStyles.input}>eg. 0x1...234</div>
+                    : <input
+                        className={inputStyles.input}
+                        value={newSocials.ethAddress}
+                        onChange={e => setNewSocials(e.target.value, "ethAddress")}
+                        placeholder="eg. 0x1...234" />}
+            </LockableInput>
+
+            <LockableInput unlock={isPremiumAccount} label='PayPal address'>
+                {!isPremiumAccount ? <div className={inputStyles.input}>follio@paypal.com</div>
+                    : <input
+                        type='email'
+                        className={inputStyles.input}
+                        value={newSocials.paypal}
+                        onChange={e => setNewSocials(e.target.value, "paypal")}
+                        placeholder="follio@paypal.com" />}
+            </LockableInput>
+
+            {/* <div>
+                {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
+                <div className={!isPremiumAccount ? 'opacity-50' : ''}>
                     <label className={textStyles.label}>Ethereum wallet address</label>
                     {!isPremiumAccount ? <div className={inputStyles.input}>eg. 0x1...234</div>
                         : <input
@@ -56,8 +76,8 @@ const Payment = () => {
             </div>
 
             <div>
-                <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p>
-                <div className='opacity-50'>
+                {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}
+                <div className={!isPremiumAccount ? 'opacity-50' : ''}>
                     <label className={textStyles.label}>PayPal</label>
                     {!isPremiumAccount ? <div className={inputStyles.input}>follio@paypal.com</div>
                         : <input
@@ -67,7 +87,7 @@ const Payment = () => {
                             onChange={e => setNewSocials(e.target.value, "paypal")}
                             placeholder="follio@paypal.com" />}
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
 }

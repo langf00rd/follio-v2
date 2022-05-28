@@ -1,9 +1,6 @@
 import { useContext, useEffect } from "react"
 import { layoutStyles } from "../../components/styles/layout"
 import { FollioContext } from "../../context/follioContext"
-import Header from "../../components/ui/header"
-import PageControlLinks from "../../components/ui/sidebar/pageLinks"
-import EditSideMenu from "../../components/ui/sidebar/editSideMenu"
 import Introduction from "../../components/ui/editPages/introduction"
 import Media from "../../components/ui/editPages/media"
 import Tools from "../../components/ui/editPages/tools"
@@ -11,11 +8,9 @@ import Socials from "../../components/ui/editPages/socials"
 import EditPageTabs from "../../components/ui/editPageTabs"
 import Projects from "../../components/ui/editPages/projects"
 import Loader from "../../components/ui/loader"
-import PageHead from "../../components/pageHead"
-import PreviewComponent from "../../components/previews/preview"
 import Payment from "../../components/ui/editPages/payment"
 import Shop from "../../components/ui/editPages/shop"
-import FAB from "../../components/ui/fab"
+import EditLayout from "../../components/layouts/editLayout"
 
 const Pages = () => {
     const { viewCount } = useContext(FollioContext)
@@ -40,28 +35,14 @@ const Edit = () => {
 
     if (showLoader) return <Loader />
 
-    return <div>
-        <Header />
-        <PageHead title="Follio - Edit Your Page" />
-        <FAB />
-        <div className={layoutStyles.main}>
-            <div className={layoutStyles.previewMainWrapper}>
-                <div className="hidden lg:block">
-                    <PageControlLinks />
-                    <div className="m-5" />
-                    <EditSideMenu />
-                </div>
-
-                <div className="w-full max-w-xl">
-                    <p className={layoutStyles.textLg}>Edit your page</p>
-                    <EditPageTabs />
-                    <Pages />
-                </div>
-
-                <PreviewComponent />
-            </div>
-        </div>
-    </div>
+    return (
+        <>
+            <EditLayout>
+                <EditPageTabs />
+                <Pages />
+            </EditLayout>
+        </>
+    )
 }
 
 export default Edit

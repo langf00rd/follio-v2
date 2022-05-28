@@ -1,7 +1,7 @@
 const styles = {
-    avatarSm: `w-10 h-10 object-cover rounded-full cursor-pointer hover:scale-90 transition`,
-    avatarMd: `w-20 h-20 object-cover rounded-full cursor-pointer hover:scale-90 transition`,
-    avatarLg: `w-28 h-28 object-cover rounded-full cursor-pointer hover:scale-90 transition`,
+    avatarSm: `border border-mid w-10 h-10 object-cover rounded-full cursor-pointer hover:scale-90 transition`,
+    avatarMd: `border border-mid w-20 h-20 object-cover rounded-full cursor-pointer hover:scale-90 transition`,
+    avatarLg: `border border-mid w-28 h-28 object-cover rounded-full cursor-pointer hover:scale-90 transition`,
 }
 
 const Avatar = ({ size = "sm", src, action }) => {
