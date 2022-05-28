@@ -31,7 +31,7 @@ const Page = () => {
                 return
             }
 
-            console.log(data.payload)
+            // console.log(data.payload)
 
             setLoader(data.payload.loader)
             setTimeout(() => {
