@@ -63,7 +63,8 @@ const Footer = () => {
 }
 
 const Header = () => {
-    return <header className="fixed border-b border-b-[#f1f1f1] z-20 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px]">
+    // return <header className="fixed border-b border-b-[#f1f1f1] z-20 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px]">
+    return <header className="fixed border-b border-b-[#f1f1f1] text-[1rem] z-20 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px] py-10">
         <Logo />
         {/* <nav className={styles.nav}>
             <ul className={styles.navLinks}>
