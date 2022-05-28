@@ -9,10 +9,11 @@ import GhostButton from "../buttons/ghostButton"
 import ProjectCard from "../projectCard";
 import { uiStyles } from "../../styles/ui";
 import { textStyles } from "../../styles/textStyles";
+import Loader from "../loader";
 
 const Projects = () => {
     let thumbnailRef;
-    const { projects, setProjects, uploadFile, setShowLoader } = useContext(FollioContext)
+    const { projects, setProjects, uploadFile, setShowLoader, showLoader, isPremiumAccount } = useContext(FollioContext)
     const [name, setName] = useState("")
     const [link, setLink] = useState("")
     const [description, setDescription] = useState("")
@@ -40,16 +41,15 @@ const Projects = () => {
                 return
             }
 
-            let _thumbnail = await uploadFile(thumbnailFile)
+            setShowLoader(true)
 
+            let _thumbnail = await uploadFile(thumbnailFile)
 
             if (!_thumbnail) {
                 toast.error('An error occured. Try again', toastConfig)
                 setShowProjectModal(false)
                 return
             }
-
-            setShowLoader(true)
 
             let newProject = {
                 name: name,
@@ -64,10 +64,11 @@ const Projects = () => {
             setDescription("")
             setThumbnailFile()
             setShowProjectModal(false)
-            toast.success('Project added successfully! 🎉', toastConfig)
             setShowLoader(false)
+            toast.success('Project added successfully! 🎉', toastConfig)
         } catch (e) {
             setShowLoader(false)
+            toast.error('Project was not added. Try again later', toastConfig)
         }
     }
 
@@ -87,14 +88,24 @@ const Projects = () => {
         }
     }
 
+    if (showLoader) return <Loader image={null} />
+
     return <div className={layoutStyles.container}>
         {projects.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any projects yet</div> : null}
+
+        <Button label="Add a project" action={() => {
+            if (!isPremiumAccount && projects.length >= 4) {
+                toast.error('You can only add 4 projects. Go premium to add more', toastConfig)
+                return
+            }
+
+            setShowProjectModal(true)
+        }} />
 
         {projects.map((project, i) => {
             return <ProjectCard onRemove={() => removeProject(i)} index={i} editMode={true} link={project.link} name={project.name} key={i} thumbnail={project.thumbnail} description={project.description} />
         })}
 
-        <Button label="Add a project" action={() => setShowProjectModal(true)} />
 
         {/* PROJECT MODAL */}
         {showProjectModal ? <div className={layoutStyles.modalBody}>

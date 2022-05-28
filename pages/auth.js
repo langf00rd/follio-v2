@@ -6,9 +6,10 @@ import Button from "../components/ui/buttons/button"
 import PageHead from '../components/pageHead'
 import Logo from "../components/logo"
 import Google from "../components/ui/buttons/auth/google"
+import Loader from "../components/ui/loader"
 
 const Auth = () => {
-    const { authenticateUser, checkAuthStatus, logout } = useContext(FollioContext)
+    const { authenticateUser, checkAuthStatus, logout, showLoader } = useContext(FollioContext)
     const { data: session } = useSession()
     const router = useRouter()
 
@@ -19,6 +20,8 @@ const Auth = () => {
     const onload = async () => {
         console.warn("auth status 🚩", await checkAuthStatus())
     }
+
+    if (showLoader) return <Loader image={null} />
 
     return <div className={styles.main}>
         <PageHead title="Follio - Account 🦄" />
@@ -35,7 +38,7 @@ const Auth = () => {
                 {!session && checkAuthStatus() ? <div>
                     <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-3">Lets build your website</h1>
                     <p className="opacity-50">You only need to sign up/in to account.</p>
-                </div> : <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome back {session.user.name}</h1>}
+                </div> : <h1 className="text-3xl sm:text-5xl font-medium leading-tight mb-5">🎉 Welcome {session.user.name}</h1>}
 
 
                 {session && checkAuthStatus() ?

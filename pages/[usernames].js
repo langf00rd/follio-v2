@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useEffect, useState } from "react"
 import Theme1 from "../components/themes/theme1"
 import Theme2 from "../components/themes/theme2"
-import Theme3 from "../components/themes/theme3"
+// import Theme3 from "../components/themes/theme3"
 import Button from "../components/ui/buttons/button"
 import Loader from "../components/ui/loader"
 
@@ -47,7 +47,7 @@ const Page = () => {
 
     if ((data && data) && data.theme == 1) return <Theme1 editMode={false} data={data} />
     if ((data && data) && data.theme == 2) return <Theme2 editMode={false} data={data} />
-    if ((data && data) && data.theme == 3) return <Theme3 editMode={false} data={data} />
+    if ((data && data) && data.theme == 3) return <Theme2 editMode={false} data={data} />
 
     // return <Theme1 editMode={false} data={data} />
 
