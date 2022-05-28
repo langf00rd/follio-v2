@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { FollioContext } from "../../../context/follioContext"
-import Lockable from "../../lockable"
 import { inputStyles } from "../../styles/input"
 import { layoutStyles } from "../../styles/layout"
 import { textStyles } from "../../styles/textStyles"
+import LockableInput from "../../lockableInput"
 
 const Payment = () => {
     const { socials, setSocials, isPremiumAccount } = useContext(FollioContext)
@@ -43,16 +43,16 @@ const Payment = () => {
                     placeholder="https://www.buymeacoffee.com/john-doe" />
             </div>
 
-            <Lockable unlock={isPremiumAccount} label='Ethereum wallet address'>
+            <LockableInput unlock={isPremiumAccount} label='Ethereum wallet address'>
                 {!isPremiumAccount ? <div className={inputStyles.input}>eg. 0x1...234</div>
                     : <input
                         className={inputStyles.input}
                         value={newSocials.ethAddress}
                         onChange={e => setNewSocials(e.target.value, "ethAddress")}
                         placeholder="eg. 0x1...234" />}
-            </Lockable>
+            </LockableInput>
 
-            <Lockable unlock={isPremiumAccount} label='PayPal address'>
+            <LockableInput unlock={isPremiumAccount} label='PayPal address'>
                 {!isPremiumAccount ? <div className={inputStyles.input}>follio@paypal.com</div>
                     : <input
                         type='email'
@@ -60,7 +60,7 @@ const Payment = () => {
                         value={newSocials.paypal}
                         onChange={e => setNewSocials(e.target.value, "paypal")}
                         placeholder="follio@paypal.com" />}
-            </Lockable>
+            </LockableInput>
 
             {/* <div>
                 {!isPremiumAccount ? <p className='text-accent mt-[10px] -mb-3'>Go premium to unlock feature</p> : null}

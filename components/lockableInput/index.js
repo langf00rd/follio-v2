@@ -3,7 +3,7 @@ import Image from "next/image"
 import lock from '../../assets/svg/lock.svg'
 import lockStyles from "./styles"
 
-const Lockable = ({ label, children, unlock, description, previewLink }) => {
+const LockableInput = ({ label, children, unlock, description, previewLink }) => {
     return (
         <>
             <div className="mb-[30px] z-0 relative">
@@ -27,4 +27,4 @@ const Lockable = ({ label, children, unlock, description, previewLink }) => {
     )
 }
 
-export default Lockable
+export default LockableInput

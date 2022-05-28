@@ -7,7 +7,7 @@ import PrimaryButton from "../../components/ui/buttons/primaryButton"
 import PreviewLayout from "../../components/layouts/previewLayout"
 import Button from "../../components/ui/buttons/button"
 import Loader from "../../components/ui/loader"
-import Lockable from "../../components/lockable"
+import LockableInput from "../../components/lockableInput"
 
 const Settings = () => {
     const { checkIsLoggedIn, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
@@ -21,7 +21,7 @@ const Settings = () => {
     return (
         <>
             <PreviewLayout metaTitle='Follio - Settings' title='Settings'>
-                <Lockable label='Change your username' unlock>
+                <LockableInput label='Change your username' unlock>
                     <div className="flex items-center">
                         <div className={inputStyles.socialInput}>
                             <label className={inputStyles.label}>follio.app/</label>
@@ -31,9 +31,9 @@ const Settings = () => {
                             <Button action={updateUsername} full={false} label='Save' />
                         </div>
                     </div>
-                </Lockable>
+                </LockableInput>
 
-                <Lockable unlock>
+                <LockableInput unlock>
                     <div>
                         <p className={textStyles.label}>Upload your resume {cv ? <a target='_blank' className="text-brand" href={cv} rel="noreferrer">[view]</a> : null} </p>
                         <input
@@ -45,9 +45,9 @@ const Settings = () => {
                             }}
                             placeholder={username} />
                     </div>
-                </Lockable>
+                </LockableInput>
 
-                <Lockable previewLink={loader} unlock={isPremiumAccount} label='Custom page loader image' description='Upload an image to replace the default page loader'>
+                <LockableInput previewLink={loader} unlock={isPremiumAccount} label='Custom page loader image' description='Upload an image to replace the default page loader'>
                     {!isPremiumAccount
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
@@ -58,9 +58,9 @@ const Settings = () => {
                                 handleMediaFiles(e.target.files[0], 'loader')
                             }}
                             placeholder={username} />}
-                </Lockable>
+                </LockableInput>
 
-                <Lockable previewLink={favIcon} unlock={isPremiumAccount} label='Page favicon' description='Add an image that shows up in the title bar of your browser'>
+                <LockableInput previewLink={favIcon} unlock={isPremiumAccount} label='Page favicon' description='Add an image that shows up in the title bar of your browser'>
                     {!isPremiumAccount
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
@@ -72,7 +72,7 @@ const Settings = () => {
                                 handleMediaFiles(e.target.files[0], 'fav-icon')
                             }}
                             placeholder={username} />}
-                </Lockable>
+                </LockableInput>
 
                 <PrimaryButton label='Go premium' action={() => window.alert('Feature coming soon 🤞')} full={false} />
             </PreviewLayout>
