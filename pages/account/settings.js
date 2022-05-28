@@ -8,9 +8,10 @@ import PreviewLayout from "../../components/layouts/previewLayout"
 import Button from "../../components/ui/buttons/button"
 import Loader from "../../components/ui/loader"
 import LockableInput from "../../components/lockableInput"
+import ReactSwitch from "react-switch"
 
 const Settings = () => {
-    const { checkIsLoggedIn, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
+    const { checkIsLoggedIn, showFollioTag, setShowFollioTag, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -42,12 +43,15 @@ const Settings = () => {
                             type='file'
                             onChange={e => {
                                 handleMediaFiles(e.target.files[0], 'cv')
-                            }}
-                            placeholder={username} />
+                            }} />
                     </div>
                 </LockableInput>
 
-                <LockableInput previewLink={loader} unlock={isPremiumAccount} label='Custom page loader image' description='Upload an image to replace the default page loader'>
+                <LockableInput unlock={isPremiumAccount} label='Hide "Made with follio" tag' description='Display the tag on your website to help spread the word about follio.'>
+                    <ReactSwitch checked={!isPremiumAccount ? null : !showFollioTag} onChange={e => !isPremiumAccount ? null : setShowFollioTag(!e)} />
+                </LockableInput>
+
+                <LockableInput previewLink={loader} unlock={isPremiumAccount} label='Custom page loader' description='Replace the default page loader with an image/gif of your choice.'>
                     {!isPremiumAccount
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
@@ -56,11 +60,10 @@ const Settings = () => {
                             type='file'
                             onChange={e => {
                                 handleMediaFiles(e.target.files[0], 'loader')
-                            }}
-                            placeholder={username} />}
+                            }} />}
                 </LockableInput>
 
-                <LockableInput previewLink={favIcon} unlock={isPremiumAccount} label='Page favicon' description='Add an image that shows up in the title bar of your browser'>
+                <LockableInput previewLink={favIcon} unlock={isPremiumAccount} label='Website favicon' description='Upload an image (or logo) that will show in the browser title bar'>
                     {!isPremiumAccount
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
@@ -70,8 +73,7 @@ const Settings = () => {
                             type='file'
                             onChange={e => {
                                 handleMediaFiles(e.target.files[0], 'fav-icon')
-                            }}
-                            placeholder={username} />}
+                            }} />}
                 </LockableInput>
 
                 <PrimaryButton label='Go premium' action={() => window.alert('Feature coming soon 🤞')} full={false} />

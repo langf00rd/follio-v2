@@ -1,8 +1,6 @@
-import Head from "next/head"
 import { useEffect, useState } from "react"
 import Theme1 from "../components/themes/theme1"
 import Theme2 from "../components/themes/theme2"
-// import Theme3 from "../components/themes/theme3"
 import Button from "../components/ui/buttons/button"
 import Loader from "../components/ui/loader"
 
@@ -10,6 +8,7 @@ const Page = () => {
     const [data, setData] = useState()
     const [exists, setExists] = useState(true)
     const [loading, setLoading] = useState(true)
+    const [loader, setLoader] = useState(null)
     const [username, setUsername] = useState()
 
     useEffect(() => {
@@ -28,14 +27,15 @@ const Page = () => {
                 setTimeout(() => {
                     setLoading(false)
                     setExists(false)
-                }, 3000);
+                }, 5000);
                 return
             }
 
-            console.log("source", data.payload)
-
-            setData(data.payload)
-            setLoading(false)
+            setLoader(data.payload.loader)
+            setTimeout(() => {
+                setData(data.payload)
+                setLoading(false)
+            }, 3000);
 
         } catch (e) {
             setLoading(false)
@@ -43,7 +43,9 @@ const Page = () => {
         }
     }
 
-    if (loading) return <Loader />
+    if (loading) return <Loader image={loader} />
+
+    // if (loading) return <Loader />
 
     if ((data && data) && data.theme == 1) return <Theme1 editMode={false} data={data} />
     if ((data && data) && data.theme == 2) return <Theme2 editMode={false} data={data} />
