@@ -3,13 +3,13 @@ import { FollioContext } from "../../../context/follioContext"
 import { inputStyles } from "../../styles/input"
 import { layoutStyles } from "../../styles/layout"
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Button from "../buttons/button"
-import GhostButton from "../buttons/ghostButton"
-import ProjectCard from "../projectCard";
 import { uiStyles } from "../../styles/ui";
 import { textStyles } from "../../styles/textStyles";
+import ProjectCard from "../projectCard";
+import Button from "../buttons/button"
+import GhostButton from "../buttons/ghostButton"
 import Loader from "../loader";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Projects = () => {
     let thumbnailRef;
