@@ -111,12 +111,12 @@ const User = mongoose.model('User', Schema({
 
     tagline: {
         type: String,
-        default: 'Hello world, I love follio 💛💛💛',
+        default: 'Hello there 👋',
     },
 
     about: {
         type: String,
-        default: 'Heyooo i just created my follio profile',
+        default: 'I just created my portfolio.',
     },
 
     createdAt: {
