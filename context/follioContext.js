@@ -283,21 +283,39 @@ export const FollioProvider = ({ children }) => {
     // update username and check if it already exists
     const updateUsername = async () => {
         try {
-            let confirmation = confirm("Do you want to update username?")
+
+            let confirmation = confirm("Do you want to update your username?")
             if (!confirmation) return
 
             setShowLoader(true)
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/check-username-exists/${username}`, { method: "GET" })
+            let _body = {
+                'username': username,
+                'email': session.user.email
+            }
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/update-username`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(_body),
+            })
+
             const data = await res.json()
 
-            if (data.payload) {
-                alert("username already exists")
+            if (!data.status) {
+                alert(data.error)
                 setShowLoader(false)
                 return
             }
 
-            await updateAccount()
+            let _data = JSON.parse(sessionStorage.getItem("data"))
+            _data.username = username
+            sessionStorage.setItem("data", JSON.stringify(_data))
+
+            alert("Username updated successfully")
+            setShowLoader(false)
         }
 
         catch (e) {
@@ -369,7 +387,7 @@ export const FollioProvider = ({ children }) => {
                 "fullname": fullname,
                 "logo": _logo,
                 "loader": _loader,
-                "favIcon": favIcon,
+                "favIcon": _favIcon,
                 "cv": _cv,
                 "email": email,
                 "tagline": tagline,
