@@ -38,6 +38,29 @@ module.exports = {
         }
     },
 
+    UPDATE_USERNAME: async function (payload) {
+
+        try {
+
+            console.log("upadate username >> ", payload)
+
+            const { email, username } = payload
+
+            const [_status, userExists] = await this.CHECK_USERNAME_EXISTS(username)
+
+            if (!_status || userExists) return [false, "Username already in use"]
+
+            await User.findOneAndUpdate({ email }, { username })
+
+            return [true, "Username updated successfully"]
+        }
+
+        catch (e) {
+
+            return [false, e.message]
+        }
+    },
+
     GET_USER: async function (email) {
 
         try {

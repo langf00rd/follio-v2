@@ -9,6 +9,11 @@ const User = mongoose.model('User', Schema({
         default: uuid.v4,
     },
 
+    showFollioTag: {
+        type: Boolean,
+        default: true,
+    },
+
     featuredVideo: {
         type: String,
         default: "",
@@ -86,7 +91,7 @@ const User = mongoose.model('User', Schema({
 
     socials: {
         type: Object,
-        default: { twitter: "", dev: "", dailydev: "", hashnode: "", linkedin: "", stackoverflow: "", youtube: "", dribbble: "", twitch: "", discord: "", behance: "", instagram: "", github: "", coffee: "" },
+        default: { paypal: '', twitter: "", dev: "", dailydev: "", hashnode: "", linkedin: "", stackoverflow: "", youtube: "", dribbble: "", twitch: "", discord: "", behance: "", instagram: "", github: "", coffee: "" },
     },
 
     work: {
@@ -106,12 +111,12 @@ const User = mongoose.model('User', Schema({
 
     tagline: {
         type: String,
-        default: 'Hello world, I love follio 💛💛💛',
+        default: 'Hello there 👋',
     },
 
     about: {
         type: String,
-        default: 'Heyooo i just created my follio profile',
+        default: 'I just created my portfolio.',
     },
 
     createdAt: {
