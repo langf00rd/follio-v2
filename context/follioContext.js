@@ -331,9 +331,9 @@ export const FollioProvider = ({ children }) => {
         }
 
         catch (e) {
+            console.log(e.message)
             alert("An error occured. Please try again later.")
             setShowLoader(false)
-            console.log(e.message)
         }
     }
 
