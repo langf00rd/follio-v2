@@ -31,7 +31,7 @@ export const FollioProvider = ({ children }) => {
     /** User data fields */
     const [fullname, setFullname] = useState("")
     const [logo, setLogo] = useState("")
-    const [showFollioTag, setShowFollioTag] = useState(true)
+    const [showFollioTag, setshowFollioTag] = useState(true)
     const [loader, setLoader] = useState("")
     const [favIcon, setFavIcon] = useState("")
     const [email, setEmail] = useState("")
@@ -266,7 +266,7 @@ export const FollioProvider = ({ children }) => {
 
         sessionStorage.setItem("data", JSON.stringify(_source))
         setFullname(_source.fullname)
-        setShowFollioTag(_source.showFollioTag)
+        setshowFollioTag(_source.showFollioTag)
         setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
@@ -506,7 +506,7 @@ export const FollioProvider = ({ children }) => {
         setShowLoader, updateUsername,
         logo, favIcon,
         loader, isPremiumAccount,
-        showFollioTag, setShowFollioTag,
+        showFollioTag, setshowFollioTag,
     }}>
         {children}
     </FollioContext.Provider>

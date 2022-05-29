@@ -11,7 +11,7 @@ import LockableInput from "../../components/lockableInput"
 import ReactSwitch from "react-switch"
 
 const Settings = () => {
-    const { checkIsLoggedIn, showFollioTag, setShowFollioTag, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
+    const { checkIsLoggedIn, showFollioTag, setshowFollioTag, setUsername, username, cv, loader, handleMediaFiles, setCv, isPremiumAccount, favIcon, showLoader, updateUsername, uploadResume, uploadPageLoader, uploadFavicon } = useContext(FollioContext)
 
     useEffect(() => {
         checkIsLoggedIn()
@@ -48,7 +48,7 @@ const Settings = () => {
                 </LockableInput>
 
                 <LockableInput unlock={isPremiumAccount} label='Hide "Made with follio" tag' description='Display the tag on your website to help spread the word about follio.'>
-                    <ReactSwitch checked={!isPremiumAccount ? null : !showFollioTag} onChange={e => !isPremiumAccount ? null : setShowFollioTag(!e)} />
+                    <ReactSwitch checked={!isPremiumAccount ? null : !showFollioTag} onChange={e => !isPremiumAccount ? null : setshowFollioTag(!e)} />
                 </LockableInput>
 
                 <LockableInput previewLink={loader} unlock={isPremiumAccount} label='Custom page loader' description='Replace the default page loader with an image/gif of your choice.'>
