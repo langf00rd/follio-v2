@@ -1,18 +1,6 @@
 import { createContext, useEffect, useState } from "react"
 import { useRouter } from "next/dist/client/router"
 import { signIn, signOut, useSession } from "next-auth/react"
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// let toastConfig = {
-//     position: "top-center",
-//     autoClose: 5000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-// }
 
 export const FollioContext = createContext()
 
@@ -31,7 +19,7 @@ export const FollioProvider = ({ children }) => {
     /** User data fields */
     const [fullname, setFullname] = useState("")
     const [logo, setLogo] = useState("")
-    const [showFollioTag, setshowFollioTag] = useState(true)
+    const [showFollioTag, setShowFollioTag] = useState(true)
     const [loader, setLoader] = useState("")
     const [favIcon, setFavIcon] = useState("")
     const [email, setEmail] = useState("")
@@ -266,7 +254,7 @@ export const FollioProvider = ({ children }) => {
 
         sessionStorage.setItem("data", JSON.stringify(_source))
         setFullname(_source.fullname)
-        setshowFollioTag(_source.showFollioTag)
+        setShowFollioTag(_source.showFollioTag)
         setFeaturedVideo(_source.featuredVideo)
         setCv(_source.cv)
         setLogo(_source.logo)
@@ -295,39 +283,21 @@ export const FollioProvider = ({ children }) => {
     // update username and check if it already exists
     const updateUsername = async () => {
         try {
-
-            let confirmation = confirm("Do you want to update your username?")
+            let confirmation = confirm("Do you want to update username?")
             if (!confirmation) return
 
             setShowLoader(true)
 
-            let _body = {
-                'username': username,
-                'email': session.user.email
-            }
-
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/update-username`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(_body),
-            })
-
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user/check-username-exists/${username}`, { method: "GET" })
             const data = await res.json()
 
-            if (!data.status) {
-                alert(data.error)
+            if (data.payload) {
+                alert("username already exists")
                 setShowLoader(false)
                 return
             }
 
-            let _data = JSON.parse(sessionStorage.getItem("data"))
-            _data.username = username
-            sessionStorage.setItem("data", JSON.stringify(_data))
-
-            alert("Username updated successfully")
-            setShowLoader(false)
+            await updateAccount()
         }
 
         catch (e) {
@@ -339,7 +309,6 @@ export const FollioProvider = ({ children }) => {
 
     /** Update user data in DB */
     const updateAccount = async () => {
-
         try {
             let confirmation = confirm("Do you want to save your changes?")
             let _profilePhoto = profilePhoto
@@ -400,11 +369,12 @@ export const FollioProvider = ({ children }) => {
                 "fullname": fullname,
                 "logo": _logo,
                 "loader": _loader,
-                "favIcon": _favIcon,
+                "favIcon": favIcon,
                 "cv": _cv,
                 "email": email,
                 "tagline": tagline,
                 "showFollioTag": showFollioTag,
+                // 'username': username,
                 "work": work,
                 "about": about,
                 "showGithubStats": showGithubStats,
@@ -437,13 +407,8 @@ export const FollioProvider = ({ children }) => {
                 return
             }
 
-            // toast.success('Project added successfully! 🎉', toastConfig)
-
             setShowLoader(false)
             saveNewChangesToStorage(_body)
-            alert('Your changes have been saved successfully! 🎉')
-            console.log('_body', _body)
-
         } catch (e) {
             setShowLoader(false)
             alert("An error occured. Please try again later.")
@@ -506,7 +471,7 @@ export const FollioProvider = ({ children }) => {
         setShowLoader, updateUsername,
         logo, favIcon,
         loader, isPremiumAccount,
-        showFollioTag, setshowFollioTag,
+        showFollioTag, setShowFollioTag,
     }}>
         {children}
     </FollioContext.Provider>

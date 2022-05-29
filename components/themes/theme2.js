@@ -196,7 +196,7 @@ const Theme2 = ({ data = {}, editMode = false }) => {
         <Tools customStyle={previewStyles} tools={skills} />
         <Contact email={email} socials={socials} customStyle={previewStyles} />
         <Payment customStyle={previewStyles} socials={socials} />
-        <MadeWithFollio show={showFollioTag} />
+        <MadeWithFollio isPremiumAccount={isPremiumAccount} />
     </div>
 
     if (!editMode) return <div className={styles.body}>
@@ -209,7 +209,7 @@ const Theme2 = ({ data = {}, editMode = false }) => {
         <Tools customStyle={styles} tools={data.skills} />
         <Contact customStyle={styles} email={data.email} socials={data.socials} />
         <Payment customStyle={styles} socials={data.socials} />
-        <MadeWithFollio show={data.showFollioTag} />
+        <MadeWithFollio isPremiumAccount={data.isPremiumAccount} />
     </div>
 
     return null

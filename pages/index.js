@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { FollioContext } from '../context/follioContext'
-import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../components/ui/loader'
 import Landing from './landing'
 import PageHead from '../components/pageHead'
@@ -13,6 +12,5 @@ export default function Home() {
     <PageHead title="Follio - Easy Free Portfolio Builder 🦄" />
     {showLoader ? <Loader image={null} /> : <Landing />}
     <FAB />
-    <ToastContainer />
   </div>
 }
