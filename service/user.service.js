@@ -46,6 +46,23 @@ module.exports = {
         }
     },
 
+    updateUsername: async function (req, res) {
+
+        try {
+
+            const [status, message] = await USER_REPO.UPDATE_USERNAME(req.body)
+
+            if (!status) return res.json({ status, error: message })
+
+            return res.status(200).json({ status, message })
+        }
+
+        catch (e) {
+
+            return res.json({ status: false, error: e.message })
+        }
+    },
+
     getUser: async function (req, res) {
 
         try {
