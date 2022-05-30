@@ -392,7 +392,6 @@ export const FollioProvider = ({ children }) => {
                 "email": email,
                 "tagline": tagline,
                 "showFollioTag": showFollioTag,
-                // 'username': username,
                 "work": work,
                 "about": about,
                 "showGithubStats": showGithubStats,
@@ -427,6 +426,7 @@ export const FollioProvider = ({ children }) => {
 
             setShowLoader(false)
             saveNewChangesToStorage(_body)
+            alert("Changes saved successfully")
         } catch (e) {
             setShowLoader(false)
             alert("An error occured. Please try again later.")

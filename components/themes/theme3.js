@@ -7,75 +7,38 @@ import Head from "next/head"
 import Link from "next/link"
 import MadeWithFollio from "../ui/themes/madeWithFollio"
 
-const PageHeader = ({ about, projects, skills, socials, customStyle, fullname, logo, cv }) => {
-    return <header className={customStyle.header}>
-        <div className={customStyle.headerWrapper}>
-            <Link passHref={true} href='#'>
-                {logo && (typeof logo === "object")
-                    ? <img className={customStyle.logo} alt={fullname} src={URL.createObjectURL(logo)} />
-                    : <img src={logo} alt={fullname} className={customStyle.logo} />}
-            </Link>
-
-            <nav className="lg:flex items-center hidden">
-                <Link passHref={true} href="#">
-                    <p className={customStyle.headerLink}>Home</p>
-                </Link>
-                {about ? <Link passHref={true} href="#about">
-                    <p className={customStyle.headerLink}>About</p>
-                </Link> : null}
-                {projects ? <Link passHref={true} href="#projects">
-                    <p className={customStyle.headerLink}>Projects</p>
-                </Link> : null}
-                {skills ? <Link passHref={true} href="#tools">
-                    <p className={customStyle.headerLink}>Tools</p>
-                </Link> : null}
-                {socials ? <Link passHref={true} href="#contact">
-                    <p className={customStyle.headerLink}>Contact</p>
-                </Link> : null}
-            </nav>
-
-            {cv ? <div className="lg:block hidden">
-                <a href={cv} className={customStyle.button}>Download cv</a>
-            </div> : null}
-
-            <div className="flex items-center lg:hidden">
-                {cv ? <a href={cv} className={customStyle.button}>Download cv</a> : null}
-                {/* <div className="m-3" />
-                <img src={menu.src} alt="menu button" /> */}
+const Hero = ({ cv, customStyle, greeting, tagline, work, profilePhoto, socials, email }) => {
+    return <section className={customStyle.section} id="hero">
+        <div className={customStyle.sectionWrapper}>
+            <div className="">
+                {profilePhoto && (typeof profilePhoto === "object")
+                    ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
+                    : <img className={customStyle.heroImg} alt="profile photo" src={profilePhoto} />}
             </div>
-        </div>
-    </header>
-}
-
-const Hero = ({ customStyle, greeting, tagline, work, profilePhoto, socials }) => {
-    return (
-        <>
-            <div className="mt-20" />
-            <section className={customStyle.section} id="hero">
-                <div className={customStyle.sectionWrapper}>
-                    <div>
-                        <p>{greeting}</p>
-                        <p className={customStyle.textLg}>{tagline}</p>
-                        <p className="opacity-50">{work}</p>
-                        {socials ? <a href="#contact" className="text-xl mt-10 block pb-2 border-b-2 border-b-brand w-max text-brand">Lets connect &rarr;</a> : null}
-                    </div>
-                    {profilePhoto && (typeof profilePhoto === "object")
-                        ? <img className={customStyle.heroImg} alt="profile photo" src={URL.createObjectURL(profilePhoto)} />
-                        : <img className={customStyle.heroImg} alt="profile photo" src={profilePhoto} />}
+            <p className={customStyle.textLg}>{tagline}</p>
+            <p>{greeting}</p>
+            <p className="opacity-50 lg:text-2xl text-xl mb-5">{work}</p>
+            {/* <div className="flex items-center justify-center mt-5"> */}
+            <div className="flex items-center flex-col">
+                <Socials socials={socials} email={email} />
+                {cv ? <div className="lg:block hidden mt-5">
+                    <a href={cv} className={customStyle.button}>Download Resume</a>
+                </div> : null}
+                <div className="flex items-center lg:hidden mt-3">
+                    {cv ? <a href={cv} className={customStyle.button}>Download Resume</a> : null}
                 </div>
-            </section>
-        </>
-    )
+            </div>
+            {/* </div> */}
+        </div>
+    </section>
 }
 
 const About = ({ about, customStyle }) => {
     if (!about) return null
     return <section className={customStyle.section} id="about">
         <div className={customStyle.sectionWrapper}>
-            <div>
-                <p className={customStyle.textLg}>About me</p>
-                <p>{about}</p>
-            </div>
+            <p className={customStyle.textLg}>About me</p>
+            <p>{about}</p>
         </div>
     </section>
 }
@@ -102,7 +65,7 @@ const Tools = ({ customStyle, tools = [] }) => {
         <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>Tools &amp; skills</p>
-                <ul className="flex flex-wrap">
+                <ul className="flex flex-wrap items-center justify-center">
                     {tools.map((tool, i) => {
                         return <p key={i} className={customStyle.tool}>{tool}</p>
                     })}
@@ -147,8 +110,8 @@ const FeaturedVideo = ({ customStyle, featuredVideo }) => {
 const Payment = ({ socials, customStyle }) => {
     if (socials.coffee !== "") return <section className={customStyle.section} id="contact">
         <div className={customStyle.sectionWrapper}>
-            <div>
-                <p className={customStyle.textLg}>I receive donations</p>
+            <p className={customStyle.textLg}>I receive donations</p>
+            <div className="flex items-center justify-center">
                 <CoffeeButton coffee={socials.coffee} />
             </div>
         </div>
@@ -161,14 +124,14 @@ const styles = {
     headerLink: `ml-10 cursor-pointer hover:opacity-50 transition`,
     section: `mt-10 py-20`,
     grid: `grid lg:grid-cols-2 grid-cols-1`,
-    body: `bg-white text-[1.2rem]`,
-    sectionWrapper: `max-w-7xl w-full m-auto flex flex-col lg:flex-row items-center h-full p-5`,
+    body: `-mt-20 pt-10 bg-[#FFC600] text-center bg-white text-[1.2rem]`,
+    sectionWrapper: `max-w-5xl w-full m-auto flex flex-col items-center h-full p-5`,
     textLg: `lg:text-6xl text-4xl font-bold my-8 leading-tight`,
     projectCard: `text-left m-5 mx-0 lg:mr-5`,
-    heroImg: `w-[400px] h-[400px] object-cover lg:ml-10 mt-20 lg:mt-0 rounded-xl`,
+    heroImg: `w-[230px] h-[230px] lg:w-[300px] lg:h-[300px] object-cover lg:ml-10 mt-20 lg:mt-0 rounded-xl`,
     menuBtn: `lg:hidden`,
     logo: `h-[39px] object-cover`,
-    tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
+    tool: `bg-[#fff] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
     button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
@@ -178,45 +141,41 @@ const previewStyles = {
     header: `border-b border-b-[#cccccc44] h-20`,
     headerLink: `hidden`,
     section: `py-20`,
-    sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     grid: `grid grid-cols-1`,
     logo: `h-[39px] object-cover`,
-    body: `bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
+    body: `bg-[#FFC600] text-center bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
+    sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
     textLg: `text-3xl font-bold my-8 leading-tight`,
     projectCard: `text-left m-5 mx-0`,
-    heroImg: `rounded-md w-full h-96 object-cover mt-20`,
-    tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
+    heroImg: `w-[230px] h-[230px] m-auto rounded-md w-full object-cover mt-20`,
+    tool: `bg-[#fff] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
     featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
     button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
 
 const Theme3 = ({ data = {}, editMode = false }) => {
-    const { skills, about, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
+    const { skills, about, showFollioTag, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={previewStyles.body}>
-        <PageHeader cv={cv} logo={logo} fullname={fullname} customStyle={previewStyles} />
-        <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
+        <Hero cv={cv} email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
         <FeaturedVideo customStyle={previewStyles} featuredVideo={featuredVideo} />
         <About customStyle={previewStyles} about={about} />
         <Projects customStyle={previewStyles} projects={projects} />
         <Tools customStyle={previewStyles} tools={skills} />
-        <Contact email={email} socials={socials} customStyle={previewStyles} />
         <Payment customStyle={previewStyles} socials={socials} />
-        <MadeWithFollio isPremiumAccount={isPremiumAccount} />
+        <MadeWithFollio show={showFollioTag} />
     </div>
 
     if (!editMode) return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
-        <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
-        <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
+        <Hero cv={data.cv} email={data.email} socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
         <Projects customStyle={styles} projects={data.projects} />
         <Tools customStyle={styles} tools={data.skills} />
-        <Contact customStyle={styles} email={data.email} socials={data.socials} />
         <Payment customStyle={styles} socials={data.socials} />
-        <MadeWithFollio isPremiumAccount={data.isPremiumAccount} />
+        <MadeWithFollio show={data.showFollioTag} />
     </div>
 
     return null
