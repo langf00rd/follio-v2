@@ -130,13 +130,13 @@ export const FollioProvider = ({ children }) => {
             console.warn("not logged in at all")
             return false
         }
-        if (session && session.user && !sessionStorage.getItem("data")) {
+        if (session.user && !sessionStorage.getItem("data")) {
             /** Is logged in but no data */
             console.warn("session, no data")
             await fetchDataFromDB(session.user.email)
             return false
         }
-        if (session && session.user && sessionStorage.getItem("data")) {
+        if (session.user && sessionStorage.getItem("data")) {
             /** when user is fully logged in */
             console.warn("logged in, data")
             return true

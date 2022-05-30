@@ -1,6 +1,4 @@
 import Link from "next/link"
-import { useContext } from "react"
-import { FollioContext } from "../../../context/follioContext"
 
 const MadeWithFollio = ({ show }) => {
     // const { showFollioTag } = useContext(FollioContext)

@@ -4,7 +4,6 @@ import { FollioContext } from "../../context/follioContext"
 import CoffeeButton from "../ui/coffeeButton"
 import ProjectCard from "../ui/projectCard"
 import Head from "next/head"
-import Link from "next/link"
 import MadeWithFollio from "../ui/themes/madeWithFollio"
 
 const Hero = ({ cv, customStyle, greeting, tagline, work, profilePhoto, socials, email }) => {
@@ -75,17 +74,6 @@ const Tools = ({ customStyle, tools = [] }) => {
     </section>
 }
 
-const Contact = ({ customStyle, socials, email }) => {
-    if (!socials) return null
-    return <section className={customStyle.section} id="contact">
-        <div className={customStyle.sectionWrapper}>
-            <div>
-                <p className={customStyle.textLg}>Lets connect</p>
-                <Socials socials={socials} email={email} />
-            </div>
-        </div>
-    </section>
-}
 
 const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
     return <Head>
@@ -96,8 +84,8 @@ const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
 }
 
 const FeaturedVideo = ({ customStyle, featuredVideo }) => {
-    if (featuredVideo && featuredVideo !== "") return <section className={customStyle.section} id="featured-video">
-        {featuredVideo && (typeof featuredVideo === "object")
+    if (featuredVideo !== "") return <section className={customStyle.section} id="featured-video">
+        {(typeof featuredVideo === "object")
             ? <video src={URL.createObjectURL(featuredVideo)} controls className={customStyle.featuredVideo} />
             : <video src={featuredVideo} controls className={customStyle.featuredVideo}></video>
         }
@@ -108,7 +96,9 @@ const FeaturedVideo = ({ customStyle, featuredVideo }) => {
 }
 
 const Payment = ({ socials, customStyle }) => {
-    if (socials.coffee !== "") return <section className={customStyle.section} id="contact">
+    if (socials.coffee === '') return null
+
+    return <section className={customStyle.section} id="contact">
         <div className={customStyle.sectionWrapper}>
             <p className={customStyle.textLg}>I receive donations</p>
             <div className="flex items-center justify-center">
@@ -155,7 +145,7 @@ const previewStyles = {
 }
 
 const Theme1 = ({ data = {}, editMode = false }) => {
-    const { skills, about, showFollioTag, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
+    const { skills, about, showFollioTag, cv, email, socials, tagline, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
     if (editMode) return <div className={previewStyles.body}>
         <Hero cv={cv} email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
@@ -167,7 +157,7 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <MadeWithFollio show={showFollioTag} />
     </div>
 
-    if (!editMode) return <div className={styles.body}>
+    return <div className={styles.body}>
         <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
         <Hero cv={data.cv} email={data.email} socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
         <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
@@ -177,8 +167,6 @@ const Theme1 = ({ data = {}, editMode = false }) => {
         <Payment customStyle={styles} socials={data.socials} />
         <MadeWithFollio show={data.showFollioTag} />
     </div>
-
-    return null
 }
 
 export default Theme1

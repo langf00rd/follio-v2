@@ -126,8 +126,8 @@ const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
 }
 
 const FeaturedVideo = ({ customStyle, featuredVideo }) => {
-    if (featuredVideo && featuredVideo !== "") return <section className={customStyle.section} id="featured-video">
-        {featuredVideo && (typeof featuredVideo === "object")
+    if (featuredVideo !== "") return <section className={customStyle.section} id="featured-video">
+        {(typeof featuredVideo === "object")
             ? <video src={URL.createObjectURL(featuredVideo)} controls className={customStyle.featuredVideo} />
             : <video src={featuredVideo} controls className={customStyle.featuredVideo}></video>
         }
@@ -138,7 +138,9 @@ const FeaturedVideo = ({ customStyle, featuredVideo }) => {
 }
 
 const Payment = ({ socials, customStyle }) => {
-    if (socials.coffee !== "") return <section className={customStyle.section} id="contact">
+    if (socials.coffee === '') return null
+
+    return <section className={customStyle.section} id="contact">
         <div className={customStyle.sectionWrapper}>
             <div>
                 <p className={customStyle.textLg}>I receive donations</p>
@@ -185,34 +187,40 @@ const previewStyles = {
 }
 
 const Theme2 = ({ data = {}, editMode = false }) => {
-    const { skills, about, showFollioTag, cv, isPremiumAccount, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
+    const { skills, about, showFollioTag, cv, email, socials, tagline, logo, fullname, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
 
-    if (editMode) return <div className={previewStyles.body}>
-        <PageHeader cv={cv} logo={logo} fullname={fullname} customStyle={previewStyles} />
-        <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
-        <FeaturedVideo customStyle={previewStyles} featuredVideo={featuredVideo} />
-        <About customStyle={previewStyles} about={about} />
-        <Projects customStyle={previewStyles} projects={projects} />
-        <Tools customStyle={previewStyles} tools={skills} />
-        <Contact email={email} socials={socials} customStyle={previewStyles} />
-        <Payment customStyle={previewStyles} socials={socials} />
-        <MadeWithFollio show={showFollioTag} />
-    </div>
+    if (editMode) return (
+        <>
+            <div className={previewStyles.body}>
+                <PageHeader cv={cv} logo={logo} fullname={fullname} customStyle={previewStyles} />
+                <Hero socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
+                <FeaturedVideo customStyle={previewStyles} featuredVideo={featuredVideo} />
+                <About customStyle={previewStyles} about={about} />
+                <Projects customStyle={previewStyles} projects={projects} />
+                <Tools customStyle={previewStyles} tools={skills} />
+                <Contact email={email} socials={socials} customStyle={previewStyles} />
+                <Payment customStyle={previewStyles} socials={socials} />
+                <MadeWithFollio show={showFollioTag} />
+            </div>
+        </>
+    )
 
-    if (!editMode) return <div className={styles.body}>
-        <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
-        <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
-        <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
-        <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
-        <About customStyle={styles} about={data.about} />
-        <Projects customStyle={styles} projects={data.projects} />
-        <Tools customStyle={styles} tools={data.skills} />
-        <Contact customStyle={styles} email={data.email} socials={data.socials} />
-        <Payment customStyle={styles} socials={data.socials} />
-        <MadeWithFollio show={data.showFollioTag} />
-    </div>
-
-    return null
+    return (
+        <>
+            <div className={styles.body}>
+                <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
+                <PageHeader about={data.about} projects={data.projects} skills={data.skills} socials={data.socials} cv={data.cv} logo={data.logo} fullname={data.fullname} customStyle={styles} />
+                <Hero socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} />
+                <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
+                <About customStyle={styles} about={data.about} />
+                <Projects customStyle={styles} projects={data.projects} />
+                <Tools customStyle={styles} tools={data.skills} />
+                <Contact customStyle={styles} email={data.email} socials={data.socials} />
+                <Payment customStyle={styles} socials={data.socials} />
+                <MadeWithFollio show={data.showFollioTag} />
+            </div>
+        </>
+    )
 }
 
 export default Theme2

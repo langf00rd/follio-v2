@@ -48,9 +48,9 @@ const Page = () => {
 
     // if (loading) return <Loader />
 
-    if ((data && data) && data.theme == 1) return <Theme1 editMode={false} data={data} />
-    if ((data && data) && data.theme == 2) return <Theme2 editMode={false} data={data} />
-    if ((data && data) && data.theme == 3) return <Theme3 editMode={false} data={data} />
+    if (data && data.theme == 1) return <Theme1 editMode={false} data={data} />
+    if (data && data.theme == 2) return <Theme2 editMode={false} data={data} />
+    if (data && data.theme == 3) return <Theme3 editMode={false} data={data} />
 
     // return <Theme1 editMode={false} data={data} />
 
