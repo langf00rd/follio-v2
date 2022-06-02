@@ -74,7 +74,6 @@ const Tools = ({ customStyle, tools = [] }) => {
     </section>
 }
 
-
 const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
     return <Head>
         <title>{fullname} | {tagline}</title>

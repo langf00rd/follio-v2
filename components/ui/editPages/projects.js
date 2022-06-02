@@ -31,10 +31,10 @@ const Projects = () => {
 
     const addProject = async () => {
         try {
-            if (name.trim() === "") {
-                toast.warn('Please add a project name', toastConfig)
-                return
-            }
+            // if (name.trim() === "") {
+            //     toast.warn('Please add a project name', toastConfig)
+            //     return
+            // }
 
             if (!thumbnailFile) {
                 toast.warn('Please add a thumbnail', toastConfig)
@@ -94,7 +94,7 @@ const Projects = () => {
         {projects.length < 1 ? <div className="opacity-20 font-medium lg:text-xl my-10 mt-0">You havent added any projects yet</div> : null}
 
         <Button label="Add a project" action={() => {
-            if (!isPremiumAccount && projects.length >= 4) {
+            if (!isPremiumAccount && projects.length >= 6) {
                 toast.error('You can only add 4 projects. Go premium to add more', toastConfig)
                 return
             }
