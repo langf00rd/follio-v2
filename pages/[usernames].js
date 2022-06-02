@@ -49,12 +49,12 @@ const Page = () => {
 
     // if (loading) return <Loader />
 
-    // if (data && data.theme == 1) return <Theme1 editMode={false} data={data} />
-    // if (data && data.theme == 2) return <Theme2 editMode={false} data={data} />
-    // if (data && data.theme == 3) return <Theme3 editMode={false} data={data} />
-    // if (data && data.theme == 4) return <Theme4 editMode={false} data={data} />
+    if (data && data.theme == 1) return <Theme1 editMode={false} data={data} />
+    if (data && data.theme == 2) return <Theme2 editMode={false} data={data} />
+    if (data && data.theme == 3) return <Theme3 editMode={false} data={data} />
+    if (data && data.theme == 4) return <Theme4 editMode={false} data={data} />
 
-    return <Theme4 editMode={false} data={data} />
+    // return <Theme4 editMode={false} data={data} />
 
     if (!exists) return <div className="w-screen h-screen flex flex-col items-center justify-center">
         <p className="sm:text-3xl text-2xl mb-10">Oops! site has no owner {data}</p>
