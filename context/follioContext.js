@@ -72,7 +72,7 @@ export const FollioProvider = ({ children }) => {
 
     /** Logout */
     const logout = () => {
-        sessionStorage.removeItem("data")
+        localStorage.removeItem("data")
         signOut()
     }
 
@@ -91,7 +91,7 @@ export const FollioProvider = ({ children }) => {
                 await signIn("google")
                 return
             }
-            prefill(JSON.parse(sessionStorage.getItem("data")))
+            prefill(JSON.parse(localStorage.getItem("data")))
             setShowLoader(false)
             router.replace("/account/edit")
         } catch (e) {
@@ -102,9 +102,9 @@ export const FollioProvider = ({ children }) => {
     }
 
     /** Change selected theme */
-    const changeThemeInSessionStorage = (index) => {
+    const changeThemeInlocalStorage = (index) => {
         console.log('New theme index, ', index)
-        let _sessionData = JSON.parse(sessionStorage.getItem("data"))
+        let _sessionData = JSON.parse(localStorage.getItem("data"))
         _sessionData.theme = index
         setTheme(index)
         saveNewChangesToStorage(_sessionData)
@@ -112,14 +112,14 @@ export const FollioProvider = ({ children }) => {
 
     /** Save data to localStorage */
     const saveNewChangesToStorage = (data) => {
-        let _sessionData = JSON.parse(sessionStorage.getItem('data'))
+        let _sessionData = JSON.parse(localStorage.getItem('data'))
         if (_sessionData) data.username = _sessionData.username
-        sessionStorage.setItem("data", JSON.stringify(data))
+        localStorage.setItem("data", JSON.stringify(data))
     }
 
     /** On page reload */
     const onReload = () => {
-        let _data = JSON.parse(sessionStorage.getItem("data"))
+        let _data = JSON.parse(localStorage.getItem("data"))
         prefill(_data)
     }
 
@@ -130,13 +130,13 @@ export const FollioProvider = ({ children }) => {
             console.warn("not logged in at all")
             return false
         }
-        if (session.user && !sessionStorage.getItem("data")) {
+        if (session.user && !localStorage.getItem("data")) {
             /** Is logged in but no data */
             console.warn("session, no data")
             await fetchDataFromDB(session.user.email)
             return false
         }
-        if (session.user && sessionStorage.getItem("data")) {
+        if (session.user && localStorage.getItem("data")) {
             /** when user is fully logged in */
             console.warn("logged in, data")
             return true
@@ -252,7 +252,7 @@ export const FollioProvider = ({ children }) => {
     const prefill = (_source) => {
         if (!_source) return
 
-        sessionStorage.setItem("data", JSON.stringify(_source))
+        localStorage.setItem("data", JSON.stringify(_source))
         setFullname(_source.fullname)
         setShowFollioTag(_source.showFollioTag)
         setFeaturedVideo(_source.featuredVideo)
@@ -310,9 +310,9 @@ export const FollioProvider = ({ children }) => {
                 return
             }
 
-            let _data = JSON.parse(sessionStorage.getItem("data"))
+            let _data = JSON.parse(localStorage.getItem("data"))
             _data.username = username
-            sessionStorage.setItem("data", JSON.stringify(_data))
+            localStorage.setItem("data", JSON.stringify(_data))
 
             alert("Username updated successfully")
             setShowLoader(false)
@@ -484,7 +484,7 @@ export const FollioProvider = ({ children }) => {
         checkIsLoggedIn,
         showPreview, setShowPreview,
         cv, setCv,
-        changeThemeInSessionStorage,
+        changeThemeInlocalStorage,
         checkAuthStatus, updateAccount,
         setShowLoader, updateUsername,
         logo, favIcon,

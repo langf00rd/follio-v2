@@ -3,6 +3,7 @@ import { FollioContext } from "../../context/follioContext"
 import Theme1 from "../themes/theme1"
 import Theme2 from "../themes/theme2"
 import Theme3 from "../themes/theme3"
+import Theme4 from "../themes/theme4"
 import BottomNav from "../ui/bottomNav"
 
 const PreviewComponent = () => {
@@ -13,6 +14,7 @@ const PreviewComponent = () => {
             {theme === 1 ? <Theme1 editMode={true} /> : null}
             {theme === 2 ? <Theme2 editMode={true} /> : null}
             {theme === 3 ? <Theme3 editMode={true} /> : null}
+            {theme === 4 ? <Theme4 editMode={true} /> : null}
         </div > : null}
 
         <BottomNav />
@@ -21,6 +23,7 @@ const PreviewComponent = () => {
             {theme === 1 ? <Theme1 editMode={true} /> : null}
             {theme === 2 ? <Theme2 editMode={true} /> : null}
             {theme === 3 ? <Theme3 editMode={true} /> : null}
+            {theme === 4 ? <Theme4 editMode={true} /> : null}
         </div>
     </div>
 }

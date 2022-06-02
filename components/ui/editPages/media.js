@@ -31,6 +31,15 @@ const Media = () => {
         </div>
 
         <div>
+            <label className={textStyles.label}>Cover photo</label>
+            <div className="flex">
+                <label onClick={() => coverRef.click()} className={uiStyles.uploadBox}>+</label>
+                {typeof coverPhoto === "object" ? <img className={uiStyles.uploadBoxImg} alt="" src={URL.createObjectURL(coverPhoto)} /> : <img className={uiStyles.uploadBoxImg} alt="" src={coverPhoto} />}
+                <input ref={e => coverRef = e} onChange={e => handleMediaFiles(e.target.files[0], "cover-photo")} accept="image/*" type="file" hidden />
+            </div>
+        </div>
+
+        <div>
             <label className={textStyles.label}>Featured video</label>
             <div className="flex">
                 <label onClick={() => videoRef.click()} className={uiStyles.uploadBox}>+</label>

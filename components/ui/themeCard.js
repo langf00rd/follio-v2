@@ -2,8 +2,8 @@ import { useContext } from "react"
 import { FollioContext } from "../../context/follioContext"
 
 const ThemeCard = ({ index = 1, thumbnail = "" }) => {
-    const { changeThemeInSessionStorage, theme } = useContext(FollioContext)
-    return <img src={thumbnail.src} alt="" onClick={() => changeThemeInSessionStorage(index)} className={index === theme ? styles.activeThemeCard : styles.themeCard} />
+    const { changeThemeInlocalStorage, theme } = useContext(FollioContext)
+    return <img src={thumbnail.src} alt="" onClick={() => changeThemeInlocalStorage(index)} className={index === theme ? styles.activeThemeCard : styles.themeCard} />
 }
 
 export default ThemeCard

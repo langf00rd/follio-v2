@@ -95,7 +95,7 @@ const Projects = () => {
 
         <Button label="Add a project" action={() => {
             if (!isPremiumAccount && projects.length >= 6) {
-                toast.error('You can only add 4 projects. Go premium to add more', toastConfig)
+                toast.error('You can only add 6 projects. Go premium to add more', toastConfig)
                 return
             }
 
