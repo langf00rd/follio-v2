@@ -150,7 +150,7 @@ const Thanks = ({ customStyle, socials, email }) => {
     return (
         <>
             <div className="p-44 px-5 bg-[#F0F0F0]">
-                <h1>Thank you For Viewing My page</h1>
+                <h1>Thank you for visiting my page</h1>
                 <div className={customStyle.socialWrapper}>
                     <Socials socials={socials} email={email} />
                 </div>
@@ -193,7 +193,7 @@ const previewStyles = {
     // headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `z-50 border-b border-b-[#cccccc44]`,
     headerWrapper: `flex items-center justify-between max-w-7xl m-auto lg:py-10 p-5`,
-    heroImg: `opacity-50 relative object-cover`,
+    heroImg: `opacity-50 relative object-cover max-h-[300px] w-full`,
     hero: `relative`,
     heroTextWrapper: `absolute top-0 left-0 z-10 w-full mt-[50px] flex items-center justify-center flex-col`,
     sectionWrapper: `py-20 p-5`,
