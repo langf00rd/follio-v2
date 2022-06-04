@@ -161,36 +161,23 @@ const Thanks = ({ customStyle, socials, email }) => {
 
 const styles = {
     body: `text-center bg-white text-[1.2rem]`,
-    // headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `z-50 border-b border-b-[#cccccc44] fixed top-0 left-0 z-10 w-screen bg-[#fff]`,
     headerWrapper: `flex items-center justify-between max-w-7xl m-auto lg:py-10 p-5`,
     heroImg: `opacity-50 w-screen h-[700px] relative object-cover`,
     hero: `w-full h-full relative`,
     heroTextWrapper: `absolute top-0 left-0 z-10 w-full mt-[50px] h-[700px] flex items-center justify-center flex-col`,
-    // headerLink: `ml-10 cursor-pointer hover:opacity-50 transition`,
-    // section: `mt-10 py-20`,
-    // grid: `grid lg:grid-cols-2 grid-cols-1`,
     sectionWrapper: `max-w-7xl -full m-auto py-20 p-5`,
     textLg: `my-8`,
     galleryGrid: `gallery-grid text-left`,
-    galleryImg: `border border-mid rounded-md`,
+    galleryImg: `w-full border border-mid rounded-md`,
     galleryItem: `m-5 mx-0`,
     socialWrapper: `flex items-center justify-center mt-5`,
     h1: `lg:text-5xl text-2xl px-20`,
-
-    // bg- [#ff000044]
-    // projectCard: `text-left m-5 mx-0 lg:mr-5`,
-    // heroImg: `opacity-50 w-[230px] h-[230px] lg:w-[300px] lg:h-[300px] object-cover lg:ml-10 mt-20 lg:mt-0 rounded-xl`,
-    // menuBtn: `lg:hidden`,
-    // logo: `h-[39px] object-cover`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
-    // featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] lg:w-[60%] w-[90%] m-auto`,
-    // button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
 
 const previewStyles = {
     body: `text-center bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
-    // headerWrapper: `h-full flex items-center justify-between max-w-7xl m-auto p-5`,
     header: `z-50 border-b border-b-[#cccccc44]`,
     headerWrapper: `flex items-center justify-between max-w-7xl m-auto lg:py-10 p-5`,
     heroImg: `opacity-50 relative object-cover max-h-[300px] w-full`,
@@ -198,22 +185,11 @@ const previewStyles = {
     heroTextWrapper: `absolute top-0 left-0 z-10 w-full mt-[50px] flex items-center justify-center flex-col`,
     sectionWrapper: `py-20 p-5`,
     galleryGrid: `gallery-grid text-left`,
-    galleryImg: `border border-mid rounded-md`,
+    galleryImg: `w-full border border-mid rounded-md`,
     galleryItem: `m-5 mx-0`,
     socialWrapper: `flex items-center justify-center mt-5`,
     h1: `text-xl px-20`,
-    // headerLink: `hidden`,
-    // section: `py-20`,
-    // grid: `grid grid-cols-1`,
-    // logo: `h-[39px] object-cover`,
-    // emptyBody: `p-56 bg-white border border-borderColor rounded-xl`,
-    // sectionWrapper: `max-w-7xl w-full m-auto flex-row items-center h-full p-5`,
-    // textLg: `text-3xl font-bold my-8 leading-tight`,
-    // projectCard: `text-left m-5 mx-0`,
-    // heroImg: `w-[230px] h-[230px] m-auto rounded-md w-full object-cover mt-20`,
     tool: `border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
-    // featuredVideo: `rounded-lg lg:h-[500px] object-cover bg-[#F5F8FF] w-[90%] m-auto`,
-    // button: `cursor-pointer hover:scale-90 transition bg-brand text-white text-2xl rounded-full p-2 px-5 text-[1.1rem]`,
 }
 
 const Theme4 = ({ data = {}, editMode = false }) => {
