@@ -4,6 +4,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    // fontFamily: {
+    //   body: ["Inter", "sans-serif"],
+    //   heading: ["Inter", "sans-serif"],
+    // },
+    fontFamily: {
+      'custom': ['cookie', 'cookie', 'sans-serif'],
+    },
+
     colors: {
       // brand: "#e66446",
       // brand: "#FEA82F",

@@ -68,7 +68,7 @@ const Settings = () => {
                         ? <input className={inputStyles.fileInput} type='file' disabled />
                         : <input
                             className={inputStyles.fileInput}
-                            disabled={!isPremiumAccount ? true : false}
+                            disabled={!isPremiumAccount}
                             accept=".ico"
                             type='file'
                             onChange={e => {
