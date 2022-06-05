@@ -149,7 +149,7 @@ b,
   background: linear-gradient(to bottom, #ffffffb8, white);
 }
 
-.gallery-grid {
+/* .gallery-grid {
   column-count: 3;
 }
 
@@ -157,4 +157,4 @@ b,
   .gallery-grid {
     column-count: 1;
   }
-}
+} */

@@ -1,13 +1,14 @@
 import { useContext, useEffect } from 'react'
 import { FollioContext } from '../../context/follioContext'
+import { textStyles } from '../../components/styles/textStyles'
 import PreviewLayout from '../../components/layouts/previewLayout'
+import ThemeCard from '../../components/ui/themeCard'
+import Loader from '../../components/ui/loader'
 import theme1 from '../../assets/themes/1.png'
 import theme2 from '../../assets/themes/2.png'
 import theme3 from '../../assets/themes/3.png'
 import theme4 from '../../assets/themes/4.png'
-import ThemeCard from '../../components/ui/themeCard'
-import Loader from '../../components/ui/loader'
-import { textStyles } from '../../components/styles/textStyles'
+import theme5 from '../../assets/themes/5.png'
 
 const Themes = () => {
     const { showLoader, checkIsLoggedIn } = useContext(FollioContext)
@@ -29,6 +30,7 @@ const Themes = () => {
                 <div className='mt-20 mb-5 font-bold'>
                     <h2 className={textStyles.label}>Designer &amp; photographer</h2>
                     <div className={styles.themeCardContainer}>
+                        <ThemeCard index={5} thumbnail={theme5} />
                         <ThemeCard index={4} thumbnail={theme4} />
                     </div>
                 </div>

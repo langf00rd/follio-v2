@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     domains: [
       'res.cloudinary.com',
-      'iso.500px.com'
+      'iso.500px.com',
+      'www.redwolf.in',
     ],
   },
 }

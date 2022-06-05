@@ -151,7 +151,7 @@ const HeadMetadata = ({ fullname = "Portfolio", tagline, about, favIcon }) => {
 const Thanks = ({ customStyle, socials, email }) => {
     return (
         <>
-            <div className="p-44 px-5 bg-[#F0F0F0]">
+            <div className="p-44 px-5 bg-[#f1f1f169]">
                 <h1 className="font-[cookie] text-2xl lg:text-5xl">Thank you for visiting my page</h1>
                 <div className={customStyle.socialWrapper}>
                     <Socials socials={socials} email={email} />
@@ -179,7 +179,7 @@ const styles = {
 }
 
 const previewStyles = {
-    body: `font-[cookie] text-center bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white lg:border lg:border-borderColor lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
+    body: `font-[cookie] text-center bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white   lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     header: `font-[cookie] z-50 border-b border-b-[#cccccc44]`,
     headerWrapper: `font-[cookie] flex items-center justify-between max-w-7xl m-auto lg:py-10 p-5`,
     heroImg: `font-[cookie] opacity-50 relative object-cover h-[330px] w-full`,
@@ -221,9 +221,9 @@ const Theme4 = ({ data = {}, editMode = false }) => {
         <PageHeader fullname={data.fullname} customStyle={styles} />
         <Fade top><Hero coverPhoto={data.coverPhoto} cv={data.cv} email={data.email} socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} /></Fade>
         <Fade bottom><Gallery projects={data.projects} customStyle={styles} /></Fade>
-        {/* <Fade bottom><Tools customStyle={styles} tools={data.skills} /></Fade> */}
         <Fade bottom><Thanks customStyle={styles} socials={data.socials} email={data.email} /></Fade>
-        <MadeWithFollio show={data.showFollioTag} />
+        <Fade bottom><MadeWithFollio show={data.showFollioTag} /></Fade>
+        {/* <Fade bottom><Tools customStyle={styles} tools={data.skills} /></Fade> */}
 
         {/* <FeaturedVideo customStyle={styles} featuredVideo={data.featuredVideo} />
         <About customStyle={styles} about={data.about} />
