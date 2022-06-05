@@ -88,7 +88,13 @@ const Hero = ({ email, socials, profilePhoto, tagline, work, customStyle }) => {
         <>
             <ThemeLayout>
                 <div className='py-20 text-center'>
-                    <div><img className='w-[200px] h-[200px] m-auto rounded-full' src={profilePhoto} /></div>
+
+
+                    {profilePhoto && (typeof profilePhoto === "object")
+                        ? <div><img className='w-[200px] h-[200px] m-auto rounded-full' src={URL.createObjectURL(profilePhoto)} /></div>
+                        : <div><img className='w-[200px] h-[200px] m-auto rounded-full' src={profilePhoto} /></div>}
+
+
                     <p className={customStyle.h1}>{tagline}</p>
                     <p className='text-2xl my-10'>{work}</p>
                     <div className='flex items-center justify-center scale-110'>
