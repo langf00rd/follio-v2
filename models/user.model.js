@@ -91,7 +91,7 @@ const User = mongoose.model('User', Schema({
 
     socials: {
         type: Object,
-        default: { paypal: '', twitter: "", dev: "", dailydev: "", hashnode: "", linkedin: "", stackoverflow: "", youtube: "", dribbble: "", twitch: "", discord: "", behance: "", instagram: "", github: "", coffee: "" },
+        default: { paypal: '', twitter: "", facebook: "", whatsapp: "", dev: "", dailydev: "", hashnode: "", linkedin: "", stackoverflow: "", youtube: "", dribbble: "", twitch: "", discord: "", behance: "", instagram: "", github: "", coffee: "" },
     },
 
     work: {
