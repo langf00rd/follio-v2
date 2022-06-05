@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useContext } from "react"
 import { Fade } from "react-reveal"
 import { Socials } from "../ui/themes/socials"
@@ -59,7 +60,6 @@ const Gallery = ({ customStyle, projects = [] }) => {
     return (
         <>
             <ThemeLayout>
-                {/* <ul className='grid lg:columns-3 sm:columns-2 columns-1' id='my-works'> */}
                 <ul className={customStyle.galleryGrid} id='my-works'>
                     {projects.map((project, i) => {
                         return <li key={i} className={customStyle.galleryItem}>
