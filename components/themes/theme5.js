@@ -13,6 +13,7 @@ const Theme5 = ({ data = {}, editMode = false }) => {
     if (editMode) return (
         <>
             <div className={previewStyles.body}>
+                <PageHeader fullname={fullname} customStyle={previewStyles} />
                 <Fade top><Hero email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} /></Fade>
                 <Fade bottom><Gallery projects={projects} customStyle={previewStyles} /></Fade>
                 <Fade top><PageFooter email={email} socials={socials} showFollioTag={showFollioTag} /></Fade>
@@ -137,6 +138,7 @@ const previewStyles = {
     galleryGrid: `columns-1 text-left`,
     h1: `text-4xl font-medium my-10`,
     galleryItem: `m-5 mx-0`,
+    header: `m-auto max-w-7xl flex items-center justify-between pt-20 lg:pt-0`,
 }
 
 export default Theme5
