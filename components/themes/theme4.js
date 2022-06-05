@@ -8,6 +8,7 @@ import MadeWithFollio from "../ui/themes/madeWithFollio"
 import Image from 'next/image'
 import { textStyles } from "../styles/textStyles"
 import { Fade } from "react-reveal"
+import Link from "next/link"
 
 const Hero = ({ coverPhoto, cv, customStyle, greeting, tagline, work, profilePhoto, socials, email }) => {
     return (
@@ -32,7 +33,9 @@ const PageHeader = ({ customStyle, fullname }) => {
             <div className={customStyle.header}>
                 <div className={customStyle.headerWrapper}>
                     <p>{fullname}</p>
-                    <p> </p>
+                    <Link href='#my-works' passHref={true}>
+                        <div className={styles.button}>My works</div>
+                    </Link>
                 </div>
             </div>
         </>
@@ -42,7 +45,7 @@ const PageHeader = ({ customStyle, fullname }) => {
 const Gallery = ({ customStyle, projects = [] }) => {
     return (
         <>
-            <div className={customStyle.section}>
+            <div className={customStyle.section} id='my-works'>
                 <div className={customStyle.sectionWrapper}>
                     {/* <h2 className="font-[cookie] text-3xl">Explore</h2> */}
                     {/* <p className="font-[cookie] text-3xl">In this gallery you can see a selection of my work. I hope you enjoy.</p> */}
@@ -52,11 +55,13 @@ const Gallery = ({ customStyle, projects = [] }) => {
                     <ul className={customStyle.galleryGrid}>
                         {projects.map((project, i) => {
                             return <li key={i} className={customStyle.galleryItem}>
-                                {
-                                    project.link ? <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                        <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
-                                    </a> : <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
-                                }
+                                <Fade bottom>
+                                    {
+                                        project.link ? <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                            <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
+                                        </a> : <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
+                                    }
+                                </Fade>
                             </li>
                         })}
                     </ul>
@@ -164,29 +169,30 @@ const Thanks = ({ customStyle, socials, email }) => {
 const styles = {
     body: `font-[cookie] text-center bg-white text-[1.2rem]`,
     header: `font-[cookie] z-50 border-b border-b-[#cccccc44] fixed top-0 left-0 z-10 w-screen bg-[#fff]`,
-    headerWrapper: `font-[cookie] flex items-center justify-between max-w-7xl m-auto lg:py-10 p-5`,
+    headerWrapper: `font-[cookie] flex items-center justify-between max-w-7xl m-auto p-5`,
     heroImg: `font-[cookie] opacity-50 w-screen h-[330px] lg:h-[700px] relative object-cover`,
     hero: `font-[cookie] w-full h-full relative`,
     heroTextWrapper: `font-[cookie] absolute top-0 left-0 z-10 w-full mt-[50px] h-[330px] lg:h-[700px] flex items-center justify-center flex-col`,
     sectionWrapper: `font-[cookie] max-w-7xl -full m-auto py-20 p-5`,
     textLg: `font-[cookie] my-8`,
-    galleryGrid: `font-[cookie] gallery-grid text-left`,
+    galleryGrid: `lg:columns-3 sm:columns-2 columns-1 text-left`,
     galleryImg: `font-[cookie] w-full border border-mid rounded-md`,
     galleryItem: `font-[cookie] m-5 mx-0`,
     socialWrapper: `font-[cookie] flex items-center justify-center mt-5`,
     h1: `font-[cookie] lg:text-6xl text-4xl px-20`,
     tool: `font-[cookie] border border-[#cccccc44] w-max whitespace-nowrap p-1 px-3 rounded-full m-3`,
+    button: `bg-[#242424] text-white p-3 px-5 cursor-pointer hover:border-2 border-2 hover:bg-[#ffffffff] hover:text-[#242424] rounded-full`,
 }
 
 const previewStyles = {
     body: `font-[cookie] text-center bg-white lg:shadow-xl lg:min-w-xl w-screen lg:w-[23vw] text-[1.1rem] lg:h-[80vh] h-[100vh] bg-white   lg:rounded-xl z-30 pb-44 lg:pb-0 overflow-y-scroll`,
     header: `font-[cookie] z-50 border-b border-b-[#cccccc44]`,
-    headerWrapper: `font-[cookie] flex items-center justify-between max-w-7xl m-auto lg:py-10 p-5`,
+    headerWrapper: `font-[cookie] flex items-center justify-between max-w-7xl m-auto p-5`,
     heroImg: `font-[cookie] opacity-50 relative object-cover h-[330px] w-full`,
     hero: `font-[cookie] relative`,
     heroTextWrapper: `font-[cookie] absolute top-0 left-0 z-10 w-full h-[330px] flex items-center justify-center flex-col`,
     sectionWrapper: `font-[cookie] py-20 p-5`,
-    galleryGrid: `font-[cookie] gallery-grid text-left`,
+    galleryGrid: `columns-1 text-left`,
     galleryImg: `font-[cookie] w-full border border-mid rounded-md`,
     galleryItem: `font-[cookie] m-5 mx-0`,
     socialWrapper: `font-[cookie] flex items-center justify-center mt-5`,
@@ -199,7 +205,7 @@ const Theme4 = ({ data = {}, editMode = false }) => {
 
     if (editMode) return <div className={previewStyles.body}>
         <PageHeader fullname={fullname} customStyle={previewStyles} />
-        <Hero coverPhoto={coverPhoto} cv={cv} email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} />
+        <Fade top><Hero coverPhoto={coverPhoto} cv={cv} email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} /></Fade>
         <Gallery projects={projects} customStyle={previewStyles} />
         {/* <Fade bottom><Tools customStyle={previewStyles} tools={skills} /></Fade> */}
         <Thanks customStyle={previewStyles} socials={socials} email={email} />

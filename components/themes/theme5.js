@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import { useContext } from "react"
 import { Fade } from "react-reveal"
@@ -6,6 +7,7 @@ import Head from "next/head"
 import Link from "next/link"
 import MadeWithFollio from "../ui/themes/madeWithFollio"
 import { FollioContext } from "../../context/follioContext"
+import CoffeeButton from "../ui/coffeeButton"
 
 const Theme5 = ({ data = {}, editMode = false }) => {
     const { skills, about, fullname, showFollioTag, coverPhoto, cv, email, socials, tagline, profilePhoto, work, projects, featuredVideo } = useContext(FollioContext)
@@ -15,7 +17,8 @@ const Theme5 = ({ data = {}, editMode = false }) => {
             <div className={previewStyles.body}>
                 <PageHeader fullname={fullname} customStyle={previewStyles} />
                 <Fade top><Hero email={email} socials={socials} profilePhoto={profilePhoto} tagline={tagline} work={work} customStyle={previewStyles} /></Fade>
-                <Fade bottom><Gallery projects={projects} customStyle={previewStyles} /></Fade>
+                <Gallery projects={projects} customStyle={previewStyles} />
+                <Fade><Payment coffee={socials.coffee} /></Fade>
                 <Fade top><PageFooter email={email} socials={socials} showFollioTag={showFollioTag} /></Fade>
             </div>
         </>
@@ -28,6 +31,7 @@ const Theme5 = ({ data = {}, editMode = false }) => {
                 <HeadMetadata tagline={data.tagline} favIcon={data.favIcon} about={data.about} fullname={data.fullname} />
                 <Fade top><Hero email={data.email} socials={data.socials} profilePhoto={data.profilePhoto} tagline={data.tagline} work={data.work} customStyle={styles} /></Fade>
                 <Fade bottom><Gallery projects={data.projects} customStyle={styles} /></Fade>
+                <Fade><Payment coffee={data.socials.coffee} /></Fade>
                 <Fade top><PageFooter email={data.email} socials={data.socials} showFollioTag={data.showFollioTag} /></Fade>
             </div>
         </>
@@ -64,11 +68,13 @@ const Gallery = ({ customStyle, projects = [] }) => {
                 <ul className={customStyle.galleryGrid} id='my-works'>
                     {projects.map((project, i) => {
                         return <li key={i} className={customStyle.galleryItem}>
-                            {
-                                project.link ? <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                    <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
-                                </a> : <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
-                            }
+                            <Fade bottom>
+                                {
+                                    project.link ? <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                        <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
+                                    </a> : <img className={customStyle.galleryImg} src={project.thumbnail} alt={project.name} />
+                                }
+                            </Fade>
                         </li>
                     })}
                 </ul>
@@ -107,6 +113,18 @@ const PageHeader = ({ fullname, customStyle }) => {
                     </div>
                 </div>
             </ThemeLayout>
+        </>
+    )
+}
+
+const Payment = ({ coffee }) => {
+    if (coffee === '') return null
+
+    return (
+        <>
+            <div className='flex items-center lg:justify-center mt-20 ml-5 lg:ml-0'>
+                <CoffeeButton coffee={coffee} />
+            </div>
         </>
     )
 }
