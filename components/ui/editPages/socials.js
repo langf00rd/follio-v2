@@ -12,6 +12,8 @@ import linkedin from "../../../assets/svg/linkedin.svg"
 import stackoverflow from "../../../assets/svg/stackoverflow.svg"
 import twitch from "../../../assets/svg/twitch.svg"
 import youtube from "../../../assets/svg/youtube.svg"
+import facebook from "../../../assets/svg/facebook.svg"
+import whatsapp from "../../../assets/svg/whatsapp.svg"
 
 const Socials = () => {
     const { socials, setSocials } = useContext(FollioContext)
@@ -32,6 +34,8 @@ const Socials = () => {
         github: socials.github,
         coffee: socials.coffee,
         ethAddress: socials.ethAddress,
+        whatsapp: socials.whatsapp,
+        facebook: socials.facebook
     }
 
     const setNewSocials = (value, type) => {
@@ -52,6 +56,20 @@ const Socials = () => {
             <div className={inputStyles.socialInput}>
                 <label className={inputStyles.label}>github.com/</label>
                 <input value={newSocials.github} onChange={e => setNewSocials(e.target.value, "github")} className={inputStyles.ghostInput} type="text" />
+            </div>
+        </div>
+        <div className="flex items-center">
+            <img src={facebook.src} alt="" className={styles.socialIcon} />
+            <div className={inputStyles.socialInput}>
+                <label className={inputStyles.label}>web.facebook.com/</label>
+                <input value={newSocials.facebook} onChange={e => setNewSocials(e.target.value, "facebook")} className={inputStyles.ghostInput} type="text" />
+            </div>
+        </div>
+        <div className="flex items-center">
+            <img src={whatsapp.src} alt="" className={styles.socialIcon} />
+            <div className={inputStyles.socialInput}>
+                <label className={inputStyles.label}>wa.me/</label>
+                <input value={newSocials.whatsapp} onChange={e => setNewSocials(e.target.value, "whatsapp")} className={inputStyles.ghostInput} type="text" />
             </div>
         </div>
         <div className="flex items-center">
