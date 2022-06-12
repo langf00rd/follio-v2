@@ -2,6 +2,7 @@ import { buttonStyles } from "../components/styles/buttonStyles"
 import { Fade } from "react-reveal"
 import Image from "next/image"
 import screenshot1 from '../assets/landing/screenshots/1.png'
+import homeEdit from '../assets/landing/screenshots/home-edit.png'
 import Link from "next/link"
 import Logo from "../components/logo"
 import PageHead from '../components/pageHead'
@@ -14,7 +15,7 @@ const Landing = () => {
                 <Header />
                 <Fade><Hero /></Fade>
                 <Fade bottom><Features /></Fade>
-                <Flip />
+                {/* <Flip /> */}
                 <Fade bottom><Quote /></Fade>
                 <Fade bottom><Testimonials /></Fade>
                 <Fade bottom><FeaturedUsers /></Fade>
@@ -66,14 +67,14 @@ const Header = () => {
     // return <header className="fixed border-b border-b-[#f1f1f1] z-20 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px]">
     return <header className="fixed border-b border-b-[#f1f1f1] text-[1rem] z-20 top-0 bg-[#fff] left-0 w-screen lg:px-56 px-5 m-auto flex items-center justify-between h-[65px] py-10">
         <Logo />
-        {/* <nav className={styles.nav}>
+        <nav className={styles.nav}>
             <ul className={styles.navLinks}>
                 <Link passHref={true} href='#'><p className={styles.link}>Home</p></Link>
                 <Link passHref={true} href='#'><p className={styles.link}>About</p></Link>
                 <Link passHref={true} href='#'><p className={styles.link}>Services</p></Link>
                 <Link passHref={true} href='#'><p className={styles.link}>Contact</p></Link>
             </ul>
-        </nav> */}
+        </nav>
         <GetStartedButton label='Get started' />
     </header>
 }
@@ -82,7 +83,7 @@ const Hero = () => {
     return <div className={styles.hero}>
         {/* <ProductHuntBanner /> */}
         <div className="max-w-4xl m-auto">
-            <p className={styles.h1}> <span className='text-brand font-bold'>Free Online</span> Portfolio Builder</p>
+            <p className={styles.h2}> create a <span className='text-brand font-bold'>professional-grade </span> portfolio website within a few clicks</p>
             <p className='my-10 opacity-50'>An easy way to create and deploy your portfolio site with your skills, projects, socials, meeting schedules, and custom domain for free!</p>
             <div className='flex items-center justify-center flex-wrap'>
                 <GetStartedButton label='Build your website!' />
@@ -91,12 +92,13 @@ const Hero = () => {
                 </div>
             </div>
         </div>
+        <img src={homeEdit.src} className='w-full max-w-7xl -mb-[185px] m-auto rounded-3xl my-20 border-4 border-white' />
     </div>
 }
 
 const GetStartedButton = ({ label }) => {
     return <Link href='/auth' passHref={true}>
-        <p className={buttonStyles.button}>{label}</p>
+        <p className={buttonStyles.brandButton}>{label}</p>
     </Link>
 }
 
@@ -104,7 +106,7 @@ const Features = () => {
     return (
         <>
             {/* <div className="bg-[#f1f1f133] "> */}
-            <div className="">
+            <div className="bg-white">
                 <div className={styles.section}>
                     <div className={styles.sectionWrapper}>
                         <p className={styles.h2}>Features</p>
@@ -247,7 +249,7 @@ const styles = {
     // testimonial: `lg:w-1/3 m-3 bg-[#f1f1f166] p-5 w-max lg:px-10 rounded-xl text-right`,
     hero: `w-screen lg:px-56 px-5 m-auto lg:py-44 mt-[63px] py-32 text-center`,
     h1: `lg:text-7xl text-4xl`,
-    h2: `lg:text-5xl text-3xl`,
+    h2: `lg:text-5xl font-bold text-3xl`,
     quote: `quote lg:text-7xl text-4xl`,
     section: `py-32`,
     sectionWrapper: `max-w-6xl m-auto text-center p-5`,

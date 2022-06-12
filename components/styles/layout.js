@@ -1,5 +1,5 @@
 export const layoutStyles = {
-    container: `modal-content bg-white h-max p-0 rounded-lg`,
+    container: `modal-content h-max p-0 rounded-lg`,
     modalContainer: `p-5 py-20 lg:py-10 modal-content bg-white sm:h-max lg:w-5/12 w-screen h-screen overflow-y-scroll lg:rounded-2xl`,
     modalBody: `flex items-center justify-center fixed inset-0 z-30 bg-[#9095a0bf]`,
     main: `pt-20 w-screen px-5 lg:px-20 pb-56 sm:pb-0`,
